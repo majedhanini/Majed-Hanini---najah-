@@ -1,0 +1,678 @@
+.semester-one-page {
+  position: relative;
+
+  width: 100%;
+
+  min-height: 100vh;
+
+  overflow: hidden;
+
+  background: #050816;
+
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+.semester-one-background {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 0;
+
+  overflow: hidden;
+
+  pointer-events: none;
+}
+
+
+.semester-one-grid-bg {
+  position: absolute;
+
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    );
+
+  background-size: 70px 70px;
+
+  mask-image:
+    linear-gradient(
+      to bottom,
+      black,
+      transparent 95%
+    );
+}
+
+
+.semester-one-glow {
+  position: absolute;
+
+  border-radius: 50%;
+
+  filter: blur(150px);
+}
+
+
+.semester-one-glow-one {
+  width: 620px;
+  height: 620px;
+
+  top: -300px;
+  right: -180px;
+
+  background: #6259ff;
+
+  opacity: 0.16;
+}
+
+
+.semester-one-glow-two {
+  width: 500px;
+  height: 500px;
+
+  left: -280px;
+  bottom: -220px;
+
+  background: #00bde8;
+
+  opacity: 0.08;
+}
+
+
+.semester-one-code {
+  position: absolute;
+
+  font-family: "Inter", sans-serif;
+
+  font-weight: 900;
+
+  color:
+    rgba(95, 108, 255, 0.055);
+
+  user-select: none;
+}
+
+
+.semester-one-code-one {
+  top: 16%;
+  right: 5%;
+
+  font-size: 80px;
+}
+
+
+.semester-one-code-two {
+  bottom: 10%;
+  left: 5%;
+
+  font-size: 75px;
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.semester-one-section {
+  position: relative;
+
+  z-index: 2;
+
+  padding:
+    75px 6%
+    120px;
+}
+
+
+.semester-one-container {
+  width:
+    min(
+      1250px,
+      100%
+    );
+
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.semester-back-button {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  margin-bottom: 65px;
+
+  padding:
+    10px 15px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.08);
+
+  border-radius: 12px;
+
+  background:
+    rgba(255, 255, 255, 0.035);
+
+  font-family:
+    "Tajawal",
+    sans-serif;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  color: #9da7c2;
+
+  cursor: pointer;
+
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+
+.semester-back-button:hover {
+  color: #26d9ff;
+
+  border-color:
+    rgba(38, 217, 255, 0.18);
+
+  background:
+    rgba(38, 217, 255, 0.04);
+
+  transform:
+    translateX(4px);
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.semester-one-heading {
+  max-width: 900px;
+
+  margin:
+    0 auto 60px;
+
+  direction: rtl;
+
+  text-align: center;
+}
+
+
+.semester-one-kicker {
+  display: block;
+
+  margin-bottom: 10px;
+
+  direction: ltr;
+
+  text-align: center;
+
+  font-family:
+    "Inter",
+    sans-serif;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.7px;
+
+  color: #26d9ff;
+}
+
+
+.semester-one-major-name {
+  display: block;
+
+  margin-bottom: 14px;
+
+  text-align: center;
+
+  font-family:
+    "Tajawal",
+    sans-serif;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  color: #8b95af;
+}
+
+
+.semester-one-heading h1 {
+  margin:
+    0 0 18px;
+
+  font-family:
+    "Tajawal",
+    sans-serif;
+
+  font-size:
+    clamp(
+      45px,
+      5vw,
+      68px
+    );
+
+  font-weight: 900;
+
+  line-height: 1.05;
+
+  text-align: center;
+
+  color: #ffffff;
+}
+
+
+.semester-one-heading p {
+  max-width: 700px;
+
+  margin: 0 auto;
+
+  font-family:
+    "Tajawal",
+    sans-serif;
+
+  font-size: 15px;
+
+  line-height: 2;
+
+  text-align: center;
+
+  color: #929db8;
+}
+
+
+/* =========================================================
+   COURSES GRID
+========================================================= */
+
+.courses-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 18px;
+
+  direction: rtl;
+}
+
+
+/* =========================================================
+   COURSE CARD
+========================================================= */
+
+.course-card {
+  position: relative;
+
+  min-height: 285px;
+
+  padding: 26px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  overflow: hidden;
+
+  direction: rtl;
+
+  text-align: right;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.075);
+
+  border-radius: 23px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.045),
+      rgba(255, 255, 255, 0.018)
+    );
+
+  backdrop-filter:
+    blur(14px);
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+.course-card:hover {
+  transform:
+    translateY(-7px);
+
+  border-color:
+    rgba(38, 217, 255, 0.17);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.06),
+      rgba(255, 255, 255, 0.025)
+    );
+
+  box-shadow:
+    0 25px 60px
+    rgba(0, 0, 0, 0.2);
+}
+
+
+.course-card-glow {
+  position: absolute;
+
+  width: 160px;
+  height: 160px;
+
+  top: -110px;
+  left: -90px;
+
+  border-radius: 50%;
+
+  background: #6875ff;
+
+  opacity: 0.08;
+
+  filter:
+    blur(38px);
+
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+
+.course-card:hover
+.course-card-glow {
+  transform:
+    scale(1.2);
+
+  opacity: 0.15;
+}
+
+
+.course-card-number {
+  position: relative;
+
+  z-index: 2;
+
+  margin-bottom: 30px;
+
+  direction: ltr;
+
+  text-align: right;
+
+  font-family:
+    "Inter",
+    sans-serif;
+
+  font-size: 10px;
+
+  color:
+    rgba(255, 255, 255, 0.25);
+}
+
+
+.course-card-content {
+  position: relative;
+
+  z-index: 2;
+}
+
+
+.course-card-label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  direction: ltr;
+
+  text-align: right;
+
+  font-family:
+    "Inter",
+    sans-serif;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.2px;
+
+  color: #26d9ff;
+}
+
+
+.course-card h2 {
+  margin:
+    0 0 13px;
+
+  font-family:
+    "Tajawal",
+    sans-serif;
+
+  font-size: 23px;
+
+  font-weight: 900;
+
+  line-height: 1.4;
+
+  color: #ffffff;
+}
+
+
+.course-card p {
+  margin: 0;
+
+  font-family:
+    "Tajawal",
+    sans-serif;
+
+  font-size: 13px;
+
+  line-height: 1.9;
+
+  color: #8993ad;
+}
+
+
+/* =========================================================
+   OPEN BUTTON
+========================================================= */
+
+.course-open-button {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+
+  margin-top: auto;
+
+  padding:
+    17px 0 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content:
+    space-between;
+
+  direction: rtl;
+
+  border: 0;
+
+  border-top:
+    1px solid
+    rgba(255, 255, 255, 0.06);
+
+  background:
+    transparent;
+
+  font-family:
+    "Tajawal",
+    sans-serif;
+
+  font-size: 13px;
+
+  font-weight: 800;
+
+  color: #ffffff;
+
+  cursor: pointer;
+}
+
+
+.course-open-arrow {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 9px;
+
+  background:
+    rgba(38, 217, 255, 0.06);
+
+  color: #26d9ff;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+
+.course-card:hover
+.course-open-arrow {
+  transform:
+    translateX(-4px);
+
+  background:
+    rgba(38, 217, 255, 0.12);
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.semester-error {
+  min-height: 65vh;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 20px;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+  .courses-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+
+    direction: rtl;
+  }
+
+}
+
+
+@media (max-width: 650px) {
+
+  .semester-one-section {
+    padding:
+      55px 18px
+      90px;
+  }
+
+
+  .semester-back-button {
+    margin-bottom:
+      45px;
+  }
+
+
+  .semester-one-heading {
+    margin-bottom:
+      45px;
+  }
+
+
+  .semester-one-heading h1 {
+    font-size:
+      43px;
+  }
+
+
+  .semester-one-heading p {
+    font-size:
+      14px;
+  }
+
+
+  .courses-grid {
+    grid-template-columns:
+      1fr;
+
+    direction: rtl;
+  }
+
+
+  .course-card {
+    min-height:
+      250px;
+
+    padding:
+      23px;
+  }
+
+}

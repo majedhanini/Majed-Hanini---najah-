@@ -1,0 +1,616 @@
+.course-details-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #050816;
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+.course-details-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+
+.course-details-grid-bg {
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    );
+
+  background-size: 70px 70px;
+}
+
+
+.course-details-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(150px);
+}
+
+
+.course-details-glow-one {
+  width: 620px;
+  height: 620px;
+
+  top: -320px;
+  right: -180px;
+
+  background: #6259ff;
+
+  opacity: 0.16;
+}
+
+
+.course-details-glow-two {
+  width: 500px;
+  height: 500px;
+
+  left: -260px;
+  bottom: -220px;
+
+  background: #00bde8;
+
+  opacity: 0.08;
+}
+
+
+.course-details-code {
+  position: absolute;
+
+  top: 14%;
+  right: 5%;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 85px;
+
+  font-weight: 900;
+
+  color:
+    rgba(95, 108, 255, 0.055);
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.course-details-section {
+  position: relative;
+  z-index: 2;
+
+  padding:
+    75px 6%
+    120px;
+}
+
+
+.course-details-container {
+  width:
+    min(
+      1250px,
+      100%
+    );
+
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.course-back-button {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  margin-bottom: 65px;
+
+  padding:
+    10px 15px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.08);
+
+  border-radius: 12px;
+
+  background:
+    rgba(255, 255, 255, 0.035);
+
+  font-family:
+    "Tajawal",
+    sans-serif;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  color: #9da7c2;
+
+  cursor: pointer;
+
+  transition:
+    0.25s ease;
+}
+
+
+.course-back-button:hover {
+  color: #26d9ff;
+
+  border-color:
+    rgba(38, 217, 255, 0.18);
+
+  background:
+    rgba(38, 217, 255, 0.04);
+
+  transform:
+    translateX(4px);
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.course-details-heading {
+  max-width: 850px;
+
+  margin:
+    0 auto 65px;
+
+  direction: rtl;
+
+  text-align: center;
+}
+
+
+.course-details-kicker {
+  display: block;
+
+  margin-bottom: 10px;
+
+  direction: ltr;
+
+  text-align: center;
+
+  font-family:
+    "Inter",
+    sans-serif;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.7px;
+
+  color: #26d9ff;
+}
+
+
+.course-details-major {
+  display: block;
+
+  margin-bottom: 14px;
+
+  font-family:
+    "Tajawal",
+    sans-serif;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  color: #8b95af;
+}
+
+
+.course-details-heading h1 {
+  margin:
+    0 0 18px;
+
+  font-family:
+    "Tajawal",
+    sans-serif;
+
+  font-size:
+    clamp(
+      50px,
+      5vw,
+      72px
+    );
+
+  font-weight: 900;
+
+  line-height: 1.05;
+
+  color: #ffffff;
+}
+
+
+.course-details-heading p {
+  max-width: 700px;
+
+  margin: 0 auto;
+
+  font-family:
+    "Tajawal",
+    sans-serif;
+
+  font-size: 15px;
+
+  line-height: 2;
+
+  color: #929db8;
+}
+
+
+/* =========================================================
+   RESOURCES GRID
+========================================================= */
+
+.course-resources-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 20px;
+
+  direction: rtl;
+}
+
+
+/* =========================================================
+   RESOURCE CARD
+========================================================= */
+
+.course-resource-card {
+  position: relative;
+
+  min-height: 300px;
+
+  padding: 28px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  overflow: hidden;
+
+  direction: rtl;
+
+  text-align: right;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.075);
+
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.045),
+      rgba(255, 255, 255, 0.018)
+    );
+
+  backdrop-filter: blur(15px);
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+.course-resource-card:hover {
+  transform:
+    translateY(-7px);
+
+  border-color:
+    rgba(38, 217, 255, 0.18);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.06),
+      rgba(255, 255, 255, 0.025)
+    );
+
+  box-shadow:
+    0 25px 65px
+    rgba(0, 0, 0, 0.2);
+}
+
+
+.course-resource-top {
+  display: flex;
+
+  align-items: center;
+
+  justify-content:
+    space-between;
+
+  margin-bottom: 30px;
+}
+
+
+.course-resource-icon {
+  min-width: 54px;
+  height: 54px;
+
+  padding:
+    0 12px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border:
+    1px solid
+    rgba(38, 217, 255, 0.15);
+
+  border-radius: 15px;
+
+  background:
+    rgba(38, 217, 255, 0.06);
+
+  direction: ltr;
+
+  font-family:
+    "Inter",
+    sans-serif;
+
+  font-size: 11px;
+
+  font-weight: 900;
+
+  color: #26d9ff;
+}
+
+
+.course-resource-number {
+  direction: ltr;
+
+  font-family:
+    "Inter",
+    sans-serif;
+
+  font-size: 10px;
+
+  color:
+    rgba(255, 255, 255, 0.25);
+}
+
+
+.course-resource-english {
+  display: block;
+
+  margin-bottom: 7px;
+
+  direction: ltr;
+
+  text-align: right;
+
+  font-family:
+    "Inter",
+    sans-serif;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.2px;
+
+  color: #26d9ff;
+}
+
+
+.course-resource-card h2 {
+  margin:
+    0 0 12px;
+
+  font-family:
+    "Tajawal",
+    sans-serif;
+
+  font-size: 25px;
+
+  font-weight: 900;
+
+  color: #ffffff;
+}
+
+
+.course-resource-card p {
+  margin: 0;
+
+  font-family:
+    "Tajawal",
+    sans-serif;
+
+  font-size: 13px;
+
+  line-height: 2;
+
+  color: #8993ad;
+}
+
+
+/* =========================================================
+   RESOURCE BUTTON
+========================================================= */
+
+.course-resource-button {
+  width: 100%;
+
+  margin-top: auto;
+
+  padding:
+    17px 0 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content:
+    space-between;
+
+  border: 0;
+
+  border-top:
+    1px solid
+    rgba(255, 255, 255, 0.06);
+
+  background: transparent;
+
+  font-family:
+    "Tajawal",
+    sans-serif;
+
+  font-size: 13px;
+
+  font-weight: 800;
+
+  color: #ffffff;
+
+  cursor: pointer;
+}
+
+
+.course-resource-button span:last-child {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background:
+    rgba(38, 217, 255, 0.06);
+
+  color: #26d9ff;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+
+.course-resource-card:hover
+.course-resource-button span:last-child {
+  transform:
+    translateX(-4px);
+
+  background:
+    rgba(38, 217, 255, 0.12);
+}
+
+
+/* =========================================================
+   NOT FOUND
+========================================================= */
+
+.course-not-found {
+  min-height: 70vh;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 20px;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .course-resources-grid {
+    grid-template-columns:
+      1fr;
+  }
+
+}
+
+
+@media (max-width: 650px) {
+
+  .course-details-section {
+    padding:
+      55px 18px
+      90px;
+  }
+
+
+  .course-back-button {
+    margin-bottom:
+      45px;
+  }
+
+
+  .course-details-heading {
+    margin-bottom:
+      45px;
+  }
+
+
+  .course-details-heading h1 {
+    font-size:
+      46px;
+  }
+
+
+  .course-details-heading p {
+    font-size:
+      14px;
+  }
+
+
+  .course-resource-card {
+    min-height:
+      270px;
+
+    padding:
+      23px;
+  }
+
+}
