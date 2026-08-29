@@ -35,7 +35,9 @@ function MajorsFooter() {
 
         {/* RIGHT */}
         <div className="majors-footer-developer">
-          <span className="majors-footer-developer-label">DESIGNED & DEVELOPED BY </span>
+          <span className="majors-footer-developer-label">
+            DESIGNED & DEVELOPED BY{" "}
+          </span>
 
           <strong>ماجد حنيني</strong>
         </div>

@@ -17,6 +17,8 @@ html {
   scroll-behavior: smooth;
 
   scroll-padding-top: 78px;
+
+  background: var(--bg-main);
 }
 
 
@@ -39,7 +41,21 @@ body {
 
   color: var(--text-main);
 
-  font-family: "Tajawal", sans-serif;
+  font-family:
+    "Tajawal",
+    sans-serif;
+
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease;
+}
+
+
+#root {
+  background: var(--bg-main);
+
+  transition:
+    background-color 0.35s ease;
 }
 
 
@@ -61,6 +77,81 @@ img {
   display: block;
 }
 
+
+/* =========================================================
+   TEXT SELECTION
+========================================================= */
+
+::selection {
+  background:
+    color-mix(
+      in srgb,
+      var(--primary) 35%,
+      transparent
+    );
+
+  color: var(--text-main);
+}
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+
+::-webkit-scrollbar-track {
+  background:
+    var(--bg-main);
+}
+
+
+::-webkit-scrollbar-thumb {
+  border:
+    2px solid
+    var(--bg-main);
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      180deg,
+      var(--primary),
+      var(--primary-2)
+    );
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+  background:
+    linear-gradient(
+      180deg,
+      var(--cyan),
+      var(--primary)
+    );
+}
+
+
+/* =========================================================
+   LIGHT MODE
+========================================================= */
+
+[data-theme="light"] {
+  color-scheme: light;
+}
+
+
+[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media (max-width: 850px) {
 

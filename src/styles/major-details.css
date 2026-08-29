@@ -1100,3 +1100,389 @@
   }
 
 }
+
+
+
+/* =========================================================
+   DARK / LIGHT THEME SUPPORT
+   Dark mode keeps the original design.
+========================================================= */
+
+.major-details-page,
+.major-back-button,
+.major-about-section,
+.major-courses-section,
+.major-about-main-card,
+.major-mini-card,
+.semester-card,
+.semester-button {
+  transition:
+    background 0.35s ease,
+    background-color 0.35s ease,
+    color 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+
+/* =========================================================
+   LIGHT MODE - PAGE
+========================================================= */
+
+[data-theme="light"] .major-details-page {
+  background:
+    linear-gradient(
+      180deg,
+      #f5f7fc 0%,
+      #f8f9fd 100%
+    );
+
+  color: var(--text-main);
+}
+
+
+[data-theme="light"] .major-details-grid {
+  background-image:
+    linear-gradient(
+      rgba(70, 82, 125, 0.045) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(70, 82, 125, 0.045) 1px,
+      transparent 1px
+    );
+}
+
+
+[data-theme="light"] .major-details-glow-one {
+  opacity: 0.085;
+}
+
+
+[data-theme="light"] .major-details-glow-two {
+  opacity: 0.055;
+}
+
+
+[data-theme="light"] .major-details-code {
+  color: rgba(83, 99, 244, 0.06);
+}
+
+
+/* =========================================================
+   LIGHT MODE - HERO
+========================================================= */
+
+[data-theme="light"] .major-back-button {
+  border-color: rgba(31, 43, 77, 0.09);
+
+  background:
+    rgba(255, 255, 255, 0.76);
+
+  color: #68738b;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 8px 25px rgba(60, 72, 110, 0.05);
+}
+
+
+[data-theme="light"] .major-back-button:hover {
+  color: var(--primary);
+
+  border-color:
+    rgba(83, 99, 244, 0.18);
+
+  background:
+    rgba(255, 255, 255, 0.96);
+}
+
+
+[data-theme="light"] .major-details-icon {
+  border-color:
+    rgba(8, 159, 193, 0.16);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(8, 159, 193, 0.08),
+      rgba(83, 99, 244, 0.055)
+    );
+
+  color: var(--cyan);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+
+[data-theme="light"] .major-details-english {
+  color: var(--cyan);
+}
+
+
+[data-theme="light"] .major-details-heading h1 {
+  color: var(--text-main);
+}
+
+
+[data-theme="light"] .major-details-heading p {
+  color: #68738b;
+}
+
+
+/* =========================================================
+   LIGHT MODE - SECTIONS
+========================================================= */
+
+[data-theme="light"] .major-about-section {
+  border-top-color:
+    rgba(30, 40, 72, 0.07);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.22),
+      rgba(255, 255, 255, 0.08)
+    );
+}
+
+
+[data-theme="light"] .major-courses-section {
+  border-top-color:
+    rgba(30, 40, 72, 0.07);
+}
+
+
+[data-theme="light"] .major-section-heading > span {
+  color: var(--cyan);
+}
+
+
+[data-theme="light"] .major-section-heading h2 {
+  color: var(--text-main);
+}
+
+
+[data-theme="light"] .major-section-heading p {
+  color: #6d7890;
+}
+
+
+/* =========================================================
+   LIGHT MODE - ABOUT MAIN CARD
+========================================================= */
+
+[data-theme="light"] .major-about-main-card {
+  border-color:
+    rgba(30, 42, 76, 0.085);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.97),
+      rgba(245, 247, 253, 0.9)
+    );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 16px 45px rgba(57, 70, 108, 0.07);
+}
+
+
+[data-theme="light"] .major-about-main-card::before {
+  opacity: 0.045;
+}
+
+
+[data-theme="light"] .major-about-main-card:hover {
+  border-color:
+    rgba(8, 159, 193, 0.18);
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #f7f9ff
+    );
+
+  box-shadow:
+    0 24px 65px rgba(56, 70, 108, 0.12);
+}
+
+
+[data-theme="light"] .major-card-label {
+  color: var(--cyan);
+}
+
+
+[data-theme="light"] .major-about-main-card h3 {
+  color: var(--text-main);
+}
+
+
+[data-theme="light"] .major-about-main-card p {
+  color: #6d7890;
+}
+
+
+/* =========================================================
+   LIGHT MODE - MINI CARDS
+========================================================= */
+
+[data-theme="light"] .major-mini-card {
+  border-color:
+    rgba(30, 42, 76, 0.075);
+
+  background:
+    rgba(255, 255, 255, 0.72);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 10px 30px rgba(57, 70, 108, 0.045);
+}
+
+
+[data-theme="light"] .major-mini-card:hover {
+  border-color:
+    rgba(8, 159, 193, 0.16);
+
+  background:
+    rgba(255, 255, 255, 0.96);
+}
+
+
+[data-theme="light"] .major-mini-icon {
+  border-color:
+    rgba(8, 159, 193, 0.14);
+
+  background:
+    rgba(8, 159, 193, 0.065);
+
+  color: var(--cyan);
+}
+
+
+[data-theme="light"] .major-mini-card h3 {
+  color: var(--text-main);
+}
+
+
+[data-theme="light"] .major-mini-card p {
+  color: #6f7a92;
+}
+
+
+/* =========================================================
+   LIGHT MODE - SEMESTER CARDS
+========================================================= */
+
+[data-theme="light"] .semester-card {
+  border-color:
+    rgba(30, 42, 76, 0.085);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.97),
+      rgba(245, 247, 253, 0.9)
+    );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 16px 45px rgba(57, 70, 108, 0.07);
+}
+
+
+[data-theme="light"] .semester-card-active:hover {
+  border-color:
+    rgba(8, 159, 193, 0.18);
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #f7f9ff
+    );
+
+  box-shadow:
+    0 24px 65px rgba(56, 70, 108, 0.12);
+}
+
+
+[data-theme="light"] .semester-number {
+  color:
+    rgba(31, 42, 73, 0.32);
+}
+
+
+[data-theme="light"] .semester-label {
+  color: var(--cyan);
+}
+
+
+[data-theme="light"] .semester-status.coming {
+  border-color:
+    rgba(30, 42, 76, 0.07);
+
+  background:
+    rgba(31, 42, 73, 0.045);
+
+  color: #7a859c;
+}
+
+
+[data-theme="light"] .semester-card h3 {
+  color: var(--text-main);
+}
+
+
+[data-theme="light"] .semester-card p {
+  color: #6d7890;
+}
+
+
+[data-theme="light"] .semester-button {
+  border-top-color:
+    rgba(30, 42, 76, 0.075);
+
+  color: var(--text-main);
+}
+
+
+[data-theme="light"] .semester-button:hover {
+  color: var(--cyan);
+}
+
+
+[data-theme="light"] .semester-button span:last-child {
+  background:
+    rgba(8, 159, 193, 0.065);
+
+  color: var(--cyan);
+}
+
+
+[data-theme="light"] .semester-card-active:hover
+.semester-button span:last-child {
+  background:
+    rgba(8, 159, 193, 0.11);
+}
+
+
+[data-theme="light"] .semester-coming-text {
+  border-top-color:
+    rgba(30, 42, 76, 0.075);
+
+  color: #8590a7;
+}
+
+
+/* =========================================================
+   LIGHT MODE - NOT FOUND
+========================================================= */
+
+[data-theme="light"] .major-not-found h1 {
+  color: var(--text-main);
+}

@@ -7,9 +7,13 @@
 
   overflow: hidden;
 
-  background: #050816;
+  background: var(--bg-main);
 
-  color: #ffffff;
+  color: var(--text-main);
+
+  transition:
+    background 0.35s ease,
+    color 0.35s ease;
 }
 
 
@@ -37,12 +41,12 @@
 
   background-image:
     linear-gradient(
-      rgba(255, 255, 255, 0.025) 1px,
+      var(--grid-line) 1px,
       transparent 1px
     ),
     linear-gradient(
       90deg,
-      rgba(255, 255, 255, 0.025) 1px,
+      var(--grid-line) 1px,
       transparent 1px
     );
 
@@ -68,9 +72,11 @@
 
 .semester-one-glow-one {
   width: 620px;
+
   height: 620px;
 
   top: -300px;
+
   right: -180px;
 
   background: #6259ff;
@@ -81,9 +87,11 @@
 
 .semester-one-glow-two {
   width: 500px;
+
   height: 500px;
 
   left: -280px;
+
   bottom: -220px;
 
   background: #00bde8;
@@ -108,6 +116,7 @@
 
 .semester-one-code-one {
   top: 16%;
+
   right: 5%;
 
   font-size: 80px;
@@ -116,6 +125,7 @@
 
 .semester-one-code-two {
   bottom: 10%;
+
   left: 5%;
 
   font-size: 75px;
@@ -166,12 +176,12 @@
 
   border:
     1px solid
-    rgba(255, 255, 255, 0.08);
+    var(--border);
 
   border-radius: 12px;
 
   background:
-    rgba(255, 255, 255, 0.035);
+    var(--glass);
 
   font-family:
     "Tajawal",
@@ -181,7 +191,8 @@
 
   font-weight: 700;
 
-  color: #9da7c2;
+  color:
+    var(--text-secondary);
 
   cursor: pointer;
 
@@ -194,13 +205,22 @@
 
 
 .semester-back-button:hover {
-  color: #26d9ff;
+  color:
+    var(--cyan);
 
   border-color:
-    rgba(38, 217, 255, 0.18);
+    color-mix(
+      in srgb,
+      var(--cyan) 20%,
+      transparent
+    );
 
   background:
-    rgba(38, 217, 255, 0.04);
+    color-mix(
+      in srgb,
+      var(--cyan) 6%,
+      transparent
+    );
 
   transform:
     translateX(4px);
@@ -242,7 +262,8 @@
 
   letter-spacing: 1.7px;
 
-  color: #26d9ff;
+  color:
+    var(--cyan);
 }
 
 
@@ -261,7 +282,8 @@
 
   font-weight: 700;
 
-  color: #8b95af;
+  color:
+    var(--text-secondary);
 }
 
 
@@ -286,7 +308,8 @@
 
   text-align: center;
 
-  color: #ffffff;
+  color:
+    var(--text-main);
 }
 
 
@@ -305,7 +328,8 @@
 
   text-align: center;
 
-  color: #929db8;
+  color:
+    var(--text-secondary);
 }
 
 
@@ -348,18 +372,17 @@
 
   border:
     1px solid
-    rgba(255, 255, 255, 0.075);
+    var(--border);
 
   border-radius: 23px;
 
   background:
-    linear-gradient(
-      145deg,
-      rgba(255, 255, 255, 0.045),
-      rgba(255, 255, 255, 0.018)
-    );
+    var(--card-bg);
 
   backdrop-filter:
+    blur(14px);
+
+  -webkit-backdrop-filter:
     blur(14px);
 
   transition:
@@ -375,18 +398,18 @@
     translateY(-7px);
 
   border-color:
-    rgba(38, 217, 255, 0.17);
+    color-mix(
+      in srgb,
+      var(--cyan) 18%,
+      transparent
+    );
 
   background:
-    linear-gradient(
-      145deg,
-      rgba(255, 255, 255, 0.06),
-      rgba(255, 255, 255, 0.025)
-    );
+    var(--card-bg-hover);
 
   box-shadow:
     0 25px 60px
-    rgba(0, 0, 0, 0.2);
+    rgba(0, 0, 0, 0.18);
 }
 
 
@@ -394,14 +417,17 @@
   position: absolute;
 
   width: 160px;
+
   height: 160px;
 
   top: -110px;
+
   left: -90px;
 
   border-radius: 50%;
 
-  background: #6875ff;
+  background:
+    var(--primary);
 
   opacity: 0.08;
 
@@ -441,7 +467,11 @@
   font-size: 10px;
 
   color:
-    rgba(255, 255, 255, 0.25);
+    color-mix(
+      in srgb,
+      var(--text-main) 28%,
+      transparent
+    );
 }
 
 
@@ -471,7 +501,8 @@
 
   letter-spacing: 1.2px;
 
-  color: #26d9ff;
+  color:
+    var(--cyan);
 }
 
 
@@ -489,7 +520,8 @@
 
   line-height: 1.4;
 
-  color: #ffffff;
+  color:
+    var(--text-main);
 }
 
 
@@ -504,7 +536,8 @@
 
   line-height: 1.9;
 
-  color: #8993ad;
+  color:
+    var(--text-secondary);
 }
 
 
@@ -537,7 +570,7 @@
 
   border-top:
     1px solid
-    rgba(255, 255, 255, 0.06);
+    var(--border);
 
   background:
     transparent;
@@ -550,14 +583,25 @@
 
   font-weight: 800;
 
-  color: #ffffff;
+  color:
+    var(--text-main);
 
   cursor: pointer;
+
+  transition:
+    color 0.25s ease;
+}
+
+
+.course-open-button:hover {
+  color:
+    var(--cyan);
 }
 
 
 .course-open-arrow {
   width: 32px;
+
   height: 32px;
 
   display: flex;
@@ -569,9 +613,14 @@
   border-radius: 9px;
 
   background:
-    rgba(38, 217, 255, 0.06);
+    color-mix(
+      in srgb,
+      var(--cyan) 7%,
+      transparent
+    );
 
-  color: #26d9ff;
+  color:
+    var(--cyan);
 
   transition:
     transform 0.25s ease,
@@ -585,7 +634,11 @@
     translateX(-4px);
 
   background:
-    rgba(38, 217, 255, 0.12);
+    color-mix(
+      in srgb,
+      var(--cyan) 13%,
+      transparent
+    );
 }
 
 
@@ -607,6 +660,213 @@
   gap: 20px;
 
   text-align: center;
+
+  color:
+    var(--text-main);
+}
+
+
+/* =========================================================
+   LIGHT MODE
+========================================================= */
+
+[data-theme="light"]
+.semester-one-page {
+  background:
+    linear-gradient(
+      180deg,
+      #f5f7fc 0%,
+      #f8f9fd 100%
+    );
+
+  color:
+    var(--text-main);
+}
+
+
+[data-theme="light"]
+.semester-one-grid-bg {
+  background-image:
+    linear-gradient(
+      rgba(70, 82, 125, 0.045) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(70, 82, 125, 0.045) 1px,
+      transparent 1px
+    );
+}
+
+
+[data-theme="light"]
+.semester-one-glow-one {
+  opacity: 0.085;
+}
+
+
+[data-theme="light"]
+.semester-one-glow-two {
+  opacity: 0.055;
+}
+
+
+[data-theme="light"]
+.semester-one-code {
+  color:
+    rgba(83, 99, 244, 0.06);
+}
+
+
+/* BACK BUTTON */
+
+[data-theme="light"]
+.semester-back-button {
+  border-color:
+    rgba(31, 43, 77, 0.09);
+
+  background:
+    rgba(255, 255, 255, 0.76);
+
+  color:
+    #68738b;
+
+  box-shadow:
+    inset 0 1px 0
+    rgba(255, 255, 255, 0.95),
+    0 8px 25px
+    rgba(60, 72, 110, 0.05);
+}
+
+
+[data-theme="light"]
+.semester-back-button:hover {
+  color:
+    var(--primary);
+
+  border-color:
+    rgba(83, 99, 244, 0.18);
+
+  background:
+    rgba(255, 255, 255, 0.96);
+}
+
+
+/* HEADING */
+
+[data-theme="light"]
+.semester-one-major-name {
+  color:
+    #6f7a92;
+}
+
+
+[data-theme="light"]
+.semester-one-heading p {
+  color:
+    #68738b;
+}
+
+
+/* COURSE CARDS */
+
+[data-theme="light"]
+.course-card {
+  border-color:
+    rgba(30, 42, 76, 0.085);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.97),
+      rgba(245, 247, 253, 0.9)
+    );
+
+  box-shadow:
+    inset 0 1px 0
+    rgba(255, 255, 255, 0.95),
+    0 16px 45px
+    rgba(57, 70, 108, 0.07);
+}
+
+
+[data-theme="light"]
+.course-card:hover {
+  border-color:
+    rgba(8, 159, 193, 0.18);
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #f7f9ff
+    );
+
+  box-shadow:
+    0 24px 65px
+    rgba(56, 70, 108, 0.12);
+}
+
+
+[data-theme="light"]
+.course-card-glow {
+  opacity: 0.045;
+}
+
+
+[data-theme="light"]
+.course-card:hover
+.course-card-glow {
+  opacity: 0.09;
+}
+
+
+[data-theme="light"]
+.course-card-number {
+  color:
+    rgba(31, 42, 73, 0.32);
+}
+
+
+[data-theme="light"]
+.course-card p {
+  color:
+    #6d7890;
+}
+
+
+[data-theme="light"]
+.course-open-button {
+  border-top-color:
+    rgba(30, 42, 76, 0.075);
+
+  color:
+    var(--text-main);
+}
+
+
+[data-theme="light"]
+.course-open-button:hover {
+  color:
+    var(--cyan);
+}
+
+
+[data-theme="light"]
+.course-open-arrow {
+  background:
+    rgba(8, 159, 193, 0.065);
+
+  color:
+    var(--cyan);
+}
+
+
+[data-theme="light"]
+.course-card:hover
+.course-open-arrow {
+  background:
+    rgba(8, 159, 193, 0.11);
 }
 
 
