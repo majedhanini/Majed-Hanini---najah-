@@ -936,3 +936,89 @@
   }
 
 }
+
+
+/* =========================================================
+   DISABLED / EMPTY COURSES
+========================================================= */
+
+.course-card-disabled {
+  opacity: 0.58;
+}
+
+
+.course-card-disabled:hover {
+  transform: none;
+
+  border-color:
+    var(--border);
+
+  background:
+    var(--card-bg);
+
+  box-shadow: none;
+}
+
+
+.course-card-disabled:hover
+.course-card-glow {
+  transform: none;
+
+  opacity: 0.08;
+}
+
+
+.course-coming-soon {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+
+  margin-top: auto;
+
+  padding-top: 17px;
+
+  border-top:
+    1px solid
+    var(--border);
+
+  font-family:
+    "Tajawal",
+    sans-serif;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  color:
+    var(--muted-text);
+
+  cursor: default;
+}
+
+
+[data-theme="light"]
+.course-card-disabled {
+  opacity: 0.68;
+}
+
+
+[data-theme="light"]
+.course-card-disabled:hover {
+  border-color:
+    rgba(30, 42, 76, 0.085);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.97),
+      rgba(245, 247, 253, 0.9)
+    );
+
+  box-shadow:
+    inset 0 1px 0
+    rgba(255, 255, 255, 0.95),
+    0 16px 45px
+    rgba(57, 70, 108, 0.07);
+}
