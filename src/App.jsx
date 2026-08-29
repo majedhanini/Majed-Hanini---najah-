@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
 import Navbar from "./components/layout/Navbar.jsx";
-import Footer from "./components/layout/Footer.jsx";
 import MajorsFooter from "./components/layout/MajorsFooter.jsx";
 
 import Home from "./pages/Home.jsx";
@@ -86,7 +85,7 @@ function App() {
 
       {page}
 
-      {currentPage.startsWith("/majors") ? <MajorsFooter /> : <Footer />}
+      <MajorsFooter />
     </>
   );
 }
