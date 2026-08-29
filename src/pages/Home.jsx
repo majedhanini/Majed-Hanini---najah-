@@ -2,6 +2,13 @@ import "../styles/home.css";
 import heroImage from "../assets/images/hero-main.png";
 
 function Home({ navigate }) {
+  const scrollToAbout = () => {
+    document.getElementById("about-college")?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   return (
     <main className="home-page">
       {/* =====================================================
@@ -14,9 +21,7 @@ function Home({ navigate }) {
         <div className="home-glow glow-two"></div>
 
         <span className="background-code code-one">&lt;/&gt;</span>
-
         <span className="background-code code-two">AI</span>
-
         <span className="background-code code-three">{"{ }"}</span>
       </div>
 
@@ -67,12 +72,13 @@ function Home({ navigate }) {
                 <span className="button-arrow">←</span>
               </button>
 
-              <a
-                href="#about-college"
+              <button
+                type="button"
                 className="hero-button hero-button-secondary"
+                onClick={scrollToAbout}
               >
                 تعرف على الكلية
-              </a>
+              </button>
             </div>
 
             {/* =========================
@@ -142,17 +148,18 @@ function Home({ navigate }) {
         {/* =========================
             SCROLL
         ========================== */}
-        <a
-          href="#about-college"
+        <button
+          type="button"
           className="hero-scroll"
           aria-label="Scroll down"
+          onClick={scrollToAbout}
         >
-          <span>▼ </span>
+          <span>▼</span>
 
           <div className="scroll-line">
             <div></div>
           </div>
-        </a>
+        </button>
       </section>
 
       {/* =====================================================
