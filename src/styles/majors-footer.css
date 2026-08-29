@@ -28,11 +28,9 @@
   position: absolute;
 
   width: 320px;
-
   height: 150px;
 
   top: -120px;
-
   left: 50%;
 
   transform:
@@ -76,14 +74,25 @@
   align-items: center;
 
   gap: 35px;
+
+  /*
+    مهم:
+    تثبيت ترتيب الأعمدة:
+    الشبيبة يسار
+    الموقع بالنص
+    ماجد يمين
+  */
+  direction: ltr;
 }
 
 
 /* =========================================================
-   LEFT
+   LEFT - SHABIBA
 ========================================================= */
 
 .majors-footer-left {
+  justify-self: start;
+
   display: flex;
 
   align-items: center;
@@ -92,15 +101,18 @@
     flex-start;
 
   gap: 12px;
+
+  direction: ltr;
 }
 
 
 .majors-footer-logo-image {
   width: 48px;
-
   height: 48px;
 
   object-fit: contain;
+
+  flex-shrink: 0;
 
   transition:
     transform 0.3s ease,
@@ -112,6 +124,19 @@
   transform:
     translateY(-3px)
     scale(1.04);
+}
+
+
+.majors-footer-left-info {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  gap: 7px;
+
+  direction: rtl;
 }
 
 
@@ -127,8 +152,94 @@
   color:
     var(--text-secondary);
 
+  white-space: nowrap;
+
   transition:
     color 0.35s ease;
+}
+
+
+/* =========================================================
+   SOCIAL MEDIA
+========================================================= */
+
+.majors-footer-social {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-start;
+
+  gap: 6px;
+
+  direction: ltr;
+}
+
+
+.majors-footer-social-link {
+  width: 27px;
+  height: 27px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius: 8px;
+
+  background:
+    var(--glass);
+
+  color:
+    var(--text-secondary);
+
+  text-decoration: none;
+
+  box-shadow:
+    inset 0 1px 0
+    rgba(255, 255, 255, 0.035);
+
+  transition:
+    transform 0.25s ease,
+    color 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease;
+}
+
+
+.majors-footer-social-link svg {
+  width: 13px;
+  height: 13px;
+
+  fill: currentColor;
+}
+
+
+.majors-footer-social-link:hover {
+  transform:
+    translateY(-2px);
+
+  color:
+    var(--cyan);
+
+  border-color:
+    color-mix(
+      in srgb,
+      var(--cyan) 22%,
+      transparent
+    );
+
+  background:
+    color-mix(
+      in srgb,
+      var(--cyan) 7%,
+      transparent
+    );
 }
 
 
@@ -215,6 +326,8 @@
 .majors-footer-text {
   margin: 0;
 
+  direction: rtl;
+
   font-family:
     "Tajawal",
     sans-serif;
@@ -230,7 +343,7 @@
 
 
 /* =========================================================
-   DEVELOPER
+   RIGHT - DEVELOPER
 ========================================================= */
 
 .majors-footer-developer {
@@ -295,11 +408,15 @@
 
 
 .majors-footer-developer-label {
+  direction: ltr;
+
   font-family:
-    "Tajawal",
+    "Inter",
     sans-serif;
 
-  font-size: 9px;
+  font-size: 8px;
+
+  font-weight: 600;
 
   color:
     var(--muted-text);
@@ -422,6 +539,32 @@
 
 
 [data-theme="light"]
+.majors-footer-social-link {
+  border-color:
+    rgba(30, 42, 76, 0.08);
+
+  background:
+    rgba(255, 255, 255, 0.72);
+
+  color:
+    #657089;
+}
+
+
+[data-theme="light"]
+.majors-footer-social-link:hover {
+  color:
+    var(--cyan);
+
+  border-color:
+    rgba(8, 159, 193, 0.18);
+
+  background:
+    rgba(8, 159, 193, 0.055);
+}
+
+
+[data-theme="light"]
 .majors-footer-developer {
   border-color:
     rgba(30, 42, 76, 0.085);
@@ -480,7 +623,6 @@
 ========================================================= */
 
 @media (max-width: 760px) {
-
   .majors-footer {
     padding:
       30px 18px
@@ -493,6 +635,8 @@
       1fr;
 
     gap: 20px;
+
+    direction: ltr;
   }
 
 
@@ -505,7 +649,7 @@
   }
 
 
-  /* اسمك فوق */
+  /* 1 - DEVELOPER */
 
   .majors-footer-developer {
     order: 1;
@@ -527,17 +671,19 @@
   }
 
 
-  /* معلومات الموقع بالنص */
+  /* 2 - SITE */
 
   .majors-footer-center {
     order: 2;
   }
 
 
-  /* الشعار ثم نص الشبيبة تحته */
+  /* 3 - SHABIBA */
 
   .majors-footer-left {
     order: 3;
+
+    justify-self: center;
 
     flex-direction: column;
 
@@ -552,24 +698,43 @@
 
 
   .majors-footer-logo-image {
-    order: 1;
-
     width: 54px;
-
     height: 54px;
   }
 
 
-  .majors-footer-organization {
-    order: 2;
+  .majors-footer-left-info {
+    align-items: center;
 
+    gap: 8px;
+  }
+
+
+  .majors-footer-organization {
     text-align: center;
 
     font-size: 12px;
   }
 
 
-  /* تصغير بسيط للموبايل */
+  .majors-footer-social {
+    justify-content: center;
+  }
+
+
+  .majors-footer-social-link {
+    width: 31px;
+    height: 31px;
+
+    border-radius: 9px;
+  }
+
+
+  .majors-footer-social-link svg {
+    width: 14px;
+    height: 14px;
+  }
+
 
   .majors-footer-brand {
     margin-bottom: 6px;
@@ -608,5 +773,4 @@
 
     font-size: 8px;
   }
-
 }

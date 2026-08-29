@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import "../styles/course-details.css";
 import coursesData from "../data/courses.js";
 
@@ -13,6 +15,12 @@ function CourseDetails({ navigate, majorId, courseId }) {
   const course = coursesData[majorId]?.[courseId];
 
   const majorName = majorNames[majorId];
+
+  const [openResourceId, setOpenResourceId] = useState(null);
+
+  /* =====================================================
+     COURSE NOT FOUND
+  ===================================================== */
 
   if (!course) {
     return (
@@ -44,79 +52,112 @@ function CourseDetails({ navigate, majorId, courseId }) {
     );
   }
 
-  const resources = [
-    {
-      id: "slides",
+  /* =====================================================
+     COURSE RESOURCES
 
-      number: "01",
+     كل مساق هو اللي يحدد البوكسات الخاصة فيه
+  ===================================================== */
 
-      icon: "PDF",
+  const resources = Array.isArray(course.resources) ? course.resources : [];
 
-      title: "الشرائح",
+  /* =====================================================
+     OPEN LINK
+  ===================================================== */
 
-      english: "SLIDES",
+  const openLink = (url, event) => {
+    event?.stopPropagation();
 
-      description: "شرائح المحاضرات والمواد الدراسية الخاصة بالمساق.",
-
-      link: course.resources?.slides,
-    },
-
-    {
-      id: "recordings",
-
-      number: "02",
-
-      icon: "▶",
-
-      title: "تسجيلات المحاضرات",
-
-      english: "LECTURE RECORDINGS",
-
-      description: "تسجيلات وشروحات المحاضرات الخاصة بالمساق.",
-
-      link: course.resources?.recordings,
-    },
-
-    {
-      id: "summaries",
-
-      number: "03",
-
-      icon: "✦",
-
-      title: "الملخصات",
-
-      english: "SUMMARIES",
-
-      description: "ملخصات مرتبة تساعدك على مراجعة محتوى المساق.",
-
-      link: course.resources?.summaries,
-    },
-
-    {
-      id: "exams",
-
-      number: "04",
-
-      icon: "EX",
-
-      title: "امتحانات سابقة",
-
-      english: "PREVIOUS EXAMS",
-
-      description: "نماذج وامتحانات سابقة للمراجعة والتدريب.",
-
-      link: course.resources?.exams,
-    },
-  ];
-
-  const openResource = (link) => {
-    if (!link) {
+    if (!url) {
       return;
     }
 
-    window.open(link, "_blank", "noopener,noreferrer");
+    window.open(url, "_blank", "noopener,noreferrer");
   };
+
+  /* =====================================================
+     TOGGLE RESOURCE
+  ===================================================== */
+
+  const toggleResource = (resourceId) => {
+    setOpenResourceId((current) =>
+      current === resourceId ? null : resourceId,
+    );
+  };
+
+  /* =====================================================
+     NORMAL LINKS
+  ===================================================== */
+
+  const renderLinks = (items) => {
+    if (!Array.isArray(items) || items.length === 0) {
+      return null;
+    }
+
+    return (
+      <div className="course-resource-links">
+        {items.map((item, index) => (
+          <button
+            type="button"
+            className="course-resource-link"
+            key={`${item.url}-${index}`}
+            onClick={(event) => openLink(item.url, event)}
+          >
+            <span>{item.title || `ملف ${index + 1}`}</span>
+
+            <span className="course-resource-link-arrow">↗</span>
+          </button>
+        ))}
+      </div>
+    );
+  };
+
+  /* =====================================================
+     EXAMS
+  ===================================================== */
+
+  const renderExams = (groups) => {
+    if (!Array.isArray(groups) || groups.length === 0) {
+      return null;
+    }
+
+    return (
+      <div className="course-exam-groups">
+        {groups.map((group, groupIndex) => (
+          <div
+            className="course-exam-group"
+            key={`${group.category}-${groupIndex}`}
+          >
+            <div className="course-exam-group-heading">
+              <h3>{group.category}</h3>
+
+              <span className="course-exam-group-number">
+                {String(groupIndex + 1).padStart(2, "0")}
+              </span>
+            </div>
+
+            <div className="course-exam-links">
+              {group.items?.map((item, itemIndex) => (
+                <button
+                  type="button"
+                  className="course-resource-link"
+                  key={`${item.url}-${itemIndex}`}
+                  onClick={(event) => openLink(item.url, event)}
+                >
+                  <span>{item.title}</span>
+
+                  <span className="course-resource-link-arrow">↗</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  };
+
+  /* =====================================================
+     PAGE
+  ===================================================== */
 
   return (
     <main className="course-details-page">
@@ -142,7 +183,8 @@ function CourseDetails({ navigate, majorId, courseId }) {
             onClick={() => navigate(`/majors/${majorId}/semester-1`)}
           >
             <span>→</span>
-            العودة إلى مساقات الفصل الأول
+
+            <span>العودة إلى مساقات الفصل الأول</span>
           </button>
 
           {/* HEADING */}
@@ -161,59 +203,83 @@ function CourseDetails({ navigate, majorId, courseId }) {
             )}
 
             <p>
-              كل ما تحتاجه للمساق في مكان واحد: الشرائح، التسجيلات، الملخصات
-              والامتحانات السابقة.
+              اختر القسم الذي تريد الوصول إليه لعرض المواد والمصادر الخاصة
+              بالمساق.
             </p>
           </div>
 
-          {/* RESOURCES */}
+          {/* NO RESOURCES */}
 
-          <div className="course-resources-grid">
-            {resources.map((resource) => {
-              const available = Boolean(resource.link);
+          {resources.length === 0 && (
+            <div className="course-no-resources">
+              <span>سيتم إضافة مصادر هذا المساق قريبًا</span>
+            </div>
+          )}
 
-              return (
-                <article
-                  className={`course-resource-card ${
-                    !available ? "course-resource-unavailable" : ""
-                  }`}
-                  key={resource.id}
-                >
-                  <div className="course-resource-top">
-                    <div className="course-resource-icon">{resource.icon}</div>
+          {/* RESOURCE CARDS */}
 
-                    <span className="course-resource-number">
-                      {resource.number}
-                    </span>
-                  </div>
+          {resources.length > 0 && (
+            <div className="course-resources-grid">
+              {resources.map((resource, index) => {
+                const opened = openResourceId === resource.id;
 
-                  <span className="course-resource-english">
-                    {resource.english}
-                  </span>
+                return (
+                  <article
+                    key={resource.id}
+                    className={`course-resource-card course-resource-clickable ${
+                      opened ? "course-resource-card-open" : ""
+                    }`}
+                    onClick={() => toggleResource(resource.id)}
+                  >
+                    <div className="course-resource-top">
+                      <div className="course-resource-icon">
+                        {resource.icon}
+                      </div>
 
-                  <h2>{resource.title}</h2>
-
-                  <p>{resource.description}</p>
-
-                  {available ? (
-                    <button
-                      type="button"
-                      className="course-resource-button"
-                      onClick={() => openResource(resource.link)}
-                    >
-                      <span>استعرض المحتوى</span>
-
-                      <span>←</span>
-                    </button>
-                  ) : (
-                    <div className="course-resource-coming">
-                      <span>سيتوفر قريبًا</span>
+                      <span className="course-resource-number">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
                     </div>
-                  )}
-                </article>
-              );
-            })}
-          </div>
+
+                    <span className="course-resource-english">
+                      {resource.english}
+                    </span>
+
+                    <h2>{resource.title}</h2>
+
+                    <p>{resource.description}</p>
+
+                    <div className="course-resource-open-row">
+                      <span>
+                        {opened ? "إخفاء المحتوى" : "اضغط لعرض المحتوى"}
+                      </span>
+
+                      <span
+                        className={`course-resource-toggle-arrow ${
+                          opened ? "open" : ""
+                        }`}
+                      >
+                        ↓
+                      </span>
+                    </div>
+
+                    {opened && (
+                      <div
+                        className="course-resource-expanded"
+                        onClick={(event) => event.stopPropagation()}
+                      >
+                        <div className="course-resource-expanded-inner">
+                          {resource.type === "exams"
+                            ? renderExams(resource.groups)
+                            : renderLinks(resource.items)}
+                        </div>
+                      </div>
+                    )}
+                  </article>
+                );
+              })}
+            </div>
+          )}
         </div>
       </section>
     </main>

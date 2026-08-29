@@ -160,7 +160,7 @@
 
   justify-content: center;
 
-  gap: 7px;
+  gap: 6px;
 
   direction: rtl;
 }
@@ -170,9 +170,11 @@
   position: relative;
 
   padding:
-    10px 17px;
+    10px 14px;
 
-  border: 1px solid transparent;
+  border:
+    1px solid
+    transparent;
 
   border-radius: 12px;
 
@@ -182,7 +184,7 @@
     "Tajawal",
     sans-serif;
 
-  font-size: 15px;
+  font-size: 14px;
 
   font-weight: 700;
 
@@ -480,6 +482,7 @@
 
 .navbar-menu-button span {
   width: 19px;
+
   height: 2px;
 
   border-radius: 20px;
@@ -517,7 +520,7 @@ span:nth-child(3) {
 
 
 /* =========================================================
-   LIGHT MODE EXTRA TOUCHES
+   LIGHT MODE
 ========================================================= */
 
 [data-theme="light"]
@@ -547,11 +550,10 @@ span:nth-child(3) {
 
 
 /* =========================================================
-   MOBILE
+   TABLET / MOBILE
 ========================================================= */
 
-@media (max-width: 850px) {
-
+@media (max-width: 980px) {
   .site-navbar {
     height: 70px;
   }
@@ -583,6 +585,7 @@ span:nth-child(3) {
 
   .navbar-theme-button {
     width: 40px;
+
     height: 40px;
 
     border-radius: 12px;
@@ -598,6 +601,7 @@ span:nth-child(3) {
     display: flex;
 
     width: 40px;
+
     height: 40px;
 
     border-radius: 12px;
@@ -608,7 +612,9 @@ span:nth-child(3) {
     position: absolute;
 
     top: 82px;
+
     left: 0;
+
     right: 0;
 
     width: 100%;
@@ -618,6 +624,8 @@ span:nth-child(3) {
     flex-direction: column;
 
     align-items: stretch;
+
+    gap: 6px;
 
     border:
       1px solid
@@ -674,8 +682,14 @@ span:nth-child(3) {
       14px 16px;
 
     text-align: right;
+
+    font-size: 14px;
   }
 
+
+  .navbar-links button:hover {
+    transform: none;
+  }
 }
 
 
@@ -684,7 +698,6 @@ span:nth-child(3) {
 ========================================================= */
 
 @media (max-width: 420px) {
-
   .navbar-container {
     width:
       calc(100% - 24px);
@@ -704,7 +717,24 @@ span:nth-child(3) {
   .navbar-theme-button,
   .navbar-menu-button {
     width: 38px;
+
     height: 38px;
   }
 
+
+  .navbar-links {
+    top: 78px;
+
+    padding: 10px;
+
+    border-radius: 16px;
+  }
+
+
+  .navbar-links button {
+    padding:
+      13px 14px;
+
+    font-size: 13px;
+  }
 }

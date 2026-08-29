@@ -38,6 +38,12 @@ function Navbar({ navigate, currentPage }) {
     navigate("/majors");
   };
 
+  const goFaculty = () => {
+    setMenuOpen(false);
+
+    navigate("/faculty");
+  };
+
   const goAbout = () => {
     setMenuOpen(false);
 
@@ -64,6 +70,7 @@ function Navbar({ navigate, currentPage }) {
     <header className="site-navbar">
       <div className="navbar-container">
         {/* LOGO */}
+
         <button
           type="button"
           className="navbar-logo navbar-logo-button"
@@ -77,6 +84,7 @@ function Navbar({ navigate, currentPage }) {
         </button>
 
         {/* NAVIGATION */}
+
         <nav className={`navbar-links ${menuOpen ? "open" : ""}`}>
           <button
             type="button"
@@ -94,14 +102,24 @@ function Navbar({ navigate, currentPage }) {
             التخصصات
           </button>
 
+          <button
+            type="button"
+            className={currentPage === "/faculty" ? "active" : ""}
+            onClick={goFaculty}
+          >
+            دليل الكلية
+          </button>
+
           <button type="button" onClick={goAbout}>
             عن الكلية
           </button>
         </nav>
 
         {/* ACTIONS */}
+
         <div className="navbar-actions">
           {/* THEME BUTTON */}
+
           <button
             type="button"
             className="navbar-theme-button"

@@ -1,56 +1,94 @@
 import { useEffect, useState } from "react";
 
-import Navbar from "./components/layout/Navbar.jsx";
-import MajorsFooter from "./components/layout/MajorsFooter.jsx";
+import Navbar from "./components/layout/Navbar";
+import MajorsFooter from "./components/layout/MajorsFooter";
 
-import Home from "./pages/Home.jsx";
-import Majors from "./pages/Majors.jsx";
-import MajorDetails from "./pages/MajorDetails.jsx";
-import SemesterOne from "./pages/SemesterOne.jsx";
-import CourseDetails from "./pages/CourseDetails.jsx";
+import Home from "./pages/Home";
+import Majors from "./pages/Majors";
+import MajorDetails from "./pages/MajorDetails";
+import SemesterOne from "./pages/SemesterOne";
+import CourseDetails from "./pages/CourseDetails";
+import FacultyDirectory from "./pages/FacultyDirectory";
 
 function App() {
-  const [currentPage, setCurrentPage] = useState(window.location.pathname);
+  const [currentPath, setCurrentPath] = useState(window.location.pathname);
 
   const navigate = (path) => {
+    if (window.location.pathname === path) {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+
+      return;
+    }
+
     window.history.pushState({}, "", path);
 
-    setCurrentPage(path);
+    setCurrentPath(path);
 
     window.scrollTo({
       top: 0,
-      behavior: "instant",
+      behavior: "smooth",
     });
   };
 
   useEffect(() => {
-    const handleBackForward = () => {
-      setCurrentPage(window.location.pathname);
+    const handlePopState = () => {
+      setCurrentPath(window.location.pathname);
 
       window.scrollTo({
         top: 0,
-        behavior: "instant",
       });
     };
 
-    window.addEventListener("popstate", handleBackForward);
+    window.addEventListener("popstate", handlePopState);
 
     return () => {
-      window.removeEventListener("popstate", handleBackForward);
+      window.removeEventListener("popstate", handlePopState);
     };
   }, []);
 
-  const pathParts = currentPage.split("/").filter(Boolean);
+  const cleanPath =
+    currentPath !== "/" && currentPath.endsWith("/")
+      ? currentPath.slice(0, -1)
+      : currentPath;
 
-  let page;
+  const pathParts = cleanPath.split("/").filter(Boolean);
 
-  if (currentPage === "/majors") {
+  let page = null;
+
+  /* =========================================================
+     HOME
+  ========================================================= */
+
+  if (cleanPath === "/") {
+    page = <Home navigate={navigate} />;
+  } else if (cleanPath === "/faculty") {
+
+  /* =========================================================
+     FACULTY DIRECTORY
+  ========================================================= */
+    page = <FacultyDirectory navigate={navigate} />;
+  } else if (cleanPath === "/majors") {
+
+  /* =========================================================
+     MAJORS
+  ========================================================= */
     page = <Majors navigate={navigate} />;
   } else if (
+
+  /* =========================================================
+     COURSE DETAILS
+
+     /majors/:majorId/semester-1/:courseId
+
+     مهم:
+     لازم Route المساق ينفحص قبل Route الفصل
+  ========================================================= */
+    pathParts.length === 4 &&
     pathParts[0] === "majors" &&
-    pathParts[1] &&
-    pathParts[2] === "semester-1" &&
-    pathParts[3]
+    pathParts[2] === "semester-1"
   ) {
     const majorId = pathParts[1];
 
@@ -64,24 +102,63 @@ function App() {
       />
     );
   } else if (
+
+  /* =========================================================
+     SEMESTER ONE
+
+     /majors/:majorId/semester-1
+  ========================================================= */
+    pathParts.length === 3 &&
     pathParts[0] === "majors" &&
-    pathParts[1] &&
     pathParts[2] === "semester-1"
   ) {
     const majorId = pathParts[1];
 
     page = <SemesterOne navigate={navigate} majorId={majorId} />;
-  } else if (pathParts[0] === "majors" && pathParts[1]) {
+  } else if (pathParts.length === 2 && pathParts[0] === "majors") {
+
+  /* =========================================================
+     MAJOR DETAILS
+
+     /majors/:majorId
+  ========================================================= */
     const majorId = pathParts[1];
 
     page = <MajorDetails navigate={navigate} majorId={majorId} />;
   } else {
-    page = <Home navigate={navigate} />;
+
+  /* =========================================================
+     NOT FOUND
+  ========================================================= */
+    page = (
+      <main
+        style={{
+          minHeight: "70vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          textAlign: "center",
+          padding: "40px 20px",
+        }}
+      >
+        <div>
+          <h1>الصفحة غير موجودة</h1>
+
+          <button type="button" onClick={() => navigate("/")}>
+            العودة إلى الرئيسية
+          </button>
+        </div>
+      </main>
+    );
   }
+
+  /* =========================================================
+     APP
+  ========================================================= */
 
   return (
     <>
-      <Navbar navigate={navigate} currentPage={currentPage} />
+      <Navbar navigate={navigate} currentPage={cleanPath} />
 
       {page}
 

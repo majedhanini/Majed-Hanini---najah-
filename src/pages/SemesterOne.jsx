@@ -11,33 +11,23 @@ const majorsCourses = {
         englishName: "Programming Principles 1",
         available: true,
       },
-
       {
         id: "discrete-mathematics",
         name: "الرياضيات المنفصلة",
         englishName: "Discrete Mathematics",
         available: true,
       },
-
       {
         id: "calculus-1",
         name: "تفاضل وتكامل 1",
         englishName: "Calculus 1",
         available: true,
       },
-
       {
         id: "physics-for-it",
         name: "فيزياء لتكنولوجيا المعلومات",
-        englishName: "Physics for IT",
+        englishName: "Physics for Information Technology",
         available: true,
-      },
-
-      {
-        id: "course-5",
-        name: "Course 5",
-        englishName: "COURSE 05",
-        available: false,
       },
     ],
   },
@@ -52,28 +42,24 @@ const majorsCourses = {
         englishName: "Programming Principles 1",
         available: true,
       },
-
       {
         id: "calculus-1",
         name: "تفاضل وتكامل 1",
         englishName: "Calculus 1",
         available: true,
       },
-
       {
         id: "physics-1",
         name: "فيزياء 1",
         englishName: "Physics 1",
         available: true,
       },
-
       {
         id: "course-4",
         name: "Course 4",
         englishName: "COURSE 04",
         available: false,
       },
-
       {
         id: "course-5",
         name: "Course 5",
@@ -93,28 +79,24 @@ const majorsCourses = {
         englishName: "Programming Principles 1",
         available: true,
       },
-
       {
         id: "mathematics-for-it",
         name: "رياضيات لتكنولوجيا المعلومات",
-        englishName: "Mathematics for IT",
+        englishName: "Mathematics for Information Technology",
         available: true,
       },
-
       {
         id: "physics-for-it",
         name: "فيزياء لتكنولوجيا المعلومات",
-        englishName: "Physics for IT",
+        englishName: "Physics for Information Technology",
         available: true,
       },
-
       {
         id: "course-4",
         name: "Course 4",
         englishName: "COURSE 04",
         available: false,
       },
-
       {
         id: "course-5",
         name: "Course 5",
@@ -134,28 +116,24 @@ const majorsCourses = {
         englishName: "Management Principles 1",
         available: true,
       },
-
       {
         id: "business-programming-1",
         name: "برمجة للأعمال 1 مع مختبرها",
         englishName: "Business Programming 1 + Lab",
         available: true,
       },
-
       {
         id: "introduction-to-it",
         name: "مقدمة في تكنولوجيا المعلومات",
         englishName: "Introduction to Information Technology",
         available: true,
       },
-
       {
         id: "course-4",
         name: "Course 4",
         englishName: "COURSE 04",
         available: false,
       },
-
       {
         id: "course-5",
         name: "Course 5",
@@ -165,43 +143,39 @@ const majorsCourses = {
     ],
   },
 
+  /* =====================================================
+     AI & DATA SCIENCE
+     نفس مساقات علم الحاسوب في سوق العمل حاليًا
+  ===================================================== */
+
   "ai-data-science": {
     majorName: "الذكاء الاصطناعي وعلم البيانات",
+    isNewMajor: true,
 
     courses: [
       {
-        id: "course-1",
-        name: "Course 1",
-        englishName: "COURSE 01",
-        available: false,
+        id: "programming-principles-1",
+        name: "مبادئ برمجة 1",
+        englishName: "Programming Principles 1",
+        available: true,
       },
-
       {
-        id: "course-2",
-        name: "Course 2",
-        englishName: "COURSE 02",
-        available: false,
+        id: "discrete-mathematics",
+        name: "الرياضيات المنفصلة",
+        englishName: "Discrete Mathematics",
+        available: true,
       },
-
       {
-        id: "course-3",
-        name: "Course 3",
-        englishName: "COURSE 03",
-        available: false,
+        id: "calculus-1",
+        name: "تفاضل وتكامل 1",
+        englishName: "Calculus 1",
+        available: true,
       },
-
       {
-        id: "course-4",
-        name: "Course 4",
-        englishName: "COURSE 04",
-        available: false,
-      },
-
-      {
-        id: "course-5",
-        name: "Course 5",
-        englishName: "COURSE 05",
-        available: false,
+        id: "physics-for-it",
+        name: "فيزياء لتكنولوجيا المعلومات",
+        englishName: "Physics for Information Technology",
+        available: true,
       },
     ],
   },
@@ -213,34 +187,34 @@ function SemesterOne({ navigate, majorId }) {
   if (!major) {
     return (
       <main className="semester-one-page">
-        <div className="semester-error">
-          <h1>التخصص غير موجود</h1>
+        <section className="semester-one-section">
+          <div className="semester-one-container">
+            <div className="semester-error">
+              <h1>التخصص غير موجود</h1>
 
-          <button
-            type="button"
-            className="semester-back-button"
-            onClick={() => navigate("/majors")}
-          >
-            العودة إلى التخصصات
-          </button>
-        </div>
+              <button
+                type="button"
+                className="semester-back-button"
+                onClick={() => navigate("/majors")}
+              >
+                العودة إلى التخصصات
+              </button>
+            </div>
+          </div>
+        </section>
       </main>
     );
   }
 
   const openCourse = (course) => {
-    if (!course.available) {
-      return;
-    }
+    if (!course.available) return;
 
     navigate(`/majors/${majorId}/semester-1/${course.id}`);
   };
 
   return (
     <main className="semester-one-page">
-      {/* ==============================================
-          BACKGROUND
-      ============================================== */}
+      {/* BACKGROUND */}
 
       <div className="semester-one-background" aria-hidden="true">
         <div className="semester-one-grid-bg"></div>
@@ -256,13 +230,9 @@ function SemesterOne({ navigate, majorId }) {
         </span>
       </div>
 
-      {/* ==============================================
-          PAGE
-      ============================================== */}
-
       <section className="semester-one-section">
         <div className="semester-one-container">
-          {/* BACK BUTTON */}
+          {/* BACK */}
 
           <button
             type="button"
@@ -270,13 +240,10 @@ function SemesterOne({ navigate, majorId }) {
             onClick={() => navigate(`/majors/${majorId}`)}
           >
             <span>→</span>
-
             <span>العودة إلى التخصص</span>
           </button>
 
-          {/* ==========================================
-              HEADING
-          ========================================== */}
+          {/* HEADING */}
 
           <div className="semester-one-heading">
             <span className="semester-one-kicker">FIRST SEMESTER</span>
@@ -288,11 +255,43 @@ function SemesterOne({ navigate, majorId }) {
             <p>اختر المساق الذي تريد الوصول إلى مواده ومصادره الدراسية.</p>
           </div>
 
-          {/* ==========================================
-              COURSES
-          ========================================== */}
+          {/* NEW MAJOR BANNER */}
 
-          <div className="courses-grid">
+          {major.isNewMajor && (
+            <div className="ai-new-major-banner">
+              <div className="ai-new-major-icon">AI</div>
+
+              <div className="ai-new-major-content">
+                <div className="ai-new-major-top">
+                  <span className="ai-new-major-badge">NEW MAJOR</span>
+
+                  <span className="ai-new-major-dot"></span>
+
+                  <span className="ai-new-major-year">2026 — 2027</span>
+                </div>
+
+                <h2>تخصص جديد في الكلية</h2>
+
+                <p>
+                  تخصص الذكاء الاصطناعي وعلم البيانات من التخصصات الجديدة في
+                  الكلية. تم توفير المساقات والمصادر المتاحة حاليًا، وسيتم تحديث
+                  وإضافة أي مواد أو مصادر جديدة أولًا بأول.
+                </p>
+              </div>
+
+              <div className="ai-new-major-decoration" aria-hidden="true">
+                {"{ AI }"}
+              </div>
+            </div>
+          )}
+
+          {/* COURSES */}
+
+          <div
+            className={`courses-grid ${
+              major.isNewMajor ? "courses-grid-after-banner" : ""
+            }`}
+          >
             {major.courses.map((course, index) => (
               <article
                 key={course.id}
