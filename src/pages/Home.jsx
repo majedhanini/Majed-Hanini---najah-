@@ -154,8 +154,6 @@ function Home({ navigate }) {
           aria-label="Scroll down"
           onClick={scrollToAbout}
         >
-          <span>▼</span>
-
           <div className="scroll-line">
             <div></div>
           </div>
