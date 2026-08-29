@@ -1305,320 +1305,378 @@
 }
 
 /* =========================================================
-   HOME - MOBILE FIX
+   HOME - FINAL RESPONSIVE FIX
 ========================================================= */
 
 @media (max-width: 768px) {
 
   .home-page {
+    width: 100%;
+    max-width: 100%;
     overflow-x: hidden;
   }
 
   .hero-section {
     min-height: auto;
-    padding:
-      44px 20px
-      70px;
+    padding: 42px 18px 70px;
+    display: block;
   }
 
   .hero-container {
     width: 100%;
     max-width: 100%;
-
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
-
-    gap: 34px;
-
     align-items: center;
+    gap: 36px;
   }
-
-
-  /* =========================
-     HERO CONTENT
-  ========================= */
 
   .hero-content {
     width: 100%;
     max-width: 100%;
-
-    text-align: center;
-
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    text-align: center;
   }
-
 
   .hero-badge {
-    margin:
-      0 auto 16px;
-
-    font-size: 9px;
-
-    padding:
-      7px 12px;
-  }
-
-
-  .hero-eyebrow {
+    min-height: 30px;
+    margin: 0 auto 14px;
+    padding: 0 12px;
+    font-size: 8px;
     text-align: center;
-
-    font-size: 12px;
-
-    line-height: 1.5;
-
-    margin-bottom: 18px;
   }
 
+  .hero-college {
+    width: 100%;
+    margin-bottom: 17px;
+    text-align: center;
+    font-size: 10px;
+    line-height: 1.6;
+    white-space: normal;
+  }
 
   .hero-title {
     width: 100%;
-
-    margin:
-      0 auto 22px;
-
+    margin: 0 auto 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-
-    font-size:
-      clamp(
-        44px,
-        12vw,
-        62px
-      );
-
-    line-height: 1.05;
-
-    letter-spacing: -1.5px;
   }
 
-
-  .hero-title .arabic-title {
-    display: block;
-
-    margin-bottom: 10px;
-
-    font-size:
-      clamp(
-        42px,
-        11vw,
-        58px
-      );
-
-    line-height: 1.15;
+  .hero-title-ar {
+    width: 100%;
+    margin: 0 auto 14px;
+    font-size: clamp(38px, 11vw, 52px);
+    line-height: 1.12;
+    text-align: center;
+    white-space: normal;
   }
 
-
-  .hero-title .gradient-text {
-    display: block;
-
-    font-size:
-      clamp(
-        44px,
-        12vw,
-        60px
-      );
-
+  .hero-title-en {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    font-size: clamp(38px, 10.5vw, 50px);
     line-height: 1.02;
+    letter-spacing: -1.5px;
+    text-align: center;
+    white-space: normal;
   }
 
+  .hero-title-en span {
+    width: 100%;
+    text-align: center;
+    white-space: normal;
+  }
 
   .hero-description {
     width: 100%;
     max-width: 520px;
-
-    margin:
-      0 auto 28px;
-
-    padding:
-      0 4px;
-
+    margin: 0 auto 28px;
+    padding: 0;
+    align-self: center;
     position: static;
-    right: auto;
-
+    direction: rtl;
     text-align: center;
-
-    font-size: 14px;
-
-    line-height: 2;
-
-    color: #9aa6c2;
+    font-size: 13px;
+    line-height: 1.95;
+    white-space: normal;
+    overflow-wrap: break-word;
   }
 
-
-  /* =========================
-     BUTTONS
-  ========================= */
-
-  .hero-buttons {
+  .hero-actions {
     width: 100%;
-
+    max-width: 420px;
+    margin: 0 auto 30px;
+    align-self: center;
     display: flex;
-
     flex-direction: column;
-
     align-items: stretch;
-
     gap: 12px;
-
-    margin-bottom: 30px;
+    direction: rtl;
   }
-
 
   .hero-button {
     width: 100%;
-
-    min-height: 56px;
-
+    min-width: 0;
+    min-height: 54px;
+    padding: 0 18px;
+    display: flex;
+    align-items: center;
     justify-content: center;
-
-    padding:
-      15px 18px;
-
-    font-size: 14px;
-
+    gap: 10px;
     border-radius: 15px;
+    font-size: 14px;
   }
-
-
-  /* =========================
-     STATS
-  ========================= */
 
   .hero-stats {
     width: 100%;
-
+    max-width: 520px;
+    margin: 0 auto;
     display: grid;
-
-    grid-template-columns:
-      repeat(3, 1fr);
-
-    gap: 10px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    direction: ltr;
   }
 
-
   .hero-stat {
+    width: 100%;
     min-width: 0;
+    min-height: 76px;
+    padding: 15px 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 15px;
+  }
 
-    padding:
-      18px 8px;
+  .hero-stat strong {
+    margin-bottom: 5px;
+    font-size: 19px;
+    line-height: 1.2;
+  }
 
-    border-radius: 16px;
+  .hero-stat span {
+    font-size: 8px;
+    line-height: 1.4;
+    text-align: center;
+    white-space: normal;
+  }
 
+  .hero-visual {
+    display: none;
+  }
+
+  .code-one {
+    left: -20px;
+    font-size: 42px;
+    opacity: 0.45;
+  }
+
+  .code-two {
+    right: -5px;
+    font-size: 28px;
+    opacity: 0.45;
+  }
+
+  .code-three {
+    right: -15px;
+    font-size: 45px;
+    opacity: 0.4;
+  }
+
+  .about-college-section {
+    padding: 85px 18px 90px;
+  }
+
+  .about-college-container {
+    width: 100%;
+  }
+
+  .about-college-heading {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto 48px;
     text-align: center;
   }
 
-
-  .hero-stat strong {
-    font-size: 22px;
+  .about-college-kicker {
+    margin-bottom: 15px;
+    font-size: 8px;
+    letter-spacing: 1.2px;
+    gap: 9px;
   }
 
-
-  .hero-stat span {
-    font-size: 9px;
+  .about-college-kicker span {
+    width: 22px;
   }
 
+  .about-college-heading h2 {
+    margin-bottom: 18px;
+    font-size: clamp(36px, 10vw, 46px);
+    line-height: 1.15;
+  }
 
-  /* =========================
-     HERO IMAGE
-  ========================= */
-
-  .hero-visual {
+  .about-college-heading p {
     width: 100%;
-    max-width: 380px;
-
-    margin:
-      5px auto 0;
-
-    order: 2;
-  }
-
-
-  .hero-image-card {
-    width: 100%;
-
-    max-width: 360px;
-
+    max-width: 520px;
     margin: 0 auto;
+    font-size: 13px;
+    line-height: 2;
   }
 
-
-  .hero-image-card img {
+  .about-college-grid {
     width: 100%;
-    height: auto;
-
-    object-fit: cover;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
   }
 
-
-  /* =========================
-     DECORATIONS
-  ========================= */
-
-  .hero-floating-card {
-    transform: scale(0.82);
+  .about-college-card {
+    width: 100%;
+    min-height: auto;
+    padding: 24px;
+    border-radius: 20px;
   }
 
+  .about-college-card-featured {
+    transform: none;
+  }
+
+  .about-college-card-featured:hover {
+    transform: translateY(-5px);
+  }
+
+  .about-card-top {
+    margin-bottom: 25px;
+  }
+
+  .about-card-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 13px;
+  }
+
+  .about-college-card h3 {
+    font-size: 20px;
+  }
+
+  .about-college-card p {
+    font-size: 13px;
+    line-height: 2;
+  }
 }
-
 
 @media (max-width: 480px) {
 
   .hero-section {
-    padding:
-      36px 16px
-      60px;
+    padding: 34px 16px 62px;
   }
 
-
-  .hero-eyebrow {
-    font-size: 11px;
+  .hero-college {
+    font-size: 9px;
+    padding: 0 4px;
   }
 
-
-  .hero-title {
-    font-size: 42px;
+  .hero-title-ar {
+    font-size: 39px;
+    line-height: 1.13;
   }
 
-
-  .hero-title .arabic-title {
-    font-size: 41px;
+  .hero-title-en {
+    font-size: 39px;
+    line-height: 1.04;
+    letter-spacing: -1px;
   }
-
-
-  .hero-title .gradient-text {
-    font-size: 43px;
-  }
-
 
   .hero-description {
-    font-size: 13px;
-
+    max-width: 100%;
+    font-size: 12.5px;
     line-height: 1.9;
   }
 
+  .hero-actions {
+    max-width: 100%;
+  }
+
+  .hero-button {
+    min-height: 52px;
+    font-size: 13px;
+  }
 
   .hero-stats {
-    gap: 8px;
+    width: 100%;
+    gap: 7px;
   }
-
 
   .hero-stat {
-    padding:
-      16px 6px;
+    min-height: 72px;
+    padding: 13px 3px;
   }
-
 
   .hero-stat strong {
-    font-size: 20px;
+    font-size: 17px;
   }
 
-
   .hero-stat span {
+    font-size: 7.5px;
+  }
+
+  .about-college-section {
+    padding: 75px 16px 80px;
+  }
+
+  .about-college-heading h2 {
+    font-size: 36px;
+  }
+
+  .about-college-heading p {
+    font-size: 12.5px;
+  }
+
+  .about-college-card {
+    padding: 22px;
+  }
+}
+
+@media (max-width: 360px) {
+
+  .hero-title-ar {
+    font-size: 35px;
+  }
+
+  .hero-title-en {
+    font-size: 34px;
+    letter-spacing: -0.8px;
+  }
+
+  .hero-college {
     font-size: 8px;
   }
 
-
-  .hero-image-card {
-    max-width: 320px;
+  .hero-description {
+    font-size: 12px;
   }
 
+  .hero-stat {
+    padding: 12px 2px;
+  }
+
+  .hero-stat strong {
+    font-size: 16px;
+  }
+
+  .hero-stat span {
+    font-size: 7px;
+  }
 }
