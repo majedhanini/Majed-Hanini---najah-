@@ -504,7 +504,7 @@ const calculus1 = {
 };
 
 /* =========================================================
-   PHYSICS FOR INFORMATION TECHNOLOGY
+   PHYSICS FOR IT
 ========================================================= */
 
 const physicsForIT = {
@@ -559,7 +559,6 @@ const physicsForIT = {
       groups: [
         {
           category: "Final 2023",
-
           items: [
             {
               title: "Final 2023",
@@ -570,7 +569,6 @@ const physicsForIT = {
 
         {
           category: "أسئلة إضافية",
-
           items: [
             {
               title: "Questions 1",
@@ -703,20 +701,46 @@ const physics1 = {
 };
 
 /* =========================================================
-   MATHEMATICS FOR IT
-   CYBERSECURITY
+   MATHEMATICS FOR IT - CYBERSECURITY
 ========================================================= */
 
 const mathematicsForIT = {
   name: "رياضيات لتكنولوجيا المعلومات",
   englishName: "Mathematics for Information Technology",
 
-  notice: {
-    title: "سيتم توفير المصادر بأقرب وقت",
-    text: "نعمل حاليًا على تجهيز وترتيب مصادر مساق رياضيات لتكنولوجيا المعلومات، وسيتم إضافتها هنا بأقرب وقت ممكن.",
-  },
+  resources: [
+    {
+      id: "lectures-slides",
+      title: "المحاضرات والسلايدات",
+      english: "LECTURES & SLIDES",
+      icon: "PDF",
+      description: "محاضرات وسلايدات مساق رياضيات لتكنولوجيا المعلومات.",
+      type: "links",
 
-  resources: [],
+      items: [
+        {
+          title: "المحاضرات والسلايدات",
+          url: "https://drive.google.com/drive/folders/1nxGhshiWMg6c8xaK0xORbTO67xKlfyvx?usp=drive_link",
+        },
+      ],
+    },
+
+    {
+      id: "questions-summary",
+      title: "أسئلة سنوات وتلخيص",
+      english: "PREVIOUS QUESTIONS & SUMMARY",
+      icon: "EX",
+      description: "أسئلة سنوات سابقة وتلخيصات للمراجعة ودراسة المساق.",
+      type: "links",
+
+      items: [
+        {
+          title: "أسئلة سنوات وتلخيص",
+          url: "https://drive.google.com/drive/mobile/folders/1hhI7FbM-C8Z2pvYfPU88rQOKZXsG0tpF/1AMeVIBM4DZI3bZhp-inPP6mL4Khsppdw?sort=13&direction=a",
+        },
+      ],
+    },
+  ],
 };
 
 /* =========================================================
@@ -727,28 +751,51 @@ const managementPrinciples1 = {
   name: "مبادئ إدارة 1",
   englishName: "Management Principles 1",
 
-  notice: {
-    title: "سيتم توفير المصادر بأقرب وقت",
-    text: "نعمل حاليًا على تجهيز وترتيب مصادر مساق مبادئ إدارة 1، وسيتم إضافتها هنا بأقرب وقت ممكن.",
-  },
+  resources: [
+    {
+      id: "course-materials",
+      title: "مواد المساق",
+      english: "COURSE MATERIALS",
+      icon: "PDF",
+      description: "المحاضرات والمواد المتوفرة لمساق مبادئ إدارة 1.",
+      type: "links",
 
-  resources: [],
+      items: [
+        {
+          title: "مواد مبادئ إدارة 1",
+          url: "https://drive.google.com/drive/folders/1M3DotzD3Ivg1MRJV9tEbFQXOI9GKIkhA?usp=sharing",
+        },
+      ],
+    },
+  ],
 };
 
 /* =========================================================
-   MIS - BUSINESS PROGRAMMING 1
+   MIS - BUSINESS PROGRAMMING 1 + LAB
 ========================================================= */
 
 const businessProgramming1 = {
   name: "برمجة للأعمال 1 مع مختبرها",
   englishName: "Business Programming 1 + Lab",
 
-  notice: {
-    title: "سيتم توفير المصادر بأقرب وقت",
-    text: "نعمل حاليًا على تجهيز وترتيب مصادر مساق برمجة للأعمال 1 مع مختبرها، وسيتم إضافتها هنا بأقرب وقت ممكن.",
-  },
+  resources: [
+    {
+      id: "python-materials",
+      title: "محاضرات ومواد بايثون",
+      english: "PYTHON COURSE MATERIALS",
+      icon: "</>",
+      description:
+        "المحاضرات والمواد التعليمية المتوفرة لمساق برمجة للأعمال 1 مع مختبرها.",
+      type: "links",
 
-  resources: [],
+      items: [
+        {
+          title: "مواد برمجة للأعمال 1 مع مختبرها",
+          url: "https://drive.google.com/drive/folders/1RpUD7vQ8NBp3vNPA_KysszchXGo0SfNV?usp=sharing",
+        },
+      ],
+    },
+  ],
 };
 
 /* =========================================================
@@ -759,12 +806,24 @@ const introductionToIT = {
   name: "مقدمة في تكنولوجيا المعلومات",
   englishName: "Introduction to Information Technology",
 
-  notice: {
-    title: "سيتم توفير المصادر بأقرب وقت",
-    text: "نعمل حاليًا على تجهيز وترتيب مصادر مساق مقدمة في تكنولوجيا المعلومات، وسيتم إضافتها هنا بأقرب وقت ممكن.",
-  },
+  resources: [
+    {
+      id: "course-materials",
+      title: "مواد المساق",
+      english: "COURSE MATERIALS",
+      icon: "IT",
+      description:
+        "المحاضرات والمواد المتوفرة لمساق مقدمة في تكنولوجيا المعلومات.",
+      type: "links",
 
-  resources: [],
+      items: [
+        {
+          title: "مواد مقدمة في تكنولوجيا المعلومات",
+          url: "https://drive.google.com/drive/folders/1OkWemmGkDs0BOOUECGNRQSYCHXOtfFjN?usp=sharing",
+        },
+      ],
+    },
+  ],
 };
 
 /* =========================================================
@@ -815,7 +874,6 @@ const coursesData = {
 
   /* =====================================================
      الذكاء الاصطناعي وعلم البيانات
-     نفس مصادر علم الحاسوب في سوق العمل
   ===================================================== */
 
   "ai-data-science": {

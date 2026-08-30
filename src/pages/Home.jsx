@@ -1,13 +1,25 @@
+import { useEffect, useState } from "react";
+
 import "../styles/home.css";
 import heroImage from "../assets/images/hero-main.png";
 
 function Home({ navigate }) {
+  const [showWelcomeNotice, setShowWelcomeNotice] = useState(true);
+
   const scrollToAbout = () => {
     document.getElementById("about-college")?.scrollIntoView({
       behavior: "smooth",
       block: "start",
     });
   };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setShowWelcomeNotice((current) => !current);
+    }, 10000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <main className="home-page">
@@ -136,7 +148,6 @@ function Home({ navigate }) {
               </div>
             </div>
 
-            {/* Floating Elements */}
             <div className="floating-tech floating-ai">AI</div>
 
             <div className="floating-tech floating-code">&lt;/&gt;</div>
@@ -183,9 +194,6 @@ function Home({ navigate }) {
             </p>
           </div>
 
-          {/* =========================
-              ABOUT CARDS
-          ========================== */}
           <div className="about-college-grid">
             <article className="about-college-card">
               <div className="about-card-top">
@@ -236,6 +244,36 @@ function Home({ navigate }) {
           </div>
         </div>
       </section>
+
+      {/* =====================================================
+          SHABIBA WELCOME NOTICE
+      ====================================================== */}
+      {showWelcomeNotice && (
+        <div className="shabiba-home-notice">
+          <div className="shabiba-home-notice-glow"></div>
+
+          <div className="shabiba-home-notice-icon">
+            <span>✦</span>
+          </div>
+
+          <div className="shabiba-home-notice-content">
+            <span className="shabiba-home-notice-label">SHABIBA MESSAGE</span>
+
+            <h3>حركة الشبيبة الطلابية</h3>
+
+            <p>
+              تتمنى لكم بداية جامعية موفقة ومليئة بالنجاح، ولا تترددوا بالتواصل
+              معنا، نحن هنا لمساعدتكم ودعمكم خلال مسيرتكم الجامعية.
+            </p>
+
+            <span className="shabiba-home-notice-college">
+              كلية تكنولوجيا المعلومات والذكاء الاصطناعي
+            </span>
+          </div>
+
+          <div className="shabiba-home-notice-timer"></div>
+        </div>
+      )}
     </main>
   );
 }

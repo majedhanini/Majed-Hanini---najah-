@@ -1,13 +1,18 @@
 import { useState } from "react";
 
 import "../styles/course-details.css";
+
 import coursesData from "../data/courses.js";
 
 const majorNames = {
   "cs-job-market": "علم الحاسوب في سوق العمل",
+
   "computer-science": "علم الحاسوب",
+
   cybersecurity: "الأمن السيبراني",
+
   mis: "أنظمة المعلومات الإدارية",
+
   "ai-data-science": "الذكاء الاصطناعي وعلم البيانات",
 };
 
@@ -18,9 +23,9 @@ function CourseDetails({ navigate, majorId, courseId }) {
 
   const [openResourceId, setOpenResourceId] = useState(null);
 
-  /* =====================================================
+  /* =========================================================
      COURSE NOT FOUND
-  ===================================================== */
+  ========================================================= */
 
   if (!course) {
     return (
@@ -52,17 +57,13 @@ function CourseDetails({ navigate, majorId, courseId }) {
     );
   }
 
-  /* =====================================================
-     COURSE RESOURCES
-
-     كل مساق هو اللي يحدد البوكسات الخاصة فيه
-  ===================================================== */
-
   const resources = Array.isArray(course.resources) ? course.resources : [];
 
-  /* =====================================================
+  const courseNotice = course.notice;
+
+  /* =========================================================
      OPEN LINK
-  ===================================================== */
+  ========================================================= */
 
   const openLink = (url, event) => {
     event?.stopPropagation();
@@ -74,9 +75,9 @@ function CourseDetails({ navigate, majorId, courseId }) {
     window.open(url, "_blank", "noopener,noreferrer");
   };
 
-  /* =====================================================
+  /* =========================================================
      TOGGLE RESOURCE
-  ===================================================== */
+  ========================================================= */
 
   const toggleResource = (resourceId) => {
     setOpenResourceId((current) =>
@@ -84,9 +85,9 @@ function CourseDetails({ navigate, majorId, courseId }) {
     );
   };
 
-  /* =====================================================
+  /* =========================================================
      NORMAL LINKS
-  ===================================================== */
+  ========================================================= */
 
   const renderLinks = (items) => {
     if (!Array.isArray(items) || items.length === 0) {
@@ -111,9 +112,9 @@ function CourseDetails({ navigate, majorId, courseId }) {
     );
   };
 
-  /* =====================================================
+  /* =========================================================
      EXAMS
-  ===================================================== */
+  ========================================================= */
 
   const renderExams = (groups) => {
     if (!Array.isArray(groups) || groups.length === 0) {
@@ -155,9 +156,9 @@ function CourseDetails({ navigate, majorId, courseId }) {
     );
   };
 
-  /* =====================================================
+  /* =========================================================
      PAGE
-  ===================================================== */
+  ========================================================= */
 
   return (
     <main className="course-details-page">
@@ -175,7 +176,7 @@ function CourseDetails({ navigate, majorId, courseId }) {
 
       <section className="course-details-section">
         <div className="course-details-container">
-          {/* BACK BUTTON */}
+          {/* BACK */}
 
           <button
             type="button"
@@ -187,7 +188,9 @@ function CourseDetails({ navigate, majorId, courseId }) {
             <span>العودة إلى مساقات الفصل الأول</span>
           </button>
 
-          {/* HEADING */}
+          {/* =================================================
+              HEADING
+          ================================================= */}
 
           <div className="course-details-heading">
             <span className="course-details-kicker">COURSE RESOURCES</span>
@@ -208,15 +211,56 @@ function CourseDetails({ navigate, majorId, courseId }) {
             </p>
           </div>
 
-          {/* NO RESOURCES */}
+          {/* =================================================
+              GLOBAL UPDATE NOTICE
+
+              تظهر في جميع المساقات
+          ================================================= */}
+
+          <div className="course-update-note">
+            <div className="course-update-note-icon">✦</div>
+
+            <div className="course-update-note-content">
+              <span className="course-update-note-label">UPDATE NOTICE</span>
+
+              <p>
+                في حال توفر أي مواد أو مصادر إضافية لهذا المساق، سيتم تزويدكم
+                بها وإضافتها أولًا بأول.
+              </p>
+            </div>
+          </div>
+
+          {/* =================================================
+              NO RESOURCES / COMING SOON
+          ================================================= */}
 
           {resources.length === 0 && (
             <div className="course-no-resources">
-              <span>سيتم إضافة مصادر هذا المساق قريبًا</span>
+              {courseNotice ? (
+                <>
+                  <div className="course-no-resources-icon">⏳</div>
+
+                  <span className="course-no-resources-label">COMING SOON</span>
+
+                  <h2>{courseNotice.title}</h2>
+
+                  <p>{courseNotice.text}</p>
+
+                  <div className="course-no-resources-status">
+                    <span className="course-status-dot"></span>
+
+                    <span>جاري تجهيز المحتوى</span>
+                  </div>
+                </>
+              ) : (
+                <span>سيتم إضافة مصادر هذا المساق قريبًا</span>
+              )}
             </div>
           )}
 
-          {/* RESOURCE CARDS */}
+          {/* =================================================
+              RESOURCES
+          ================================================= */}
 
           {resources.length > 0 && (
             <div className="course-resources-grid">
@@ -231,6 +275,8 @@ function CourseDetails({ navigate, majorId, courseId }) {
                     }`}
                     onClick={() => toggleResource(resource.id)}
                   >
+                    {/* TOP */}
+
                     <div className="course-resource-top">
                       <div className="course-resource-icon">
                         {resource.icon}
@@ -241,6 +287,8 @@ function CourseDetails({ navigate, majorId, courseId }) {
                       </span>
                     </div>
 
+                    {/* TEXT */}
+
                     <span className="course-resource-english">
                       {resource.english}
                     </span>
@@ -248,6 +296,8 @@ function CourseDetails({ navigate, majorId, courseId }) {
                     <h2>{resource.title}</h2>
 
                     <p>{resource.description}</p>
+
+                    {/* OPEN ROW */}
 
                     <div className="course-resource-open-row">
                       <span>
@@ -262,6 +312,8 @@ function CourseDetails({ navigate, majorId, courseId }) {
                         ↓
                       </span>
                     </div>
+
+                    {/* EXPANDED */}
 
                     {opened && (
                       <div

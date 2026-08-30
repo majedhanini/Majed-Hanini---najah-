@@ -1949,3 +1949,322 @@
     -webkit-backdrop-filter: blur(12px);
   }
 }
+/* =========================================================
+   SHABIBA HOME NOTICE
+========================================================= */
+
+.shabiba-home-notice {
+  position: fixed;
+  right: 26px;
+  bottom: 26px;
+
+  z-index: 999;
+
+  width: min(420px, calc(100vw - 36px));
+
+  padding: 18px;
+
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+
+  direction: rtl;
+
+  border: 1px solid
+    color-mix(
+      in srgb,
+      var(--cyan) 16%,
+      var(--border)
+    );
+
+  border-radius: 18px;
+
+  background:
+    color-mix(
+      in srgb,
+      var(--bg-main) 88%,
+      transparent
+    );
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+  overflow: hidden;
+
+  animation:
+    shabiba-notice-in 0.55s
+    cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+.shabiba-home-notice-glow {
+  position: absolute;
+
+  width: 150px;
+  height: 150px;
+
+  right: -70px;
+  top: -90px;
+
+  border-radius: 50%;
+
+  background: var(--cyan);
+
+  opacity: 0.08;
+
+  filter: blur(45px);
+
+  pointer-events: none;
+}
+
+
+.shabiba-home-notice-icon {
+  position: relative;
+  z-index: 2;
+
+  width: 44px;
+  height: 44px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid
+    color-mix(
+      in srgb,
+      var(--cyan) 20%,
+      transparent
+    );
+
+  border-radius: 13px;
+
+  background:
+    color-mix(
+      in srgb,
+      var(--cyan) 7%,
+      transparent
+    );
+
+  color: var(--cyan);
+
+  font-size: 16px;
+}
+
+
+.shabiba-home-notice-content {
+  position: relative;
+  z-index: 2;
+
+  flex: 1;
+
+  text-align: right;
+}
+
+
+.shabiba-home-notice-label {
+  display: block;
+
+  margin-bottom: 4px;
+
+  direction: ltr;
+  text-align: right;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 7px;
+  font-weight: 900;
+
+  letter-spacing: 1.5px;
+
+  color: var(--cyan);
+}
+
+
+.shabiba-home-notice-content h3 {
+  margin: 0 0 7px;
+
+  font-family: "Tajawal", sans-serif;
+
+  font-size: 16px;
+  font-weight: 900;
+
+  color: var(--text-main);
+}
+
+
+.shabiba-home-notice-content p {
+  margin: 0;
+
+  font-family: "Tajawal", sans-serif;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  line-height: 1.8;
+
+  color: var(--text-secondary);
+}
+
+
+.shabiba-home-notice-college {
+  display: block;
+
+  margin-top: 8px;
+
+  font-family: "Tajawal", sans-serif;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  color: var(--muted-text);
+}
+
+
+/* =========================================================
+   TIMER
+========================================================= */
+
+.shabiba-home-notice-timer {
+  position: absolute;
+
+  right: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 2px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--primary),
+      var(--cyan)
+    );
+
+  transform-origin: right center;
+
+  animation:
+    shabiba-notice-timer
+    10s linear forwards;
+}
+
+
+@keyframes shabiba-notice-timer {
+  from {
+    transform: scaleX(1);
+  }
+
+  to {
+    transform: scaleX(0);
+  }
+}
+
+
+/* =========================================================
+   ENTRANCE
+========================================================= */
+
+@keyframes shabiba-notice-in {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(20px)
+      scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+
+/* =========================================================
+   LIGHT MODE
+========================================================= */
+
+[data-theme="light"] .shabiba-home-notice {
+  border-color:
+    rgba(8, 159, 193, 0.11);
+
+  background:
+    rgba(255, 255, 255, 0.9);
+
+  box-shadow:
+    0 20px 55px
+    rgba(57, 70, 108, 0.13);
+}
+
+
+[data-theme="light"]
+.shabiba-home-notice-content h3 {
+  color: #151a2d;
+}
+
+
+[data-theme="light"]
+.shabiba-home-notice-content p {
+  color: #68738b;
+}
+
+
+[data-theme="light"]
+.shabiba-home-notice-college {
+  color: #8792a8;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+  .shabiba-home-notice {
+    right: 16px;
+    bottom: 16px;
+
+    width: calc(100vw - 32px);
+
+    padding: 15px;
+
+    gap: 11px;
+
+    border-radius: 16px;
+  }
+
+
+  .shabiba-home-notice-icon {
+    width: 39px;
+    height: 39px;
+
+    border-radius: 11px;
+
+    font-size: 14px;
+  }
+
+
+  .shabiba-home-notice-content h3 {
+    font-size: 14px;
+  }
+
+
+  .shabiba-home-notice-content p {
+    font-size: 11px;
+
+    line-height: 1.7;
+  }
+
+
+  .shabiba-home-notice-college {
+    font-size: 9px;
+  }
+}
