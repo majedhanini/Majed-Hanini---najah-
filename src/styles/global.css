@@ -37,13 +37,26 @@ body {
 
   overflow-x: hidden;
 
-  background: var(--bg-main);
+  background:
+    radial-gradient(
+      circle at top,
+      color-mix(
+        in srgb,
+        var(--primary) 3%,
+        transparent
+      ),
+      transparent 34%
+    ),
+    var(--bg-main);
 
   color: var(--text-main);
 
   font-family:
     "Tajawal",
     sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
   transition:
     background-color 0.35s ease,
@@ -52,7 +65,7 @@ body {
 
 
 #root {
-  background: var(--bg-main);
+  background: transparent;
 
   transition:
     background-color 0.35s ease;
@@ -71,10 +84,26 @@ button {
 }
 
 
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+
 img {
   max-width: 100%;
 
   display: block;
+}
+
+
+input,
+textarea,
+select,
+button {
+  font-family:
+    "Tajawal",
+    sans-serif;
 }
 
 
@@ -86,7 +115,7 @@ img {
   background:
     color-mix(
       in srgb,
-      var(--primary) 35%,
+      var(--primary) 30%,
       transparent
     );
 
@@ -99,13 +128,12 @@ img {
 ========================================================= */
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 9px;
 }
 
 
 ::-webkit-scrollbar-track {
-  background:
-    var(--bg-main);
+  background: var(--bg-main);
 }
 
 
@@ -136,7 +164,24 @@ img {
 
 
 /* =========================================================
-   LIGHT MODE
+   FOCUS
+========================================================= */
+
+:focus-visible {
+  outline:
+    2px solid
+    color-mix(
+      in srgb,
+      var(--primary) 65%,
+      transparent
+    );
+
+  outline-offset: 3px;
+}
+
+
+/* =========================================================
+   LIGHT / DARK MODE
 ========================================================= */
 
 [data-theme="light"] {
@@ -154,7 +199,6 @@ img {
 ========================================================= */
 
 @media (max-width: 850px) {
-
   html {
     scroll-padding-top: 70px;
   }
@@ -163,5 +207,4 @@ img {
   body {
     padding-top: 70px;
   }
-
 }

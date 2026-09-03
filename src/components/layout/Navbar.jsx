@@ -28,19 +28,16 @@ function Navbar({ navigate, currentPage }) {
 
   const goHome = () => {
     setMenuOpen(false);
-
     navigate("/");
   };
 
   const goMajors = () => {
     setMenuOpen(false);
-
     navigate("/majors");
   };
 
   const goFaculty = () => {
     setMenuOpen(false);
-
     navigate("/faculty");
   };
 
@@ -118,8 +115,6 @@ function Navbar({ navigate, currentPage }) {
         {/* ACTIONS */}
 
         <div className="navbar-actions">
-          {/* THEME BUTTON */}
-
           <button
             type="button"
             className="navbar-theme-button"

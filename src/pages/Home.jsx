@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 
 import "../styles/home.css";
-import heroImage from "../assets/images/hero-main.png";
+import heroImage from "../assets/images/hero-shabiba.jpg";
+import shabibaLogo from "../assets/images/shabiba-logo.png";
 
 function Home({ navigate }) {
   const [showWelcomeNotice, setShowWelcomeNotice] = useState(true);
@@ -42,9 +43,6 @@ function Home({ navigate }) {
       ====================================================== */}
       <section className="hero-section" id="home">
         <div className="hero-container">
-          {/* =========================
-              LEFT CONTENT
-          ========================== */}
           <div className="hero-content">
             <div className="hero-badge">An-Najah National University</div>
 
@@ -57,7 +55,6 @@ function Home({ navigate }) {
 
               <span className="hero-title-en">
                 <span>IT & AI</span>
-
                 <span>Freshman Hub</span>
               </span>
             </h1>
@@ -70,9 +67,6 @@ function Home({ navigate }) {
               بسهولة.
             </p>
 
-            {/* =========================
-                BUTTONS
-            ========================== */}
             <div className="hero-actions">
               <button
                 type="button"
@@ -80,7 +74,6 @@ function Home({ navigate }) {
                 onClick={() => navigate("/majors")}
               >
                 <span>استكشف التخصصات</span>
-
                 <span className="button-arrow">←</span>
               </button>
 
@@ -93,33 +86,27 @@ function Home({ navigate }) {
               </button>
             </div>
 
-            {/* =========================
-                STATS
-            ========================== */}
             <div className="hero-stats">
               <div className="hero-stat">
                 <strong>5</strong>
-
                 <span>تخصصات</span>
               </div>
 
               <div className="hero-stat">
                 <strong>2026</strong>
-
                 <span>دفعة جديدة</span>
               </div>
 
               <div className="hero-stat">
                 <strong>1st</strong>
-
                 <span>Year Hub</span>
               </div>
             </div>
           </div>
 
-          {/* =========================
-              RIGHT VISUAL
-          ========================== */}
+          {/* =================================================
+              HERO IMAGE
+          ================================================= */}
           <div className="hero-visual">
             <div className="hero-orbit hero-orbit-one"></div>
             <div className="hero-orbit hero-orbit-two"></div>
@@ -129,7 +116,7 @@ function Home({ navigate }) {
             <div className="hero-image-card">
               <img
                 src={heroImage}
-                alt="Faculty of Information Technology"
+                alt="IT & AI Freshman Hub"
                 className="hero-building-image"
               />
 
@@ -156,9 +143,6 @@ function Home({ navigate }) {
           </div>
         </div>
 
-        {/* =========================
-            SCROLL
-        ========================== */}
         <button
           type="button"
           className="hero-scroll"
@@ -247,13 +231,18 @@ function Home({ navigate }) {
 
       {/* =====================================================
           SHABIBA WELCOME NOTICE
+          بدون أي تغيير
       ====================================================== */}
       {showWelcomeNotice && (
         <div className="shabiba-home-notice">
           <div className="shabiba-home-notice-glow"></div>
 
           <div className="shabiba-home-notice-icon">
-            <span>✦</span>
+            <img
+              src={shabibaLogo}
+              alt="شعار حركة الشبيبة الطلابية"
+              className="shabiba-home-notice-logo"
+            />
           </div>
 
           <div className="shabiba-home-notice-content">

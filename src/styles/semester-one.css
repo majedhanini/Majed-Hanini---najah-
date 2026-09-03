@@ -79,7 +79,7 @@
 
   right: -180px;
 
-  background: #6259ff;
+  background: var(--primary);
 
   opacity: 0.16;
 }
@@ -94,7 +94,7 @@
 
   bottom: -220px;
 
-  background: #00bde8;
+  background: var(--cyan);
 
   opacity: 0.08;
 }
@@ -108,7 +108,7 @@
   font-weight: 900;
 
   color:
-    rgba(95, 108, 255, 0.055);
+    color-mix(in srgb, var(--primary) 5.5%, transparent);
 
   user-select: none;
 }
@@ -675,8 +675,8 @@
   background:
     linear-gradient(
       180deg,
-      #f5f7fc 0%,
-      #f8f9fd 100%
+      var(--bg-main) 0%,
+      var(--bg-secondary) 100%
     );
 
   color:
@@ -714,7 +714,7 @@
 [data-theme="light"]
 .semester-one-code {
   color:
-    rgba(83, 99, 244, 0.06);
+    color-mix(in srgb, var(--primary) 6%, transparent);
 }
 
 
@@ -729,7 +729,7 @@
     rgba(255, 255, 255, 0.76);
 
   color:
-    #68738b;
+    var(--text-secondary);
 
   box-shadow:
     inset 0 1px 0
@@ -745,7 +745,7 @@
     var(--primary);
 
   border-color:
-    rgba(83, 99, 244, 0.18);
+    color-mix(in srgb, var(--primary) 18%, transparent);
 
   background:
     rgba(255, 255, 255, 0.96);
@@ -757,14 +757,14 @@
 [data-theme="light"]
 .semester-one-major-name {
   color:
-    #6f7a92;
+    var(--text-secondary);
 }
 
 
 [data-theme="light"]
 .semester-one-heading p {
   color:
-    #68738b;
+    var(--text-secondary);
 }
 
 
@@ -778,8 +778,8 @@
   background:
     linear-gradient(
       145deg,
-      rgba(255, 255, 255, 0.97),
-      rgba(245, 247, 253, 0.9)
+      var(--card-bg),
+      color-mix(in srgb, var(--bg-secondary) 42%, var(--card-bg))
     );
 
   box-shadow:
@@ -793,13 +793,13 @@
 [data-theme="light"]
 .course-card:hover {
   border-color:
-    rgba(8, 159, 193, 0.18);
+    color-mix(in srgb, var(--cyan) 18%, transparent);
 
   background:
     linear-gradient(
       145deg,
-      #ffffff,
-      #f7f9ff
+      var(--card-bg-hover),
+      color-mix(in srgb, var(--bg-secondary) 30%, var(--card-bg-hover))
     );
 
   box-shadow:
@@ -831,7 +831,7 @@
 [data-theme="light"]
 .course-card p {
   color:
-    #6d7890;
+    var(--text-secondary);
 }
 
 
@@ -855,7 +855,7 @@
 [data-theme="light"]
 .course-open-arrow {
   background:
-    rgba(8, 159, 193, 0.065);
+    color-mix(in srgb, var(--cyan) 6.5%, transparent);
 
   color:
     var(--cyan);
@@ -866,7 +866,7 @@
 .course-card:hover
 .course-open-arrow {
   background:
-    rgba(8, 159, 193, 0.11);
+    color-mix(in srgb, var(--cyan) 11%, transparent);
 }
 
 
@@ -1012,8 +1012,8 @@
   background:
     linear-gradient(
       145deg,
-      rgba(255, 255, 255, 0.97),
-      rgba(245, 247, 253, 0.9)
+      var(--card-bg),
+      color-mix(in srgb, var(--bg-secondary) 42%, var(--card-bg))
     );
 
   box-shadow:
@@ -1172,11 +1172,11 @@
 }
 
 [data-theme="light"] .ai-new-major-banner {
-  border-color: rgba(8, 159, 193, 0.13);
+  border-color: color-mix(in srgb, var(--cyan) 13%, transparent);
   background:
     linear-gradient(
       135deg,
-      rgba(83, 99, 244, 0.05),
+      color-mix(in srgb, var(--primary) 5%, transparent),
       rgba(255, 255, 255, 0.96)
     );
   box-shadow:

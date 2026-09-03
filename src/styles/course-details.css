@@ -1555,8 +1555,8 @@
   background:
     linear-gradient(
       180deg,
-      #f5f7fc 0%,
-      #f8f9fd 100%
+      var(--bg-main) 0%,
+      var(--bg-secondary) 100%
     );
 }
 
@@ -1564,17 +1564,17 @@
 [data-theme="light"]
 .course-update-note {
   border-color:
-    rgba(8, 159, 193, 0.1);
+    color-mix(in srgb, var(--cyan) 10%, transparent);
 
   background:
-    rgba(8, 159, 193, 0.035);
+    color-mix(in srgb, var(--cyan) 3.5%, transparent);
 }
 
 
 [data-theme="light"]
 .course-update-note p {
   color:
-    #68738b;
+    var(--text-secondary);
 }
 
 
@@ -1586,8 +1586,8 @@
   background:
     linear-gradient(
       145deg,
-      rgba(255, 255, 255, 0.98),
-      rgba(245, 247, 253, 0.92)
+      var(--card-bg),
+      color-mix(in srgb, var(--bg-secondary) 42%, var(--card-bg))
     );
 
   box-shadow:
@@ -1609,13 +1609,13 @@
 [data-theme="light"]
 .course-no-resources {
   border-color:
-    rgba(8, 159, 193, 0.12);
+    color-mix(in srgb, var(--cyan) 12%, transparent);
 
   background:
     linear-gradient(
       145deg,
-      #ffffff,
-      #f5f8ff
+      var(--card-bg-hover),
+      color-mix(in srgb, var(--bg-secondary) 34%, var(--card-bg-hover))
     );
 
   box-shadow:
@@ -1627,7 +1627,7 @@
 [data-theme="light"]
 .course-no-resources p {
   color:
-    #68738b;
+    var(--text-secondary);
 }
 
 

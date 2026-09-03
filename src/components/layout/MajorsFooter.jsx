@@ -1,5 +1,5 @@
 import "../../styles/majors-footer.css";
-import footerLogo from "../../assets/images/footer-logo.png";
+import footerLogo from "../../assets/images/shabiba-logo.png";
 
 function MajorsFooter() {
   return (
@@ -97,7 +97,7 @@ function MajorsFooter() {
             DESIGNED & DEVELOPED BY
           </span>
 
-          <strong>ماجد حنيني</strong>
+          <strong> Majed Hanini </strong>
         </div>
       </div>
 

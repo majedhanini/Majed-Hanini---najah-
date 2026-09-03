@@ -39,7 +39,7 @@
   border-radius: 50%;
 
   background:
-    rgba(38, 217, 255, 0.06);
+    color-mix(in srgb, var(--cyan) 6%, transparent);
 
   filter:
     blur(75px);
@@ -492,8 +492,8 @@
   background:
     linear-gradient(
       180deg,
-      #f5f7fc 0%,
-      #eef2f9 100%
+      var(--bg-main) 0%,
+      color-mix(in srgb, var(--bg-secondary) 88%, var(--bg-main)) 100%
     );
 
   border-top-color:
@@ -504,28 +504,28 @@
 [data-theme="light"]
 .majors-footer::before {
   background:
-    rgba(8, 159, 193, 0.055);
+    color-mix(in srgb, var(--cyan) 5.5%, transparent);
 }
 
 
 [data-theme="light"]
 .majors-footer-organization {
   color:
-    #657089;
+    var(--text-secondary);
 }
 
 
 [data-theme="light"]
 .majors-footer-name {
   color:
-    #151a2d;
+    var(--text-main);
 }
 
 
 [data-theme="light"]
 .majors-footer-divider {
   color:
-    #68738b;
+    var(--text-secondary);
 
   opacity: 0.35;
 }
@@ -534,7 +534,7 @@
 [data-theme="light"]
 .majors-footer-text {
   color:
-    #738099;
+    var(--text-secondary);
 }
 
 
@@ -547,7 +547,7 @@
     rgba(255, 255, 255, 0.72);
 
   color:
-    #657089;
+    var(--text-secondary);
 }
 
 
@@ -557,10 +557,10 @@
     var(--cyan);
 
   border-color:
-    rgba(8, 159, 193, 0.18);
+    color-mix(in srgb, var(--cyan) 18%, transparent);
 
   background:
-    rgba(8, 159, 193, 0.055);
+    color-mix(in srgb, var(--cyan) 5.5%, transparent);
 }
 
 
@@ -583,7 +583,7 @@
 [data-theme="light"]
 .majors-footer-developer:hover {
   border-color:
-    rgba(8, 159, 193, 0.18);
+    color-mix(in srgb, var(--cyan) 18%, transparent);
 
   background:
     rgba(255, 255, 255, 0.96);
@@ -597,14 +597,14 @@
 [data-theme="light"]
 .majors-footer-developer-label {
   color:
-    #7a859d;
+    var(--muted-text);
 }
 
 
 [data-theme="light"]
 .majors-footer-developer strong {
   color:
-    #151a2d;
+    var(--text-main);
 }
 
 
@@ -614,7 +614,7 @@
     rgba(30, 42, 76, 0.07);
 
   color:
-    #8792a8;
+    var(--muted-text);
 }
 
 

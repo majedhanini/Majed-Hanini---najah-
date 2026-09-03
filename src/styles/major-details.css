@@ -3,7 +3,7 @@
   width: 100%;
   min-height: 100vh;
   overflow: hidden;
-  background: #050816;
+  background: var(--bg-main);
   color: #ffffff;
 }
 
@@ -61,7 +61,7 @@
   top: -330px;
   right: -180px;
 
-  background: #6259ff;
+  background: var(--primary);
   opacity: 0.18;
 }
 
@@ -73,7 +73,7 @@
   left: -250px;
   top: 650px;
 
-  background: #00bde8;
+  background: var(--cyan);
   opacity: 0.08;
 }
 
@@ -85,7 +85,7 @@
   font-weight: 900;
 
   color:
-    rgba(95, 108, 255, 0.055);
+    color-mix(in srgb, var(--primary) 5.5%, transparent);
 
   user-select: none;
 }
@@ -168,13 +168,13 @@
 
 
 .major-back-button:hover {
-  color: #26d9ff;
+  color: var(--cyan);
 
   border-color:
-    rgba(38, 217, 255, 0.18);
+    color-mix(in srgb, var(--cyan) 18%, transparent);
 
   background:
-    rgba(38, 217, 255, 0.04);
+    color-mix(in srgb, var(--cyan) 4%, transparent);
 
   transform:
     translateX(4px);
@@ -206,15 +206,15 @@
 
   border:
     1px solid
-    rgba(38, 217, 255, 0.18);
+    color-mix(in srgb, var(--cyan) 18%, transparent);
 
   border-radius: 17px;
 
   background:
     linear-gradient(
       145deg,
-      rgba(38, 217, 255, 0.09),
-      rgba(104, 117, 255, 0.06)
+      color-mix(in srgb, var(--cyan) 9%, transparent),
+      color-mix(in srgb, var(--primary) 6%, transparent)
     );
 
   direction: ltr;
@@ -224,7 +224,7 @@
   font-size: 14px;
   font-weight: 900;
 
-  color: #26d9ff;
+  color: var(--cyan);
 
   box-shadow:
     inset 0 1px 0
@@ -248,7 +248,7 @@
 
   letter-spacing: 1.5px;
 
-  color: #26d9ff;
+  color: var(--cyan);
 }
 
 
@@ -288,7 +288,7 @@
 
   text-align: center;
 
-  color: #96a0ba;
+  color: var(--text-secondary);
 }
 
 
@@ -359,7 +359,7 @@
 
   letter-spacing: 1.6px;
 
-  color: #26d9ff;
+  color: var(--cyan);
 }
 
 
@@ -399,7 +399,7 @@
 
   text-align: center;
 
-  color: #8f99b3;
+  color: var(--text-secondary);
 }
 
 
@@ -471,7 +471,7 @@
 
   border-radius: 50%;
 
-  background: #6875ff;
+  background: var(--primary);
 
   opacity: 0.09;
 
@@ -485,7 +485,7 @@
     translateY(-6px);
 
   border-color:
-    rgba(38, 217, 255, 0.16);
+    color-mix(in srgb, var(--cyan) 16%, transparent);
 
   background:
     linear-gradient(
@@ -514,7 +514,7 @@
   font-size: 11px;
   font-weight: 700;
 
-  color: #26d9ff;
+  color: var(--cyan);
 }
 
 
@@ -549,7 +549,7 @@
 
   line-height: 2.15;
 
-  color: #909ab4;
+  color: var(--text-secondary);
 }
 
 
@@ -602,7 +602,7 @@
     translateX(-5px);
 
   border-color:
-    rgba(38, 217, 255, 0.15);
+    color-mix(in srgb, var(--cyan) 15%, transparent);
 
   background:
     rgba(255, 255, 255, 0.035);
@@ -621,12 +621,12 @@
 
   border:
     1px solid
-    rgba(38, 217, 255, 0.12);
+    color-mix(in srgb, var(--cyan) 12%, transparent);
 
   border-radius: 13px;
 
   background:
-    rgba(38, 217, 255, 0.06);
+    color-mix(in srgb, var(--cyan) 6%, transparent);
 
   direction: ltr;
 
@@ -635,7 +635,7 @@
   font-size: 10px;
   font-weight: 800;
 
-  color: #26d9ff;
+  color: var(--cyan);
 }
 
 
@@ -662,7 +662,7 @@
 
   line-height: 1.8;
 
-  color: #858fa8;
+  color: var(--muted-text);
 }
 
 
@@ -732,7 +732,7 @@
     translateY(-6px);
 
   border-color:
-    rgba(38, 217, 255, 0.18);
+    color-mix(in srgb, var(--cyan) 18%, transparent);
 
   background:
     linear-gradient(
@@ -794,7 +794,7 @@
 
   letter-spacing: 0.8px;
 
-  color: #26d9ff;
+  color: var(--cyan);
 }
 
 
@@ -828,7 +828,7 @@
   background:
     rgba(255, 255, 255, 0.05);
 
-  color: #77819a;
+  color: var(--muted-text);
 }
 
 
@@ -855,7 +855,7 @@
 
   line-height: 2;
 
-  color: #8993ad;
+  color: var(--text-secondary);
 }
 
 
@@ -914,11 +914,11 @@
   border-radius: 10px;
 
   background:
-    rgba(38, 217, 255, 0.06);
+    color-mix(in srgb, var(--cyan) 6%, transparent);
 
   direction: ltr;
 
-  color: #26d9ff;
+  color: var(--cyan);
 
   transition:
     transform 0.25s ease,
@@ -932,7 +932,7 @@
     translateX(-4px);
 
   background:
-    rgba(38, 217, 255, 0.12);
+    color-mix(in srgb, var(--cyan) 12%, transparent);
 }
 
 
@@ -951,7 +951,7 @@
 
   font-weight: 700;
 
-  color: #5f6981;
+  color: var(--muted-text);
 }
 
 
@@ -1133,8 +1133,8 @@
   background:
     linear-gradient(
       180deg,
-      #f5f7fc 0%,
-      #f8f9fd 100%
+      var(--bg-main) 0%,
+      var(--bg-secondary) 100%
     );
 
   color: var(--text-main);
@@ -1166,7 +1166,7 @@
 
 
 [data-theme="light"] .major-details-code {
-  color: rgba(83, 99, 244, 0.06);
+  color: color-mix(in srgb, var(--primary) 6%, transparent);
 }
 
 
@@ -1180,7 +1180,7 @@
   background:
     rgba(255, 255, 255, 0.76);
 
-  color: #68738b;
+  color: var(--text-secondary);
 
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.95),
@@ -1192,7 +1192,7 @@
   color: var(--primary);
 
   border-color:
-    rgba(83, 99, 244, 0.18);
+    color-mix(in srgb, var(--primary) 18%, transparent);
 
   background:
     rgba(255, 255, 255, 0.96);
@@ -1201,13 +1201,13 @@
 
 [data-theme="light"] .major-details-icon {
   border-color:
-    rgba(8, 159, 193, 0.16);
+    color-mix(in srgb, var(--cyan) 16%, transparent);
 
   background:
     linear-gradient(
       145deg,
       rgba(8, 159, 193, 0.08),
-      rgba(83, 99, 244, 0.055)
+      color-mix(in srgb, var(--primary) 5.5%, transparent)
     );
 
   color: var(--cyan);
@@ -1228,7 +1228,7 @@
 
 
 [data-theme="light"] .major-details-heading p {
-  color: #68738b;
+  color: var(--text-secondary);
 }
 
 
@@ -1266,7 +1266,7 @@
 
 
 [data-theme="light"] .major-section-heading p {
-  color: #6d7890;
+  color: var(--text-secondary);
 }
 
 
@@ -1281,8 +1281,8 @@
   background:
     linear-gradient(
       145deg,
-      rgba(255, 255, 255, 0.97),
-      rgba(245, 247, 253, 0.9)
+      var(--card-bg),
+      color-mix(in srgb, var(--bg-secondary) 42%, var(--card-bg))
     );
 
   box-shadow:
@@ -1298,13 +1298,13 @@
 
 [data-theme="light"] .major-about-main-card:hover {
   border-color:
-    rgba(8, 159, 193, 0.18);
+    color-mix(in srgb, var(--cyan) 18%, transparent);
 
   background:
     linear-gradient(
       145deg,
-      #ffffff,
-      #f7f9ff
+      var(--card-bg-hover),
+      color-mix(in srgb, var(--bg-secondary) 30%, var(--card-bg-hover))
     );
 
   box-shadow:
@@ -1323,7 +1323,7 @@
 
 
 [data-theme="light"] .major-about-main-card p {
-  color: #6d7890;
+  color: var(--text-secondary);
 }
 
 
@@ -1346,7 +1346,7 @@
 
 [data-theme="light"] .major-mini-card:hover {
   border-color:
-    rgba(8, 159, 193, 0.16);
+    color-mix(in srgb, var(--cyan) 16%, transparent);
 
   background:
     rgba(255, 255, 255, 0.96);
@@ -1355,10 +1355,10 @@
 
 [data-theme="light"] .major-mini-icon {
   border-color:
-    rgba(8, 159, 193, 0.14);
+    color-mix(in srgb, var(--cyan) 14%, transparent);
 
   background:
-    rgba(8, 159, 193, 0.065);
+    color-mix(in srgb, var(--cyan) 6.5%, transparent);
 
   color: var(--cyan);
 }
@@ -1370,7 +1370,7 @@
 
 
 [data-theme="light"] .major-mini-card p {
-  color: #6f7a92;
+  color: var(--text-secondary);
 }
 
 
@@ -1385,8 +1385,8 @@
   background:
     linear-gradient(
       145deg,
-      rgba(255, 255, 255, 0.97),
-      rgba(245, 247, 253, 0.9)
+      var(--card-bg),
+      color-mix(in srgb, var(--bg-secondary) 42%, var(--card-bg))
     );
 
   box-shadow:
@@ -1397,13 +1397,13 @@
 
 [data-theme="light"] .semester-card-active:hover {
   border-color:
-    rgba(8, 159, 193, 0.18);
+    color-mix(in srgb, var(--cyan) 18%, transparent);
 
   background:
     linear-gradient(
       145deg,
-      #ffffff,
-      #f7f9ff
+      var(--card-bg-hover),
+      color-mix(in srgb, var(--bg-secondary) 30%, var(--card-bg-hover))
     );
 
   box-shadow:
@@ -1429,7 +1429,7 @@
   background:
     rgba(31, 42, 73, 0.045);
 
-  color: #7a859c;
+  color: var(--muted-text);
 }
 
 
@@ -1439,7 +1439,7 @@
 
 
 [data-theme="light"] .semester-card p {
-  color: #6d7890;
+  color: var(--text-secondary);
 }
 
 
@@ -1458,7 +1458,7 @@
 
 [data-theme="light"] .semester-button span:last-child {
   background:
-    rgba(8, 159, 193, 0.065);
+    color-mix(in srgb, var(--cyan) 6.5%, transparent);
 
   color: var(--cyan);
 }
@@ -1467,7 +1467,7 @@
 [data-theme="light"] .semester-card-active:hover
 .semester-button span:last-child {
   background:
-    rgba(8, 159, 193, 0.11);
+    color-mix(in srgb, var(--cyan) 11%, transparent);
 }
 
 
@@ -1475,7 +1475,7 @@
   border-top-color:
     rgba(30, 42, 76, 0.075);
 
-  color: #8590a7;
+  color: var(--muted-text);
 }
 
 

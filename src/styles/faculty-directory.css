@@ -1083,8 +1083,8 @@
   background:
     linear-gradient(
       180deg,
-      #f5f7fc 0%,
-      #f8f9fd 100%
+      var(--bg-main) 0%,
+      var(--bg-secondary) 100%
     );
 }
 
@@ -1096,18 +1096,8 @@
   background:
     linear-gradient(
       145deg,
-      rgba(
-        255,
-        255,
-        255,
-        0.98
-      ),
-      rgba(
-        245,
-        247,
-        253,
-        0.93
-      )
+      var(--card-bg),
+      color-mix(in srgb, var(--bg-secondary) 42%, var(--card-bg))
     );
 
   border-color:
