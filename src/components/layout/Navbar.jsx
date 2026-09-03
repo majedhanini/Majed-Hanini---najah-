@@ -48,9 +48,7 @@ function Navbar({ navigate, currentPage }) {
   return (
     <header className="site-navbar">
       <div className="navbar-container">
-        {/* =====================================================
-            LOGO
-        ====================================================== */}
+        {/* LOGO */}
         <button
           type="button"
           className="navbar-logo"
@@ -58,17 +56,15 @@ function Navbar({ navigate, currentPage }) {
           aria-label="العودة إلى الرئيسية"
         >
           <span className="navbar-logo-main">IT & AI</span>
-
           <span className="navbar-logo-divider">|</span>
-
           <span className="navbar-logo-sub">Freshman Hub</span>
         </button>
 
-        {/* =====================================================
-            NAVIGATION
-        ====================================================== */}
-        <nav className={`navbar-links ${menuOpen ? "navbar-links-open" : ""}`}>
-          {/* الرئيسية */}
+        {/* NAVIGATION */}
+        <nav
+          className={`navbar-links ${menuOpen ? "open" : ""}`}
+          aria-label="القائمة الرئيسية"
+        >
           <button
             type="button"
             className={`navbar-link ${currentPage === "/" ? "active" : ""}`}
@@ -77,7 +73,6 @@ function Navbar({ navigate, currentPage }) {
             الرئيسية
           </button>
 
-          {/* التخصصات */}
           <button
             type="button"
             className={`navbar-link ${
@@ -88,7 +83,6 @@ function Navbar({ navigate, currentPage }) {
             التخصصات
           </button>
 
-          {/* دليل الكلية */}
           <button
             type="button"
             className={`navbar-link ${
@@ -99,7 +93,6 @@ function Navbar({ navigate, currentPage }) {
             دليل الكلية
           </button>
 
-          {/* مساقات اجباري الجامعة */}
           <button
             type="button"
             className="navbar-link"
@@ -108,7 +101,6 @@ function Navbar({ navigate, currentPage }) {
             مساقات اجباري الجامعة
           </button>
 
-          {/* حاسبة المعدل */}
           <button
             type="button"
             className={`navbar-link ${
@@ -119,7 +111,6 @@ function Navbar({ navigate, currentPage }) {
             حاسبة المعدل
           </button>
 
-          {/* عن الكلية */}
           <button
             type="button"
             className="navbar-link"
@@ -129,11 +120,8 @@ function Navbar({ navigate, currentPage }) {
           </button>
         </nav>
 
-        {/* =====================================================
-            RIGHT SIDE
-        ====================================================== */}
+        {/* RIGHT SIDE */}
         <div className="navbar-actions">
-          {/* DARK / LIGHT MODE */}
           <button
             type="button"
             className="navbar-theme-button"
@@ -143,18 +131,16 @@ function Navbar({ navigate, currentPage }) {
             }
             title={theme === "dark" ? "Light Mode" : "Dark Mode"}
           >
-            {theme === "dark" ? "☀" : "☾"}
+            <span className="theme-icon">{theme === "dark" ? "☀" : "☾"}</span>
           </button>
 
-          {/* YEAR */}
           <span className="navbar-year">2026 — 2027</span>
 
-          {/* MOBILE MENU */}
           <button
             type="button"
             className={`navbar-menu-button ${menuOpen ? "open" : ""}`}
             onClick={() => setMenuOpen((current) => !current)}
-            aria-label="فتح القائمة"
+            aria-label={menuOpen ? "إغلاق القائمة" : "فتح القائمة"}
             aria-expanded={menuOpen}
           >
             <span></span>
