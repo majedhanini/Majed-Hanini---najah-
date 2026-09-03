@@ -16,9 +16,9 @@ const leadership = [
   },
 
   {
-    name: "د. معن شتيوي",
+    name: "د. منقذ اشتيه",
     role: "مساعد النائب الأكاديمي",
-    email: "m.ishtaiwi@najah.edu",
+    email: "mshtaya@najah.edu",
     badge: "ACADEMIC",
   },
 
@@ -60,6 +60,12 @@ const leadership = [
 
 const labStaff = [
   {
+    name: "أ. دعاء عيساوي",
+    role: "طاقم المختبرات",
+    email: "duaa.eisawi@najah.edu",
+  },
+
+  {
     name: "أ. محمد عدس",
     role: "مشرف المختبرات",
     email: "m.adas@najah.edu",
@@ -81,12 +87,6 @@ const labStaff = [
     name: "أ. فاطمة البرق",
     role: "طاقم المختبرات",
     email: "fbarq@najah.edu",
-  },
-
-  {
-    name: "أ. دعاء عيساوي",
-    role: "طاقم المختبرات",
-    email: "duaa.eisawi@najah.edu",
   },
 
   {
