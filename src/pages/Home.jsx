@@ -121,7 +121,6 @@ function Home({ navigate }) {
               />
 
               <div className="hero-image-overlay"></div>
-
               <div className="hero-image-top-line"></div>
 
               <div className="hero-image-label">
@@ -230,8 +229,61 @@ function Home({ navigate }) {
       </section>
 
       {/* =====================================================
+          UNIVERSITY COURSES GUIDE
+      ====================================================== */}
+      <section className="required-courses-section" id="required-courses">
+        <div className="required-courses-container">
+          <div className="required-courses-card">
+            {/* CONTENT */}
+            <div className="required-courses-content">
+              <span className="required-courses-kicker">
+                SHABIBA ACADEMIC RESOURCES
+              </span>
+
+              <h2>مساقات إجباري جامعة</h2>
+              <p>
+                بوابتك السريعة لمساقات الجامعة ومصادرها الأكاديمية، مع وصول منظم
+                للمواد الدراسية، الملخصات، ونماذج الامتحانات في مكان واحد.
+              </p>
+
+              <div className="required-courses-tags">
+                <span>Academic Resources</span>
+
+                <span>ملخصات ومصادر</span>
+
+                <span>نماذج امتحانات</span>
+              </div>
+
+              <a
+                href="https://shabiba.neocities.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="required-courses-button"
+              >
+                <span>دخول إلى دليل المساقات</span>
+
+                <span>←</span>
+              </a>
+            </div>
+
+            {/* SHABIBA VISUAL */}
+            <div className="required-courses-visual">
+              <img
+                src={shabibaLogo}
+                alt="شعار حركة الشبيبة الطلابية"
+                className="required-courses-shabiba-logo"
+              />
+
+              <span className="required-courses-small">SHABIBA</span>
+
+              <span className="required-courses-small">ACADEMIC RESOURCES</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =====================================================
           SHABIBA WELCOME NOTICE
-          بدون أي تغيير
       ====================================================== */}
       {showWelcomeNotice && (
         <div className="shabiba-home-notice">

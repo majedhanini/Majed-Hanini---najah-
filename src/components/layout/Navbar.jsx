@@ -4,117 +4,136 @@ import "../../styles/navbar.css";
 
 function Navbar({ navigate, currentPage }) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [theme, setTheme] = useState("dark");
+
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem("itai-theme") || "dark";
+  });
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("itai-theme");
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("itai-theme", theme);
+  }, [theme]);
 
-    const initialTheme = savedTheme === "light" ? "light" : "dark";
-
-    setTheme(initialTheme);
-
-    document.documentElement.setAttribute("data-theme", initialTheme);
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = theme === "dark" ? "light" : "dark";
-
-    setTheme(newTheme);
-
-    document.documentElement.setAttribute("data-theme", newTheme);
-
-    localStorage.setItem("itai-theme", newTheme);
+  const handleNavigate = (path) => {
+    setMenuOpen(false);
+    navigate(path);
   };
 
-  const goHome = () => {
-    setMenuOpen(false);
-    navigate("/");
-  };
-
-  const goMajors = () => {
-    setMenuOpen(false);
-    navigate("/majors");
-  };
-
-  const goFaculty = () => {
-    setMenuOpen(false);
-    navigate("/faculty");
-  };
-
-  const goAbout = () => {
+  const scrollToHomeSection = (sectionId) => {
     setMenuOpen(false);
 
-    if (currentPage !== "/") {
-      navigate("/");
-
-      setTimeout(() => {
-        document.getElementById("about-college")?.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }, 100);
+    if (currentPage === "/") {
+      document.getElementById(sectionId)?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
 
       return;
     }
 
-    document.getElementById("about-college")?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
+    navigate("/");
+
+    setTimeout(() => {
+      document.getElementById(sectionId)?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }, 200);
+  };
+
+  const toggleTheme = () => {
+    setTheme((currentTheme) => (currentTheme === "dark" ? "light" : "dark"));
   };
 
   return (
     <header className="site-navbar">
       <div className="navbar-container">
-        {/* LOGO */}
-
+        {/* =====================================================
+            LOGO
+        ====================================================== */}
         <button
           type="button"
-          className="navbar-logo navbar-logo-button"
-          onClick={goHome}
+          className="navbar-logo"
+          onClick={() => handleNavigate("/")}
+          aria-label="العودة إلى الرئيسية"
         >
           <span className="navbar-logo-main">IT & AI</span>
 
-          <span className="navbar-logo-line">|</span>
+          <span className="navbar-logo-divider">|</span>
 
-          <span className="navbar-logo-text">Freshman Hub</span>
+          <span className="navbar-logo-sub">Freshman Hub</span>
         </button>
 
-        {/* NAVIGATION */}
-
-        <nav className={`navbar-links ${menuOpen ? "open" : ""}`}>
+        {/* =====================================================
+            NAVIGATION
+        ====================================================== */}
+        <nav className={`navbar-links ${menuOpen ? "navbar-links-open" : ""}`}>
+          {/* الرئيسية */}
           <button
             type="button"
-            className={currentPage === "/" ? "active" : ""}
-            onClick={goHome}
+            className={`navbar-link ${currentPage === "/" ? "active" : ""}`}
+            onClick={() => handleNavigate("/")}
           >
             الرئيسية
           </button>
 
+          {/* التخصصات */}
           <button
             type="button"
-            className={currentPage.startsWith("/majors") ? "active" : ""}
-            onClick={goMajors}
+            className={`navbar-link ${
+              currentPage?.startsWith("/majors") ? "active" : ""
+            }`}
+            onClick={() => handleNavigate("/majors")}
           >
             التخصصات
           </button>
 
+          {/* دليل الكلية */}
           <button
             type="button"
-            className={currentPage === "/faculty" ? "active" : ""}
-            onClick={goFaculty}
+            className={`navbar-link ${
+              currentPage === "/faculty" ? "active" : ""
+            }`}
+            onClick={() => handleNavigate("/faculty")}
           >
             دليل الكلية
           </button>
 
-          <button type="button" onClick={goAbout}>
+          {/* مساقات اجباري الجامعة */}
+          <button
+            type="button"
+            className="navbar-link"
+            onClick={() => scrollToHomeSection("required-courses")}
+          >
+            مساقات اجباري الجامعة
+          </button>
+
+          {/* حاسبة المعدل */}
+          <button
+            type="button"
+            className={`navbar-link ${
+              currentPage === "/gpa-calculator" ? "active" : ""
+            }`}
+            onClick={() => handleNavigate("/gpa-calculator")}
+          >
+            حاسبة المعدل
+          </button>
+
+          {/* عن الكلية */}
+          <button
+            type="button"
+            className="navbar-link"
+            onClick={() => scrollToHomeSection("about-college")}
+          >
             عن الكلية
           </button>
         </nav>
 
-        {/* ACTIONS */}
-
+        {/* =====================================================
+            RIGHT SIDE
+        ====================================================== */}
         <div className="navbar-actions">
+          {/* DARK / LIGHT MODE */}
           <button
             type="button"
             className="navbar-theme-button"
@@ -124,16 +143,19 @@ function Navbar({ navigate, currentPage }) {
             }
             title={theme === "dark" ? "Light Mode" : "Dark Mode"}
           >
-            <span className="theme-icon">{theme === "dark" ? "☀" : "☾"}</span>
+            {theme === "dark" ? "☀" : "☾"}
           </button>
 
-          <div className="navbar-year">2026 — 2027</div>
+          {/* YEAR */}
+          <span className="navbar-year">2026 — 2027</span>
 
+          {/* MOBILE MENU */}
           <button
             type="button"
             className={`navbar-menu-button ${menuOpen ? "open" : ""}`}
-            onClick={() => setMenuOpen(!menuOpen)}
+            onClick={() => setMenuOpen((current) => !current)}
             aria-label="فتح القائمة"
+            aria-expanded={menuOpen}
           >
             <span></span>
             <span></span>

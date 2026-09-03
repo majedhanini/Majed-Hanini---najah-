@@ -211,6 +211,9 @@
 }
 
 
+
+
+
 .hero-college {
   display: block;
 
@@ -338,6 +341,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  flex-wrap: wrap;
 
   gap: 12px;
 
@@ -1399,6 +1403,7 @@
 
 @media (max-width: 768px) {
 
+
   .hero-container {
     display: flex;
     flex-direction: column;
@@ -1958,6 +1963,9 @@
     0 8px 26px rgba(95, 80, 45, 0.055);
 }
 
+
+
+
 [data-theme="light"] .hero-college {
   color: var(--cyan);
 }
@@ -2185,211 +2193,422 @@
   }
 }
 /* =========================================================
-   SHABIBA HOME NOTICE
+   SHABIBA ULTRA LUXURY NOTICE
 ========================================================= */
 
 .shabiba-home-notice {
   position: fixed;
-  right: 26px;
-  bottom: 26px;
-
+  right: 30px;
+  bottom: 30px;
   z-index: 999;
 
-  width: min(420px, calc(100vw - 36px));
+  width: min(455px, calc(100vw - 60px));
+  padding: 20px 22px 19px;
 
-  padding: 18px;
-
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 16px;
 
   direction: rtl;
-
-  border: 1px solid
-    color-mix(
-      in srgb,
-      var(--cyan) 16%,
-      var(--border)
-    );
-
-  border-radius: 18px;
-
-  background:
-    color-mix(
-      in srgb,
-      var(--bg-main) 88%,
-      transparent
-    );
-
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-
-  box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.22),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
-
   overflow: hidden;
 
+  border: 1px solid transparent;
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(17, 20, 26, 0.94),
+      rgba(12, 15, 20, 0.88)
+    ) padding-box,
+    linear-gradient(
+      135deg,
+      rgba(255, 230, 152, 0.58),
+      rgba(212, 175, 55, 0.12) 34%,
+      rgba(255, 255, 255, 0.05) 62%,
+      rgba(212, 175, 55, 0.34)
+    ) border-box;
+
+  backdrop-filter: blur(30px) saturate(145%);
+  -webkit-backdrop-filter: blur(30px) saturate(145%);
+
+  box-shadow:
+    0 28px 90px rgba(0, 0, 0, 0.44),
+    0 10px 28px rgba(0, 0, 0, 0.22),
+    0 0 0 1px rgba(255, 255, 255, 0.018) inset,
+    0 1px 0 rgba(255, 255, 255, 0.06) inset;
+
+  isolation: isolate;
+
   animation:
-    shabiba-notice-in 0.55s
-    cubic-bezier(0.22, 1, 0.36, 1);
+    shabibaLuxuryIn
+    0.72s
+    cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 
-.shabiba-home-notice-glow {
+/* champagne light streak */
+.shabiba-home-notice::before {
+  content: "";
+
   position: absolute;
+  inset: -2px;
 
-  width: 150px;
-  height: 150px;
+  z-index: -1;
 
-  right: -70px;
-  top: -90px;
-
-  border-radius: 50%;
-
-  background: var(--cyan);
-
-  opacity: 0.08;
-
-  filter: blur(45px);
+  background:
+    radial-gradient(
+      circle at 88% 12%,
+      rgba(240, 199, 90, 0.19),
+      transparent 28%
+    ),
+    linear-gradient(
+      118deg,
+      transparent 5%,
+      rgba(255, 255, 255, 0.02) 34%,
+      rgba(255, 229, 157, 0.085) 47%,
+      rgba(255, 255, 255, 0.015) 58%,
+      transparent 72%
+    );
 
   pointer-events: none;
 }
 
 
+/* subtle inner frame */
+.shabiba-home-notice::after {
+  content: "";
+
+  position: absolute;
+  inset: 8px;
+
+  border: 1px solid rgba(255, 255, 255, 0.022);
+  border-radius: 17px;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   NOTICE LOGO
+========================================================= */
+
 .shabiba-home-notice-icon {
   position: relative;
-  z-index: 2;
-
-  width: 44px;
-  height: 44px;
+  z-index: 3;
 
   flex-shrink: 0;
+
+  width: 64px;
+  height: 64px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  border: 1px solid
-    color-mix(
-      in srgb,
-      var(--cyan) 20%,
-      transparent
-    );
+  padding: 9px;
 
-  border-radius: 13px;
+  border-radius: 19px;
 
   background:
-    color-mix(
-      in srgb,
-      var(--cyan) 7%,
-      transparent
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.055),
+      rgba(255, 255, 255, 0.012)
     );
 
-  color: var(--cyan);
+  border: 1px solid rgba(222, 185, 74, 0.22);
 
-  font-size: 16px;
+  box-shadow:
+    0 16px 32px rgba(0, 0, 0, 0.23),
+    0 0 26px rgba(212, 175, 55, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+
+  transform: translateZ(0);
 }
 
 
+/* outer luxury ring */
+.shabiba-home-notice-icon::before {
+  content: "";
+
+  position: absolute;
+  inset: -5px;
+
+  border-radius: 23px;
+
+  border: 1px solid rgba(212, 175, 55, 0.09);
+
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.015) inset;
+
+  pointer-events: none;
+}
+
+
+/* tiny live status jewel */
+.shabiba-home-notice-icon::after {
+  content: "";
+
+  position: absolute;
+  left: -3px;
+  bottom: 4px;
+
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: #dfbf59;
+
+  box-shadow:
+    0 0 0 4px rgba(13, 17, 23, 0.9),
+    0 0 14px rgba(223, 191, 89, 0.5);
+}
+
+
+.shabiba-home-notice-logo {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+  object-fit: contain;
+
+  filter:
+    drop-shadow(0 8px 16px rgba(212, 175, 55, 0.16));
+}
+
+
+/* =========================================================
+   NOTICE CONTENT
+========================================================= */
+
 .shabiba-home-notice-content {
   position: relative;
-  z-index: 2;
+  z-index: 3;
 
-  flex: 1;
+  min-width: 0;
 
   text-align: right;
 }
 
 
 .shabiba-home-notice-label {
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
 
-  margin-bottom: 4px;
+  margin-bottom: 7px;
+  padding: 4px 8px 4px 9px;
+
+  border-radius: 999px;
 
   direction: ltr;
-  text-align: right;
 
   font-family: "Inter", sans-serif;
+  font-size: 6.5px;
+  font-weight: 800;
+  letter-spacing: 1.65px;
 
-  font-size: 7px;
-  font-weight: 900;
+  color: #dfbf59;
 
-  letter-spacing: 1.5px;
+  background: rgba(212, 175, 55, 0.055);
 
-  color: var(--cyan);
+  border: 1px solid rgba(212, 175, 55, 0.11);
+}
+
+
+.shabiba-home-notice-label::before {
+  content: "";
+
+  width: 4px;
+  height: 4px;
+
+  border-radius: 50%;
+
+  background: currentColor;
+
+  box-shadow: 0 0 8px currentColor;
+
+  opacity: 0.9;
 }
 
 
 .shabiba-home-notice-content h3 {
-  margin: 0 0 7px;
+  margin: 0 0 6px;
 
   font-family: "Tajawal", sans-serif;
 
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 900;
+  line-height: 1.18;
 
-  color: var(--text-main);
+  letter-spacing: -0.15px;
+
+  color: #f7f4ea;
+
+  text-shadow:
+    0 1px 18px rgba(255, 255, 255, 0.025);
 }
 
 
 .shabiba-home-notice-content p {
   margin: 0;
 
+  max-width: 330px;
+
   font-family: "Tajawal", sans-serif;
 
-  font-size: 12px;
-  font-weight: 500;
+  font-size: 10.5px;
+  font-weight: 400;
+  line-height: 1.75;
 
-  line-height: 1.8;
-
-  color: var(--text-secondary);
+  color: rgba(226, 220, 205, 0.74);
 }
 
 
 .shabiba-home-notice-college {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 7px;
 
-  margin-top: 8px;
+  margin-top: 9px;
 
   font-family: "Tajawal", sans-serif;
+  font-size: 7.7px;
+  font-weight: 600;
 
-  font-size: 10px;
-  font-weight: 700;
+  color: rgba(198, 190, 171, 0.62);
+}
 
-  color: var(--muted-text);
+
+.shabiba-home-notice-college::before {
+  content: "";
+
+  width: 18px;
+  height: 1px;
+
+  flex: 0 0 auto;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(212, 175, 55, 0.6),
+      transparent
+    );
 }
 
 
 /* =========================================================
-   TIMER
+   AMBIENT GLOW
+========================================================= */
+
+.shabiba-home-notice-glow {
+  position: absolute;
+
+  width: 240px;
+  height: 240px;
+
+  right: -135px;
+  top: -150px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(212, 175, 55, 0.24),
+      rgba(212, 175, 55, 0.05) 42%,
+      transparent 72%
+    );
+
+  filter: blur(22px);
+
+  opacity: 0.68;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   TIMER / PROGRESS
 ========================================================= */
 
 .shabiba-home-notice-timer {
   position: absolute;
 
-  right: 0;
+  right: 22px;
+  left: 22px;
   bottom: 0;
 
-  width: 100%;
   height: 2px;
+
+  overflow: hidden;
+
+  border-radius: 20px 20px 0 0;
+
+  background: rgba(212, 175, 55, 0.05);
+}
+
+
+.shabiba-home-notice-timer::after {
+  content: "";
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  transform-origin: right;
 
   background:
     linear-gradient(
       90deg,
-      var(--primary),
-      var(--cyan)
+      rgba(212, 175, 55, 0),
+      rgba(245, 211, 111, 0.55) 35%,
+      #d4af37
     );
 
-  transform-origin: right center;
+  box-shadow:
+    0 0 12px rgba(212, 175, 55, 0.32);
 
   animation:
-    shabiba-notice-timer
-    10s linear forwards;
+    shabibaLuxuryTimer
+    10s
+    linear
+    forwards;
 }
 
 
-@keyframes shabiba-notice-timer {
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes shabibaLuxuryIn {
+  0% {
+    opacity: 0;
+    transform:
+      translateY(26px)
+      scale(0.965);
+    filter: blur(8px);
+  }
+
+  65% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+    transform:
+      translateY(0)
+      scale(1);
+    filter: blur(0);
+  }
+}
+
+
+@keyframes shabibaLuxuryTimer {
   from {
     transform: scaleX(1);
   }
@@ -2401,60 +2620,140 @@
 
 
 /* =========================================================
-   ENTRANCE
-========================================================= */
-
-@keyframes shabiba-notice-in {
-  from {
-    opacity: 0;
-
-    transform:
-      translateY(20px)
-      scale(0.97);
-  }
-
-  to {
-    opacity: 1;
-
-    transform:
-      translateY(0)
-      scale(1);
-  }
-}
-
-
-/* =========================================================
    LIGHT MODE
 ========================================================= */
 
 [data-theme="light"] .shabiba-home-notice {
-  border-color:
-    rgba(184, 138, 29, 0.11);
-
   background:
-    rgba(255, 255, 255, 0.9);
+    linear-gradient(
+      145deg,
+      rgba(255, 253, 248, 0.97),
+      rgba(248, 243, 232, 0.93)
+    ) padding-box,
+    linear-gradient(
+      135deg,
+      rgba(181, 138, 29, 0.38),
+      rgba(181, 138, 29, 0.08) 38%,
+      rgba(255, 255, 255, 0.8) 65%,
+      rgba(181, 138, 29, 0.22)
+    ) border-box;
 
   box-shadow:
-    0 20px 55px
-    rgba(57, 70, 108, 0.13);
+    0 26px 70px rgba(99, 78, 31, 0.12),
+    0 8px 22px rgba(99, 78, 31, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 
-[data-theme="light"]
-.shabiba-home-notice-content h3 {
-  color: var(--text-main);
+[data-theme="light"] .shabiba-home-notice::after {
+  border-color: rgba(122, 94, 27, 0.035);
 }
 
 
-[data-theme="light"]
-.shabiba-home-notice-content p {
-  color: var(--text-secondary);
+[data-theme="light"] .shabiba-home-notice-icon {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.92),
+      rgba(246, 239, 224, 0.82)
+    );
+
+  border-color: rgba(181, 138, 29, 0.18);
+
+  box-shadow:
+    0 12px 26px rgba(116, 89, 31, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
 }
 
 
-[data-theme="light"]
-.shabiba-home-notice-college {
-  color: var(--muted-text);
+[data-theme="light"] .shabiba-home-notice-icon::after {
+  box-shadow:
+    0 0 0 4px rgba(255, 253, 248, 0.96),
+    0 0 12px rgba(181, 138, 29, 0.26);
+}
+
+
+[data-theme="light"] .shabiba-home-notice-content h3 {
+  color: #26231d;
+}
+
+
+[data-theme="light"] .shabiba-home-notice-content p {
+  color: rgba(65, 59, 49, 0.72);
+}
+
+
+[data-theme="light"] .shabiba-home-notice-college {
+  color: rgba(88, 79, 64, 0.62);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+  .shabiba-home-notice {
+    right: 14px;
+    bottom: 14px;
+
+    width: min(395px, calc(100vw - 28px));
+
+    padding: 15px 16px 14px;
+
+    gap: 12px;
+
+    border-radius: 19px;
+  }
+
+
+  .shabiba-home-notice::after {
+    inset: 6px;
+    border-radius: 14px;
+  }
+
+
+  .shabiba-home-notice-icon {
+    width: 50px;
+    height: 50px;
+
+    padding: 7px;
+
+    border-radius: 15px;
+  }
+
+
+  .shabiba-home-notice-icon::before {
+    inset: -4px;
+    border-radius: 18px;
+  }
+
+
+  .shabiba-home-notice-content h3 {
+    font-size: 14px;
+  }
+
+
+  .shabiba-home-notice-content p {
+    font-size: 9.5px;
+    line-height: 1.65;
+  }
+
+
+  .shabiba-home-notice-college {
+    margin-top: 6px;
+    font-size: 7px;
+  }
+
+
+  .shabiba-home-notice-label {
+    margin-bottom: 5px;
+
+    padding: 3px 7px;
+
+    font-size: 5.7px;
+    letter-spacing: 1.3px;
+  }
 }
 
 
@@ -2462,161 +2761,425 @@
    MOBILE
 ========================================================= */
 
-@media (max-width: 650px) {
+@media (max-width: 480px) {
   .shabiba-home-notice {
-    right: 16px;
-    bottom: 16px;
+    right: 9px;
+    bottom: 9px;
 
-    width: calc(100vw - 32px);
+    width: calc(100vw - 18px);
 
-    padding: 15px;
+    grid-template-columns: auto minmax(0, 1fr);
 
-    gap: 11px;
+    padding: 12px 12px 11px;
+
+    gap: 10px;
 
     border-radius: 16px;
-  }
 
-
-  .shabiba-home-notice-icon {
-    width: 39px;
-    height: 39px;
-
-    border-radius: 11px;
-
-    font-size: 14px;
-  }
-
-
-  .shabiba-home-notice-content h3 {
-    font-size: 14px;
-  }
-
-
-  .shabiba-home-notice-content p {
-    font-size: 11px;
-
-    line-height: 1.7;
-  }
-
-
-  .shabiba-home-notice-college {
-    font-size: 9px;
-  }
-}
-
-.shabiba-home-notice-logo {
-  width: 100%;
-  height: 100%;
-
-  object-fit: contain;
-
-  display: block;
-}
-@media (max-width: 650px) {
-  .shabiba-home-notice {
-    right: 12px;
-    bottom: 12px;
-
-    width: calc(100vw - 24px);
-    max-width: 360px;
-
-    padding: 12px 13px;
-
-    gap: 9px;
-
-    border-radius: 14px;
-
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(24px) saturate(135%);
+    -webkit-backdrop-filter: blur(24px) saturate(135%);
 
     box-shadow:
-      0 14px 38px rgba(0, 0, 0, 0.18),
-      inset 0 1px 0 rgba(255, 255, 255, 0.035);
+      0 18px 48px rgba(0, 0, 0, 0.32),
+      0 6px 18px rgba(0, 0, 0, 0.16),
+      inset 0 1px 0 rgba(255, 255, 255, 0.04);
   }
+
+
+  .shabiba-home-notice::after {
+    display: none;
+  }
+
 
   .shabiba-home-notice-icon {
-    width: 34px;
-    height: 34px;
+    width: 42px;
+    height: 42px;
 
-    border-radius: 10px;
-  }
-
-  .shabiba-home-notice-logo {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-
-  .shabiba-home-notice-label {
-    margin-bottom: 2px;
-
-    font-size: 6px;
-    letter-spacing: 1.1px;
-  }
-
-  .shabiba-home-notice-content h3 {
-    margin-bottom: 4px;
-
-    font-size: 13px;
-  }
-
-  .shabiba-home-notice-content p {
-    font-size: 10px;
-    line-height: 1.6;
-  }
-
-  .shabiba-home-notice-college {
-    margin-top: 5px;
-
-    font-size: 8px;
-  }
-
-  .shabiba-home-notice-timer {
-    height: 1.5px;
-  }
-
-  .shabiba-home-notice-glow {
-    width: 110px;
-    height: 110px;
-
-    right: -55px;
-    top: -65px;
-
-    filter: blur(38px);
-
-    opacity: 0.06;
-  }
-}
-
-@media (max-width: 420px) {
-  .shabiba-home-notice {
-    right: 10px;
-    bottom: 10px;
-
-    width: calc(100vw - 20px);
-
-    padding: 10px 11px;
-
-    gap: 8px;
+    padding: 6px;
 
     border-radius: 13px;
   }
 
-  .shabiba-home-notice-icon {
-    width: 31px;
-    height: 31px;
+
+  .shabiba-home-notice-icon::before {
+    inset: -3px;
+
+    border-radius: 15px;
   }
+
+
+  .shabiba-home-notice-icon::after {
+    width: 6px;
+    height: 6px;
+
+    left: -2px;
+    bottom: 3px;
+
+    box-shadow:
+      0 0 0 3px rgba(13, 17, 23, 0.92),
+      0 0 10px rgba(223, 191, 89, 0.38);
+  }
+
 
   .shabiba-home-notice-content h3 {
-    font-size: 12px;
+    margin-bottom: 3px;
+
+    font-size: 12.5px;
   }
 
+
   .shabiba-home-notice-content p {
-    font-size: 9.5px;
+    max-width: none;
+
+    font-size: 8.8px;
+
     line-height: 1.55;
   }
 
+
   .shabiba-home-notice-college {
-    font-size: 7.5px;
+    margin-top: 5px;
+
+    gap: 5px;
+
+    font-size: 6.4px;
+  }
+
+
+  .shabiba-home-notice-college::before {
+    width: 12px;
+  }
+
+
+  .shabiba-home-notice-label {
+    margin-bottom: 4px;
+
+    padding: 2.5px 6px;
+
+    font-size: 5.2px;
+
+    letter-spacing: 1.05px;
+  }
+
+
+  .shabiba-home-notice-timer {
+    right: 12px;
+    left: 12px;
+
+    height: 1.5px;
+  }
+
+
+  .shabiba-home-notice-glow {
+    width: 150px;
+    height: 150px;
+
+    right: -88px;
+    top: -92px;
+
+    opacity: 0.52;
+
+    filter: blur(18px);
   }
 }
+
+
+/* =========================================================
+   REQUIRED UNIVERSITY COURSES
+========================================================= */
+
+.required-courses-section {
+  position: relative;
+  z-index: 2;
+  padding: 40px 6% 120px;
+  background:
+    linear-gradient(
+      180deg,
+      var(--bg-main) 0%,
+      var(--bg-secondary) 100%
+    );
+}
+
+.required-courses-container {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+.required-courses-card {
+  position: relative;
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1.4fr)
+    minmax(240px, 0.6fr);
+  align-items: center;
+  gap: 40px;
+  padding: 42px 46px;
+  border:
+    1px solid
+    color-mix(
+      in srgb,
+      var(--primary) 18%,
+      var(--border)
+    );
+  border-radius: 28px;
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(
+        in srgb,
+        var(--primary) 6%,
+        transparent
+      ),
+      var(--card-bg)
+    );
+  box-shadow:
+    0 28px 70px rgba(0, 0, 0, 0.16);
+  overflow: hidden;
+}
+
+.required-courses-card::before {
+  content: "";
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  top: -180px;
+  right: -120px;
+  border-radius: 50%;
+  background: var(--primary);
+  opacity: 0.1;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.required-courses-content {
+  position: relative;
+  z-index: 2;
+  direction: rtl;
+  text-align: right;
+}
+
+.required-courses-kicker {
+  display: block;
+  margin-bottom: 10px;
+  direction: ltr;
+  text-align: right;
+  font-family: "Inter", sans-serif;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 1.7px;
+  color: var(--cyan);
+}
+
+.required-courses-content h2 {
+  margin: 0 0 14px;
+  font-family: "Tajawal", sans-serif;
+  font-size: clamp(30px, 4vw, 44px);
+  font-weight: 900;
+  color: var(--text-main);
+}
+
+.required-courses-content p {
+  max-width: 700px;
+  margin: 0 0 18px;
+  font-family: "Tajawal", sans-serif;
+  font-size: 14px;
+  line-height: 2;
+  color: var(--text-secondary);
+}
+
+.required-courses-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.required-courses-tags span {
+  padding: 7px 11px;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  background: var(--glass);
+  font-family: "Tajawal", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.required-courses-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 18px;
+  border:
+    1px solid
+    color-mix(
+      in srgb,
+      var(--primary) 22%,
+      transparent
+    );
+  border-radius: 13px;
+  background:
+    linear-gradient(
+      135deg,
+      var(--primary),
+      var(--primary-2)
+    );
+  font-family: "Tajawal", sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  color: #ffffff;
+  text-decoration: none;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.required-courses-button:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 14px 34px
+    color-mix(
+      in srgb,
+      var(--primary) 20%,
+      transparent
+    );
+}
+
+.required-courses-visual {
+  position: relative;
+  z-index: 2;
+  min-height: 190px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border:
+    1px solid
+    color-mix(
+      in srgb,
+      var(--primary) 14%,
+      var(--border)
+    );
+  border-radius: 22px;
+  background:
+    color-mix(
+      in srgb,
+      var(--primary) 5%,
+      var(--glass)
+    );
+}
+
+.required-courses-shabiba-logo {
+  width: 105px;
+  height: 105px;
+
+  object-fit: contain;
+
+  display: block;
+
+  filter:
+    drop-shadow(
+      0 12px 28px
+      color-mix(
+        in srgb,
+        var(--primary) 16%,
+        transparent
+      )
+    );
+}
+
+.required-courses-small {
+  font-family: "Inter", sans-serif;
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 1.4px;
+  color: var(--cyan);
+}
+
+[data-theme="light"] .required-courses-card {
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(
+        in srgb,
+        var(--primary) 5%,
+        var(--card-bg)
+      ),
+      var(--card-bg-hover)
+    );
+  box-shadow:
+    0 22px 55px rgba(90, 75, 45, 0.08);
+}
+
+@media (max-width: 850px) {
+  .required-courses-section {
+    padding: 35px 18px 90px;
+  }
+
+  .required-courses-card {
+    grid-template-columns: 1fr;
+    padding: 30px 24px;
+    gap: 26px;
+  }
+
+  .required-courses-visual {
+    min-height: 135px;
+  }
+
+  .required-courses-content {
+    text-align: center;
+  }
+
+  .required-courses-kicker {
+    text-align: center;
+  }
+
+  .required-courses-content p {
+    margin: 0 auto 18px;
+  }
+
+  .required-courses-tags {
+    justify-content: center;
+  }
+
+  .required-courses-button {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .required-courses-section {
+    padding: 30px 16px 75px;
+  }
+
+  .required-courses-card {
+    padding: 25px 18px;
+    border-radius: 22px;
+  }
+
+  .required-courses-content h2 {
+    font-size: 28px;
+  }
+
+  .required-courses-content p {
+    font-size: 12.5px;
+    line-height: 1.9;
+  }
+
+  .required-courses-visual {
+    min-height: 115px;
+    border-radius: 18px;
+  }
+
+  .required-courses-shabiba-logo {
+    width: 82px;
+    height: 82px;
+  }
+
+  .required-courses-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+

@@ -1,0 +1,590 @@
+/* =========================================================
+   GPA CALCULATOR
+========================================================= */
+
+.gpa-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background: var(--bg-main);
+  color: var(--text-main);
+}
+
+.gpa-background {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.gpa-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 70px 70px;
+  mask-image: linear-gradient(to bottom, black, transparent 95%);
+}
+
+.gpa-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(150px);
+}
+
+.gpa-glow-one {
+  width: 650px;
+  height: 650px;
+  top: -320px;
+  right: -210px;
+  background: var(--primary);
+  opacity: 0.14;
+}
+
+.gpa-glow-two {
+  width: 520px;
+  height: 520px;
+  left: -300px;
+  bottom: -230px;
+  background: var(--cyan);
+  opacity: 0.06;
+}
+
+.gpa-code {
+  position: absolute;
+  font-family: "Inter", sans-serif;
+  font-weight: 900;
+  color: color-mix(in srgb, var(--primary) 6%, transparent);
+  user-select: none;
+}
+
+.gpa-code-one {
+  top: 16%;
+  right: 5%;
+  font-size: 90px;
+}
+
+.gpa-code-two {
+  left: 5%;
+  bottom: 10%;
+  font-size: 72px;
+}
+
+.gpa-section {
+  position: relative;
+  z-index: 2;
+  padding: 75px 6% 120px;
+}
+
+.gpa-container {
+  width: min(1250px, 100%);
+  margin: 0 auto;
+}
+
+.gpa-back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 52px;
+  padding: 10px 15px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--glass);
+  font-family: "Tajawal", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.gpa-back-button:hover {
+  color: var(--primary);
+  border-color: color-mix(in srgb, var(--primary) 24%, transparent);
+  transform: translateX(4px);
+}
+
+.gpa-heading {
+  max-width: 800px;
+  margin: 0 auto 50px;
+  text-align: center;
+  direction: rtl;
+}
+
+.gpa-kicker {
+  display: block;
+  margin-bottom: 10px;
+  direction: ltr;
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: var(--cyan);
+}
+
+.gpa-heading h1 {
+  margin: 0 0 16px;
+  font-family: "Tajawal", sans-serif;
+  font-size: clamp(44px, 6vw, 68px);
+  font-weight: 900;
+  line-height: 1.05;
+}
+
+.gpa-heading p {
+  max-width: 640px;
+  margin: 0 auto;
+  font-family: "Tajawal", sans-serif;
+  font-size: 15px;
+  line-height: 2;
+  color: var(--text-secondary);
+}
+
+.gpa-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(300px, 0.45fr);
+  align-items: start;
+  gap: 20px;
+}
+
+.gpa-calculator-card,
+.gpa-result-card {
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: var(--card-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 24px 65px rgba(0, 0, 0, 0.14);
+}
+
+.gpa-calculator-card {
+  padding: 26px;
+}
+
+.gpa-card-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 25px;
+  direction: rtl;
+}
+
+.gpa-card-heading span {
+  display: block;
+  direction: ltr;
+  text-align: right;
+  font-family: "Inter", sans-serif;
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  color: var(--cyan);
+}
+
+.gpa-card-heading h2 {
+  margin: 3px 0 0;
+  font-family: "Tajawal", sans-serif;
+  font-size: 25px;
+  font-weight: 900;
+}
+
+.gpa-add-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 15px;
+  border: 1px solid color-mix(in srgb, var(--primary) 22%, transparent);
+  border-radius: 11px;
+  background: color-mix(in srgb, var(--primary) 7%, transparent);
+  font-family: "Tajawal", sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--primary);
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.gpa-add-button:hover {
+  transform: translateY(-2px);
+  background: color-mix(in srgb, var(--primary) 12%, transparent);
+}
+
+.gpa-course-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.gpa-course-row {
+  display: grid;
+  grid-template-columns: 38px minmax(190px, 1fr) 100px 135px 38px;
+  align-items: end;
+  gap: 10px;
+  padding: 14px;
+  direction: rtl;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  background: var(--glass);
+}
+
+.gpa-course-number {
+  align-self: center;
+  direction: ltr;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-size: 9px;
+  font-weight: 900;
+  color: var(--muted-text);
+}
+
+.gpa-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.gpa-field label {
+  font-family: "Tajawal", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.gpa-field input,
+.gpa-field select {
+  width: 100%;
+  height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  outline: none;
+  background: color-mix(in srgb, var(--bg-main) 70%, transparent);
+  font-family: "Tajawal", sans-serif;
+  font-size: 12px;
+  color: var(--text-main);
+  transition: 0.2s ease;
+}
+
+.gpa-field input:focus,
+.gpa-field select:focus {
+  border-color: color-mix(in srgb, var(--primary) 38%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 8%, transparent);
+}
+
+.gpa-field select {
+  cursor: pointer;
+}
+
+.gpa-remove-button {
+  width: 38px;
+  height: 38px;
+  align-self: center;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: transparent;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  line-height: 1;
+  color: var(--muted-text);
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.gpa-remove-button:hover:not(:disabled) {
+  color: #e06c75;
+  border-color: rgba(224, 108, 117, 0.24);
+  background: rgba(224, 108, 117, 0.06);
+}
+
+.gpa-remove-button:disabled {
+  opacity: 0.28;
+  cursor: not-allowed;
+}
+
+.gpa-card-footer {
+  margin-top: 20px;
+  padding-top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  direction: rtl;
+  border-top: 1px solid var(--border);
+}
+
+.gpa-card-footer > span {
+  font-family: "Tajawal", sans-serif;
+  font-size: 10px;
+  color: var(--muted-text);
+}
+
+.gpa-reset-button {
+  padding: 9px 13px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: transparent;
+  font-family: "Tajawal", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.gpa-result-card {
+  position: sticky;
+  top: 100px;
+  padding: 28px;
+  overflow: hidden;
+}
+
+.gpa-result-card::before {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 220px;
+  top: -170px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: var(--primary);
+  opacity: 0.12;
+  filter: blur(65px);
+  pointer-events: none;
+}
+
+.gpa-result-top {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  direction: ltr;
+}
+
+.gpa-result-label {
+  font-family: "Inter", sans-serif;
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 1.7px;
+  color: var(--cyan);
+}
+
+.gpa-live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--primary) 10%, transparent);
+}
+
+.gpa-result-value {
+  position: relative;
+  z-index: 2;
+  margin: 28px 0 6px;
+  direction: ltr;
+  font-family: "Inter", sans-serif;
+  font-size: clamp(54px, 7vw, 82px);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -4px;
+  color: var(--text-main);
+}
+
+.gpa-result-value small {
+  margin-left: 5px;
+  font-size: 14px;
+  letter-spacing: 0;
+  color: var(--muted-text);
+}
+
+.gpa-standing {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  font-family: "Tajawal", sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.gpa-result-divider {
+  margin: 26px 0 22px;
+  height: 1px;
+  background: var(--border);
+}
+
+.gpa-result-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  direction: rtl;
+}
+
+.gpa-result-stats div {
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: var(--glass);
+}
+
+.gpa-result-stats span {
+  display: block;
+  margin-bottom: 5px;
+  font-family: "Tajawal", sans-serif;
+  font-size: 9px;
+  color: var(--muted-text);
+}
+
+.gpa-result-stats strong {
+  direction: ltr;
+  font-family: "Inter", sans-serif;
+  font-size: 17px;
+  color: var(--text-main);
+}
+
+.gpa-scale-note {
+  margin-top: 20px;
+  padding: 14px;
+  direction: rtl;
+  border: 1px solid color-mix(in srgb, var(--primary) 13%, var(--border));
+  border-radius: 13px;
+  background: color-mix(in srgb, var(--primary) 4%, transparent);
+}
+
+.gpa-scale-note span {
+  display: block;
+  margin-bottom: 5px;
+  font-family: "Tajawal", sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.gpa-scale-note p {
+  margin: 0;
+  font-family: "Tajawal", sans-serif;
+  font-size: 10px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+[data-theme="light"] .gpa-calculator-card,
+[data-theme="light"] .gpa-result-card {
+  background:
+    linear-gradient(
+      145deg,
+      var(--card-bg),
+      color-mix(in srgb, var(--bg-secondary) 35%, var(--card-bg))
+    );
+  box-shadow: 0 18px 50px rgba(90, 75, 45, 0.08);
+}
+
+[data-theme="light"] .gpa-field input,
+[data-theme="light"] .gpa-field select {
+  background: rgba(255, 255, 255, 0.72);
+}
+
+@media (max-width: 1000px) {
+  .gpa-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .gpa-result-card {
+    position: relative;
+    top: auto;
+  }
+
+  .gpa-course-row {
+    grid-template-columns: 38px minmax(170px, 1fr) 90px 125px 38px;
+  }
+}
+
+@media (max-width: 700px) {
+  .gpa-section {
+    padding: 55px 16px 90px;
+  }
+
+  .gpa-heading {
+    margin-bottom: 36px;
+  }
+
+  .gpa-heading h1 {
+    font-size: 42px;
+  }
+
+  .gpa-heading p {
+    font-size: 13px;
+  }
+
+  .gpa-calculator-card,
+  .gpa-result-card {
+    padding: 19px;
+    border-radius: 20px;
+  }
+
+  .gpa-card-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .gpa-add-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .gpa-course-row {
+    grid-template-columns: 32px 1fr 38px;
+    align-items: end;
+    gap: 9px;
+  }
+
+  .gpa-course-number {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .gpa-field-name {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .gpa-remove-button {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  .gpa-course-row .gpa-field:not(.gpa-field-name) {
+    grid-row: 2;
+  }
+
+  .gpa-course-row .gpa-field:nth-of-type(2) {
+    grid-column: 1 / 2;
+  }
+
+  .gpa-course-row .gpa-field:nth-of-type(3) {
+    grid-column: 2 / 4;
+  }
+
+  .gpa-card-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 420px) {
+  .gpa-course-row {
+    grid-template-columns: 28px 1fr 36px;
+    padding: 12px;
+  }
+
+  .gpa-field input,
+  .gpa-field select {
+    height: 42px;
+    font-size: 11px;
+  }
+
+  .gpa-result-value {
+    font-size: 58px;
+  }
+}
