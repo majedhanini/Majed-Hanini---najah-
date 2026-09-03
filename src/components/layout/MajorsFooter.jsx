@@ -23,7 +23,6 @@ function MajorsFooter() {
 
             <div className="majors-footer-social">
               {/* FACEBOOK PAGE */}
-
               <a
                 href="https://www.facebook.com/share/1DksD9K1Qe/?mibextid=wwXIfr"
                 target="_blank"
@@ -38,7 +37,6 @@ function MajorsFooter() {
               </a>
 
               {/* FACEBOOK GROUP */}
-
               <a
                 href="https://www.facebook.com/share/g/1CPwpVLBqD/?mibextid=wwXIfr"
                 target="_blank"
@@ -53,7 +51,6 @@ function MajorsFooter() {
               </a>
 
               {/* INSTAGRAM */}
-
               <a
                 href="https://www.instagram.com/shabiba.nnu?igsi=MWxkaWU0dTljZHZtYQ=="
                 target="_blank"
@@ -97,7 +94,7 @@ function MajorsFooter() {
             DESIGNED & DEVELOPED BY
           </span>
 
-          <strong> Majed Hanini </strong>
+          <strong className="majors-footer-developer-name">Majed Hanini</strong>
         </div>
       </div>
 

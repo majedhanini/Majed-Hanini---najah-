@@ -423,20 +423,120 @@
 }
 
 
-.majors-footer-developer strong {
+.majors-footer-developer-name {
+  position: relative;
+
+  display: inline-block;
+
+  margin-top: 3px;
+
   font-family:
-    "Tajawal",
+    "Inter",
     sans-serif;
 
-  font-size: 14px;
+  font-size: 16px;
 
-  font-weight: 800;
+  font-weight: 900;
 
-  color:
-    var(--text-main);
+  letter-spacing: 0.4px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #b88a1e 0%,
+      #d4af37 22%,
+      #f6e7a8 50%,
+      #d4af37 78%,
+      #b88a1e 100%
+    );
+
+  background-size: 220% auto;
+
+  -webkit-background-clip: text;
+
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  color: transparent;
+
+  filter:
+    drop-shadow(
+      0 0 9px
+      rgba(212, 175, 55, 0.12)
+    );
 
   transition:
-    color 0.35s ease;
+    transform 0.3s ease,
+    filter 0.3s ease;
+
+  animation:
+    footerDeveloperShimmer
+    4.5s
+    linear
+    infinite;
+}
+
+
+.majors-footer-developer-name::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -5px;
+
+  width: 36%;
+  height: 1px;
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(212, 175, 55, 0.95),
+      rgba(246, 231, 168, 0.45),
+      transparent
+    );
+
+  opacity: 0.85;
+
+  transition:
+    width 0.3s ease,
+    opacity 0.3s ease;
+}
+
+
+.majors-footer-developer:hover
+.majors-footer-developer-name {
+  transform:
+    translateY(-2px);
+
+  filter:
+    drop-shadow(
+      0 0 13px
+      rgba(212, 175, 55, 0.24)
+    );
+}
+
+
+.majors-footer-developer:hover
+.majors-footer-developer-name::after {
+  width: 100%;
+  opacity: 1;
+}
+
+
+@keyframes footerDeveloperShimmer {
+  0% {
+    background-position:
+      0% center;
+  }
+
+  100% {
+    background-position:
+      220% center;
+  }
 }
 
 
@@ -602,7 +702,7 @@
 
 
 [data-theme="light"]
-.majors-footer-developer strong {
+.majors-footer-developer-name {
   color:
     var(--text-main);
 }
@@ -761,7 +861,7 @@
   }
 
 
-  .majors-footer-developer strong {
+  .majors-footer-developer-name {
     font-size: 14px;
   }
 
@@ -772,5 +872,61 @@
     padding-top: 13px;
 
     font-size: 8px;
+  }
+}
+
+/* =========================================================
+   DEVELOPER SIGNATURE ENHANCEMENT
+========================================================= */
+
+.majors-footer-developer {
+  position: relative;
+
+  overflow: hidden;
+}
+
+
+.majors-footer-developer::before {
+  content: "";
+
+  position: absolute;
+
+  width: 110px;
+  height: 70px;
+
+  top: -42px;
+  right: -45px;
+
+  border-radius: 50%;
+
+  background:
+    color-mix(
+      in srgb,
+      var(--primary) 10%,
+      transparent
+    );
+
+  filter:
+    blur(32px);
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+
+.majors-footer-developer:hover::before {
+  opacity: 1;
+
+  transform:
+    translate(-4px, 4px);
+}
+
+
+@media (max-width: 760px) {
+  .majors-footer-developer-name {
+    font-size: 15px;
   }
 }
