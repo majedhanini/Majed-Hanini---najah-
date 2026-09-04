@@ -17,19 +17,27 @@ function App() {
 
   const navigate = (path) => {
     if (window.location.pathname === path) {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      });
+
       return;
     }
 
     window.history.pushState({}, "", path);
     setCurrentPath(path);
-    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   useEffect(() => {
+    // منع المتصفح من تذكر مكان الـ scroll بين الصفحات
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+
     const handlePopState = () => {
       setCurrentPath(window.location.pathname);
-      window.scrollTo({ top: 0 });
     };
 
     window.addEventListener("popstate", handlePopState);
@@ -38,6 +46,18 @@ function App() {
       window.removeEventListener("popstate", handlePopState);
     };
   }, []);
+
+  // مهم جدًا:
+  // بعد تغيير الصفحة ورسمها، ارجع دائمًا إلى أعلى الصفحة
+  useEffect(() => {
+    requestAnimationFrame(() => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "instant",
+      });
+    });
+  }, [currentPath]);
 
   const cleanPath =
     currentPath !== "/" && currentPath.endsWith("/")
