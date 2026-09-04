@@ -26,7 +26,7 @@ function GpaCalculator({ navigate }) {
     grade: "",
   });
 
-  const [courses, setCourses] = useState([createEmptyCourse()]);
+  const [courses, setCourses] = useState([]);
 
   const updateCourse = (id, field, value) => {
     setCourses((current) =>
@@ -49,7 +49,7 @@ function GpaCalculator({ navigate }) {
   };
 
   const resetCourses = () => {
-    setCourses([createEmptyCourse()]);
+    setCourses([]);
   };
 
   const result = useMemo(() => {
