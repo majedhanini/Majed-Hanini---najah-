@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import Navbar from "./components/layout/Navbar";
 import MajorsFooter from "./components/layout/MajorsFooter";
 import Home from "./pages/Home";
@@ -17,26 +17,27 @@ function App() {
 
   const navigate = (path) => {
     if (window.location.pathname === path) {
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: "smooth",
-      });
-
+      window.scrollTo(0, 0);
       return;
     }
+
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
 
     window.history.pushState({}, "", path);
     setCurrentPath(path);
   };
 
   useEffect(() => {
-    // منع المتصفح من تذكر مكان الـ scroll بين الصفحات
     if ("scrollRestoration" in window.history) {
       window.history.scrollRestoration = "manual";
     }
 
     const handlePopState = () => {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
       setCurrentPath(window.location.pathname);
     };
 
@@ -47,16 +48,10 @@ function App() {
     };
   }, []);
 
-  // مهم جدًا:
-  // بعد تغيير الصفحة ورسمها، ارجع دائمًا إلى أعلى الصفحة
-  useEffect(() => {
-    requestAnimationFrame(() => {
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: "instant",
-      });
-    });
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
   }, [currentPath]);
 
   const cleanPath =
@@ -131,9 +126,7 @@ function App() {
   return (
     <>
       <Navbar navigate={navigate} currentPage={cleanPath} />
-
       {page}
-
       <MajorsFooter />
     </>
   );

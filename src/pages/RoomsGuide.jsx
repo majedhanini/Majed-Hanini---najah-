@@ -119,8 +119,24 @@ const auditoriums = [
 
 const examples = ["73100", "81040", "14B4040", "17B1070"];
 
-function normalize(value) {
-  return value.trim().toUpperCase().replace(/\s+/g, "");
+function normalize(value = "") {
+  return String(value).trim().toUpperCase().replace(/\s+/g, "");
+}
+
+function normalizeSearch(value = "") {
+  const arabicDigits = "٠١٢٣٤٥٦٧٨٩";
+  const persianDigits = "۰۱۲۳۴۵۶۷۸۹";
+
+  return String(value)
+    .trim()
+    .toLowerCase()
+    .replace(/[٠-٩]/g, (digit) => String(arabicDigits.indexOf(digit)))
+    .replace(/[۰-۹]/g, (digit) => String(persianDigits.indexOf(digit)))
+    .replace(/[أإآ]/g, "ا")
+    .replace(/ة/g, "ه")
+    .replace(/ى/g, "ي")
+    .replace(/[ًٌٍَُِّْـ]/g, "")
+    .replace(/\s+/g, " ");
 }
 
 function getBuilding(number) {
@@ -191,18 +207,18 @@ function RoomsGuide({ navigate }) {
   const [buildingSearch, setBuildingSearch] = useState("");
 
   const filteredBuildings = useMemo(() => {
-    const query = buildingSearch.trim().toLowerCase();
+    const query = normalizeSearch(buildingSearch);
 
     if (!query) {
       return buildings;
     }
 
     return buildings.filter((building) => {
-      return (
-        building.number.includes(query) ||
-        building.name.toLowerCase().includes(query) ||
-        building.campus.toLowerCase().includes(query)
+      const searchableText = normalizeSearch(
+        `${building.number} ${building.name} ${building.campus}`,
       );
+
+      return searchableText.includes(query);
     });
   }, [buildingSearch]);
 
@@ -482,14 +498,38 @@ function RoomsGuide({ navigate }) {
               <h2>دليل المباني</h2>
             </div>
 
-            <input
-              className="rooms-building-search"
-              type="search"
-              value={buildingSearch}
-              onChange={(event) => setBuildingSearch(event.target.value)}
-              placeholder="ابحث برقم أو اسم المبنى..."
-              aria-label="البحث في المباني"
-            />
+            <div className="rooms-building-search-wrap">
+              <input
+                className="rooms-building-search"
+                type="text"
+                inputMode="search"
+                enterKeyHint="search"
+                autoComplete="off"
+                autoCorrect="off"
+                spellCheck="false"
+                value={buildingSearch}
+                onChange={(event) => setBuildingSearch(event.target.value)}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter") {
+                    event.preventDefault();
+                    event.currentTarget.blur();
+                  }
+                }}
+                placeholder="ابحث برقم أو اسم المبنى..."
+                aria-label="البحث في المباني"
+              />
+
+              {buildingSearch && (
+                <button
+                  type="button"
+                  className="rooms-building-search-clear"
+                  onClick={() => setBuildingSearch("")}
+                  aria-label="مسح البحث"
+                >
+                  ×
+                </button>
+              )}
+            </div>
           </div>
 
           {campusGroups.length > 0 ? (
