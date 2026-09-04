@@ -3583,3 +3583,42 @@
     display: none !important;
   }
 }
+/* =========================================================
+   MOBILE HERO — SOFTER YELLOW GLOW
+========================================================= */
+
+@media (max-width: 480px) {
+  .home-glow {
+    opacity: 0.045 !important;
+    transform: scale(0.72) !important;
+  }
+
+  .hero-image-glow {
+    width: 68% !important;
+    height: 105px !important;
+    opacity: 0.11 !important;
+    filter: none !important;
+  }
+
+  .hero-orbit-one {
+    width: 78% !important;
+    height: 150px !important;
+    opacity: 0.28 !important;
+  }
+
+  .hero-orbit-two {
+    width: 88% !important;
+    height: 175px !important;
+    opacity: 0.16 !important;
+  }
+
+  .hero-visual {
+    min-height: 195px !important;
+    margin-bottom: 4px !important;
+  }
+
+  .hero-image-card {
+    width: calc(100vw - 38px) !important;
+    max-width: 390px !important;
+  }
+}
