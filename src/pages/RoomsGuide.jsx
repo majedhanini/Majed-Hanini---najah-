@@ -127,16 +127,22 @@ function normalizeSearch(value = "") {
   const arabicDigits = "٠١٢٣٤٥٦٧٨٩";
   const persianDigits = "۰۱۲۳۴۵۶۷۸۹";
 
-  return String(value)
-    .trim()
-    .toLowerCase()
-    .replace(/[٠-٩]/g, (digit) => String(arabicDigits.indexOf(digit)))
-    .replace(/[۰-۹]/g, (digit) => String(persianDigits.indexOf(digit)))
-    .replace(/[أإآ]/g, "ا")
-    .replace(/ة/g, "ه")
-    .replace(/ى/g, "ي")
-    .replace(/[ًٌٍَُِّْـ]/g, "")
-    .replace(/\s+/g, " ");
+  return (
+    String(value)
+      // iPhone / RTL keyboards may insert invisible direction marks.
+      .replace(/[\u200E\u200F\u202A-\u202E\u2066-\u2069]/g, "")
+      .trim()
+      .toLowerCase()
+      .replace(/[٠-٩]/g, (digit) => String(arabicDigits.indexOf(digit)))
+      .replace(/[۰-۹]/g, (digit) => String(persianDigits.indexOf(digit)))
+      .replace(/[أإآ]/g, "ا")
+      .replace(/ة/g, "ه")
+      .replace(/ى/g, "ي")
+      .replace(/[ًٌٍَُِّْـ]/g, "")
+      .replace(/[^a-z0-9\u0600-\u06FF]+/gi, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+  );
 }
 
 function getBuilding(number) {
@@ -213,12 +219,21 @@ function RoomsGuide({ navigate }) {
       return buildings;
     }
 
-    return buildings.filter((building) => {
-      const searchableText = normalizeSearch(
-        `${building.number} ${building.name} ${building.campus}`,
-      );
+    const queryParts = query.split(" ").filter(Boolean);
 
-      return searchableText.includes(query);
+    return buildings.filter((building) => {
+      const number = normalizeSearch(building.number);
+      const name = normalizeSearch(building.name);
+      const campus = normalizeSearch(building.campus);
+      const searchableText = `${number} ${name} ${campus}`;
+
+      // رقم المبنى: 11 أو ١١ على الهاتف لازم يطابق مباشرة.
+      if (queryParts.length === 1 && /^\d+$/.test(queryParts[0])) {
+        return number.includes(queryParts[0]);
+      }
+
+      // في البحث النصي، كل كلمة كتبها المستخدم لازم تكون موجودة.
+      return queryParts.every((part) => searchableText.includes(part));
     });
   }, [buildingSearch]);
 
@@ -517,6 +532,7 @@ function RoomsGuide({ navigate }) {
                 }}
                 placeholder="ابحث برقم أو اسم المبنى..."
                 aria-label="البحث في المباني"
+                dir="auto"
               />
 
               {buildingSearch && (

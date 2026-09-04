@@ -843,3 +843,70 @@ span:nth-child(3) {
     right: 12px;
   }
 }
+
+/* ===== Tablet / iPad navbar fixes ===== */
+@media (min-width: 768px) and (max-width: 1366px) {
+  .navbar,
+  .site-navbar {
+    min-height: 78px;
+  }
+
+  .navbar-container,
+  .navbar-inner {
+    width: 100%;
+    max-width: none;
+    padding-inline: 22px;
+    gap: 14px;
+  }
+
+  .navbar-brand,
+  .navbar-logo {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .navbar-brand-text,
+  .navbar-logo-text {
+    font-size: 14px;
+  }
+
+  .navbar-links {
+    gap: 14px !important;
+    min-width: 0;
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+
+  .navbar-link {
+    padding-inline: 4px !important;
+    font-size: 13px !important;
+    white-space: nowrap;
+  }
+
+  .navbar-year,
+  .navbar-year-badge {
+    display: none !important;
+  }
+
+  .theme-toggle,
+  .navbar-theme-toggle {
+    flex: 0 0 auto;
+  }
+}
+
+/* iPad portrait: use the hamburger instead of squeezing links */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .navbar-links {
+    display: none !important;
+  }
+
+  .navbar-links.open {
+    display: flex !important;
+  }
+
+  .navbar-menu-button,
+  .navbar-toggle,
+  .menu-toggle {
+    display: flex !important;
+  }
+}

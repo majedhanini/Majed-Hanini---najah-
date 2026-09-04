@@ -916,3 +916,83 @@
     height: 32px;
   }
 }
+
+/* ===== iPhone / mobile stability & performance ===== */
+@media (max-width: 760px) {
+  /* Large blur layers are expensive in Safari and can delay route paint. */
+  .rooms-guide-glow,
+  .rooms-details-glow,
+  .rooms-virtual-tour-orbit {
+    filter: none !important;
+    animation: none !important;
+  }
+
+  .rooms-guide-glow {
+    opacity: .16 !important;
+  }
+
+  /* Avoid costly compositing while typing/searching. */
+  .rooms-guide-page *,
+  .rooms-guide-page *::before,
+  .rooms-guide-page *::after {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .rooms-virtual-tour-card,
+  .rooms-decoder-card,
+  .rooms-building-card,
+  .rooms-auditorium-card,
+  .rooms-explain-grid article {
+    box-shadow: none !important;
+  }
+
+  .rooms-building-search-wrap {
+    position: relative;
+    width: 100% !important;
+    max-width: none !important;
+    flex: 1 1 100% !important;
+  }
+
+  .rooms-building-search-wrap .rooms-building-search {
+    display: block;
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    min-height: 50px;
+    box-sizing: border-box;
+    font-size: 16px !important;
+    direction: rtl;
+    unicode-bidi: plaintext;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 14px;
+  }
+
+  .rooms-building-search-wrap .rooms-building-search:focus {
+    outline: none;
+  }
+
+  .rooms-building-search-clear {
+    z-index: 3;
+    touch-action: manipulation;
+  }
+
+  .rooms-building-card {
+    content-visibility: auto;
+    contain-intrinsic-size: 84px;
+  }
+
+  .rooms-auditorium-card {
+    content-visibility: auto;
+    contain-intrinsic-size: 86px;
+  }
+}
+
+/* Strip the native iOS search decorations if browser decides to add them. */
+.rooms-building-search::-webkit-search-decoration,
+.rooms-building-search::-webkit-search-cancel-button,
+.rooms-building-search::-webkit-search-results-button,
+.rooms-building-search::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+}
