@@ -19,10 +19,14 @@ const gradePoints = {
 const gradeOptions = Object.keys(gradePoints);
 
 function GpaCalculator({ navigate }) {
-  const [courses, setCourses] = useState([
-    { id: crypto.randomUUID(), name: "", credits: "3", grade: "A" },
-    { id: crypto.randomUUID(), name: "", credits: "3", grade: "B+" },
-  ]);
+  const createEmptyCourse = () => ({
+    id: crypto.randomUUID(),
+    name: "",
+    credits: "",
+    grade: "",
+  });
+
+  const [courses, setCourses] = useState([createEmptyCourse()]);
 
   const updateCourse = (id, field, value) => {
     setCourses((current) =>
@@ -33,15 +37,7 @@ function GpaCalculator({ navigate }) {
   };
 
   const addCourse = () => {
-    setCourses((current) => [
-      ...current,
-      {
-        id: crypto.randomUUID(),
-        name: "",
-        credits: "3",
-        grade: "A",
-      },
-    ]);
+    setCourses((current) => [...current, createEmptyCourse()]);
   };
 
   const removeCourse = (id) => {
@@ -53,14 +49,7 @@ function GpaCalculator({ navigate }) {
   };
 
   const resetCourses = () => {
-    setCourses([
-      {
-        id: crypto.randomUUID(),
-        name: "",
-        credits: "3",
-        grade: "A",
-      },
-    ]);
+    setCourses([createEmptyCourse()]);
   };
 
   const result = useMemo(() => {
@@ -69,11 +58,21 @@ function GpaCalculator({ navigate }) {
 
     courses.forEach((course) => {
       const credits = Number(course.credits);
+      const gradeValue = gradePoints[course.grade];
 
-      if (!Number.isFinite(credits) || credits <= 0) return;
+      // المساق الفارغ لا يدخل بالحساب
+      if (
+        !course.credits ||
+        !course.grade ||
+        !Number.isFinite(credits) ||
+        credits <= 0 ||
+        gradeValue === undefined
+      ) {
+        return;
+      }
 
       totalCredits += credits;
-      totalPoints += credits * gradePoints[course.grade];
+      totalPoints += credits * gradeValue;
     });
 
     return {
@@ -194,6 +193,10 @@ function GpaCalculator({ navigate }) {
                           updateCourse(course.id, "grade", event.target.value)
                         }
                       >
+                        <option value="" disabled>
+                          اختر التقدير
+                        </option>
+
                         {gradeOptions.map((grade) => (
                           <option key={grade} value={grade}>
                             {grade} — {gradePoints[grade].toFixed(2)}
