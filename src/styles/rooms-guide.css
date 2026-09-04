@@ -996,3 +996,20 @@
 .rooms-building-search::-webkit-search-results-decoration {
   -webkit-appearance: none;
 }
+
+/* ===== Faster route exit on mobile ===== */
+@media (max-width: 760px) {
+  .rooms-virtual-tour-section,
+  .rooms-decoder-section,
+  .rooms-explain-section,
+  .rooms-buildings-section,
+  .rooms-auditoriums-section {
+    content-visibility: auto;
+    contain-intrinsic-size: 520px;
+  }
+
+  .rooms-guide-page button,
+  .rooms-guide-page a {
+    touch-action: manipulation;
+  }
+}

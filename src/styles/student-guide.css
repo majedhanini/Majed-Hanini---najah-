@@ -672,3 +672,51 @@
     line-height: 1.8;
   }
 }
+
+/* ===== Mobile performance: Student Guide ===== */
+@media (max-width: 760px) {
+  /* Safari داخل واتساب/مسنجر يتأخر كثيرًا مع الـ blur والظلال الكبيرة */
+  .student-guide-glow,
+  .student-guide-page .student-guide-glow,
+  .student-guide-bg-glow,
+  .student-guide-orb {
+    filter: none !important;
+    animation: none !important;
+    opacity: .14 !important;
+  }
+
+  .student-guide-page *,
+  .student-guide-page *::before,
+  .student-guide-page *::after {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .student-guide-card,
+  .student-guide-item,
+  .student-guide-procedure,
+  .student-guide-calendar,
+  .student-guide-note,
+  .student-guide-credit,
+  .student-guide-credit-card,
+  .student-guide-hero-card {
+    box-shadow: none !important;
+  }
+
+  /* لا يرسم الأقسام البعيدة عن الشاشة إلا عند الاقتراب منها */
+  .student-guide-section,
+  .student-guide-procedure,
+  .student-guide-item {
+    content-visibility: auto;
+    contain-intrinsic-size: 180px;
+  }
+
+  .student-guide-page {
+    overflow-x: clip;
+  }
+
+  .student-guide-page button,
+  .student-guide-page a {
+    touch-action: manipulation;
+  }
+}
