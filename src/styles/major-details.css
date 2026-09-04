@@ -1486,3 +1486,75 @@
 [data-theme="light"] .major-not-found h1 {
   color: var(--text-main);
 }
+/* =========================================================
+   MOBILE PERFORMANCE ONLY
+   Keeps all original spacing, sizing and layout unchanged
+========================================================= */
+
+@media (max-width: 760px) {
+  .major-details-glow,
+  .major-about-main-card::before {
+    filter: none !important;
+  }
+
+  .major-details-glow {
+    opacity: 0.08 !important;
+  }
+
+  .major-about-main-card {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .major-about-main-card,
+  .major-mini-card,
+  .semester-card {
+    box-shadow: none !important;
+  }
+
+  .major-about-main-card:hover,
+  .major-mini-card:hover,
+  .semester-card-active:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  .major-about-section,
+  .major-courses-section,
+  .major-about-main-card,
+  .major-mini-card,
+  .semester-card {
+    content-visibility: auto;
+  }
+
+  .major-about-main-card {
+    contain-intrinsic-size: 360px;
+  }
+
+  .major-mini-card {
+    contain-intrinsic-size: 110px;
+  }
+
+  .semester-card {
+    contain-intrinsic-size: 285px;
+  }
+
+  .major-details-page button,
+  .major-details-page a {
+    touch-action: manipulation;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .major-details-page *,
+  .major-details-page *::before,
+  .major-details-page *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1276,3 +1276,72 @@
     border-radius: 18px;
   }
 }
+/* =========================================================
+   MOBILE PERFORMANCE ONLY
+   Keeps original spacing, sizing and layout unchanged
+========================================================= */
+
+@media (max-width: 760px) {
+  .rc-glow {
+    filter: none !important;
+    opacity: 0.08 !important;
+  }
+
+  .rc-course-card,
+  .rc-resource-header,
+  .rc-accordion-item,
+  .rc-community-overview,
+  .rc-community-options-clean,
+  .rc-community-checklist-clean,
+  .rc-community-note-clean,
+  .rc-credit {
+    box-shadow: none !important;
+  }
+
+  .rc-course-card:hover,
+  .rc-course-card.active,
+  .rc-resource-link:hover,
+  .rc-community-option-clean:hover,
+  .rc-back:hover {
+    transform: none !important;
+  }
+
+  .rc-course-card,
+  .rc-accordion-item,
+  .rc-community-card,
+  .rc-community-option-clean,
+  .rc-community-checklist-grid article {
+    content-visibility: auto;
+  }
+
+  .rc-course-card {
+    contain-intrinsic-size: 112px;
+  }
+
+  .rc-accordion-item {
+    contain-intrinsic-size: 68px;
+  }
+
+  .rc-community-option-clean {
+    contain-intrinsic-size: 100px;
+  }
+
+  .required-courses-page button,
+  .required-courses-page a {
+    touch-action: manipulation;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .required-courses-page *,
+  .required-courses-page *::before,
+  .required-courses-page *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+}

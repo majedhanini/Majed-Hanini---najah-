@@ -733,3 +733,57 @@
     font-size: 50px;
   }
 }
+/* =========================================================
+   MOBILE PERFORMANCE ONLY
+   Keeps original spacing and layout unchanged
+========================================================= */
+
+@media (max-width: 760px) {
+  .gpa-glow,
+  .gpa-result-card::before {
+    filter: none !important;
+  }
+
+  .gpa-glow {
+    opacity: 0.08 !important;
+  }
+
+  .gpa-calculator-card,
+  .gpa-result-card {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+
+    box-shadow: none !important;
+  }
+
+  .gpa-course-row,
+  .gpa-result-stats div,
+  .gpa-scale-note {
+    content-visibility: auto;
+  }
+
+  .gpa-page button,
+  .gpa-page input,
+  .gpa-page select {
+    touch-action: manipulation;
+  }
+
+  .gpa-field input,
+  .gpa-field select {
+    font-size: 16px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .gpa-page *,
+  .gpa-page *::before,
+  .gpa-page *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+}

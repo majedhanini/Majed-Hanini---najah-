@@ -41,11 +41,7 @@ function GpaCalculator({ navigate }) {
   };
 
   const removeCourse = (id) => {
-    setCourses((current) =>
-      current.length === 1
-        ? current
-        : current.filter((course) => course.id !== id),
-    );
+    setCourses((current) => current.filter((course) => course.id !== id));
   };
 
   const resetCourses = () => {
@@ -60,7 +56,6 @@ function GpaCalculator({ navigate }) {
       const credits = Number(course.credits);
       const gradeValue = gradePoints[course.grade];
 
-      // المساق الفارغ لا يدخل بالحساب
       if (
         !course.credits ||
         !course.grade ||
@@ -78,7 +73,7 @@ function GpaCalculator({ navigate }) {
     return {
       totalCredits,
       totalPoints,
-      gpa: totalCredits > 0 ? totalPoints / totalCredits : 0,
+      gpa: totalCredits > 0 ? totalPoints / totalCredits : 4,
     };
   }, [courses]);
 
@@ -209,7 +204,6 @@ function GpaCalculator({ navigate }) {
                       type="button"
                       className="gpa-remove-button"
                       onClick={() => removeCourse(course.id)}
-                      disabled={courses.length === 1}
                       aria-label="حذف المساق"
                       title="حذف المساق"
                     >
@@ -224,6 +218,7 @@ function GpaCalculator({ navigate }) {
                   type="button"
                   className="gpa-reset-button"
                   onClick={resetCourses}
+                  disabled={courses.length === 0}
                 >
                   مسح الكل
                 </button>

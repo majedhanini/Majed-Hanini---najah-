@@ -4,41 +4,80 @@ import "../../styles/navbar.css";
 
 function Navbar({ navigate, currentPage }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [pendingSection, setPendingSection] = useState(null);
 
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem("itai-theme") || "dark";
   });
 
+  /* THEME */
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("itai-theme", theme);
   }, [theme]);
 
+  /* CLOSE MOBILE MENU AFTER PAGE CHANGE */
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [currentPage]);
+
+  /* SCROLL TO HOME SECTION AFTER HOME IS RENDERED */
+  useEffect(() => {
+    if (currentPage !== "/" || !pendingSection) {
+      return;
+    }
+
+    let frameId;
+
+    const scrollToSection = () => {
+      const section = document.getElementById(pendingSection);
+
+      if (!section) {
+        frameId = requestAnimationFrame(scrollToSection);
+        return;
+      }
+
+      section.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+
+      setPendingSection(null);
+    };
+
+    frameId = requestAnimationFrame(scrollToSection);
+
+    return () => {
+      cancelAnimationFrame(frameId);
+    };
+  }, [currentPage, pendingSection]);
+
   const handleNavigate = (path) => {
     setMenuOpen(false);
+    setPendingSection(null);
     navigate(path);
   };
 
   const scrollToHomeSection = (sectionId) => {
     setMenuOpen(false);
 
+    /* IF WE ARE ALREADY ON HOME */
     if (currentPage === "/") {
-      document.getElementById(sectionId)?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+      const section = document.getElementById(sectionId);
+
+      if (section) {
+        section.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
 
       return;
     }
 
+    /* GO HOME FIRST, THEN SCROLL */
+    setPendingSection(sectionId);
     navigate("/");
-
-    setTimeout(() => {
-      document.getElementById(sectionId)?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }, 200);
   };
 
   const toggleTheme = () => {
@@ -56,7 +95,9 @@ function Navbar({ navigate, currentPage }) {
           aria-label="العودة إلى الرئيسية"
         >
           <span className="navbar-logo-main">IT & AI</span>
+
           <span className="navbar-logo-divider">|</span>
+
           <span className="navbar-logo-sub">Freshman Hub</span>
         </button>
 
@@ -65,6 +106,7 @@ function Navbar({ navigate, currentPage }) {
           className={`navbar-links ${menuOpen ? "open" : ""}`}
           aria-label="القائمة الرئيسية"
         >
+          {/* HOME */}
           <button
             type="button"
             className={`navbar-link ${currentPage === "/" ? "active" : ""}`}
@@ -73,6 +115,7 @@ function Navbar({ navigate, currentPage }) {
             الرئيسية
           </button>
 
+          {/* MAJORS */}
           <button
             type="button"
             className={`navbar-link ${
@@ -83,6 +126,7 @@ function Navbar({ navigate, currentPage }) {
             التخصصات
           </button>
 
+          {/* REQUIRED UNIVERSITY COURSES */}
           <button
             type="button"
             className="navbar-link"
@@ -91,6 +135,7 @@ function Navbar({ navigate, currentPage }) {
             مساقات اجباري الجامعة
           </button>
 
+          {/* FACULTY */}
           <button
             type="button"
             className={`navbar-link ${
@@ -101,6 +146,7 @@ function Navbar({ navigate, currentPage }) {
             دليل الكلية
           </button>
 
+          {/* GPA */}
           <button
             type="button"
             className={`navbar-link ${
@@ -111,6 +157,7 @@ function Navbar({ navigate, currentPage }) {
             حاسبة المعدل
           </button>
 
+          {/* ROOMS */}
           <button
             type="button"
             className={`navbar-link ${
@@ -121,6 +168,7 @@ function Navbar({ navigate, currentPage }) {
             دليل القاعات
           </button>
 
+          {/* STUDENT GUIDE */}
           <button
             type="button"
             className={`navbar-link ${
@@ -134,6 +182,7 @@ function Navbar({ navigate, currentPage }) {
 
         {/* RIGHT SIDE */}
         <div className="navbar-actions">
+          {/* THEME */}
           <button
             type="button"
             className="navbar-theme-button"
@@ -148,6 +197,7 @@ function Navbar({ navigate, currentPage }) {
 
           <span className="navbar-year">2026 — 2027</span>
 
+          {/* MOBILE MENU */}
           <button
             type="button"
             className={`navbar-menu-button ${menuOpen ? "open" : ""}`}

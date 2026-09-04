@@ -1206,3 +1206,62 @@
       270px;
   }
 }
+/* =========================================================
+   MOBILE PERFORMANCE ONLY
+   Keeps original spacing, sizing and layout unchanged
+========================================================= */
+
+@media (max-width: 760px) {
+  .faculty-glow {
+    filter: none !important;
+    opacity: 0.08 !important;
+  }
+
+  .faculty-card {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+  }
+
+  .faculty-official-banner {
+    box-shadow: none !important;
+  }
+
+  .faculty-card:hover,
+  .faculty-official-button:hover,
+  .faculty-back-button:hover {
+    transform: none !important;
+  }
+
+  .faculty-card,
+  .faculty-official-banner {
+    content-visibility: auto;
+  }
+
+  .faculty-card {
+    contain-intrinsic-size: 270px;
+  }
+
+  .faculty-official-banner {
+    contain-intrinsic-size: 220px;
+  }
+
+  .faculty-page button,
+  .faculty-page a {
+    touch-action: manipulation;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .faculty-page *,
+  .faculty-page *::before,
+  .faculty-page *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+}

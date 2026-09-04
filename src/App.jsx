@@ -15,29 +15,33 @@ import StudentGuide from "./pages/StudentGuide";
 function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
 
-  const navigate = (path) => {
-    if (window.location.pathname === path) {
-      window.scrollTo(0, 0);
-      return;
-    }
-
+  const forceTop = () => {
     window.scrollTo(0, 0);
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
+  };
+
+  const navigate = (path) => {
+    if (window.location.pathname === path) {
+      forceTop();
+      return;
+    }
+
+    // نرجع للأعلى قبل تبديل الصفحة حتى ما يظهر الفوتر للحظة
+    forceTop();
 
     window.history.pushState({}, "", path);
     setCurrentPath(path);
   };
 
   useEffect(() => {
+    // منع المتصفح من استرجاع مكان السكرول القديم
     if ("scrollRestoration" in window.history) {
       window.history.scrollRestoration = "manual";
     }
 
     const handlePopState = () => {
-      window.scrollTo(0, 0);
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
+      forceTop();
       setCurrentPath(window.location.pathname);
     };
 
@@ -48,10 +52,9 @@ function App() {
     };
   }, []);
 
+  // يتم قبل رسم الصفحة الجديدة على الشاشة
   useLayoutEffect(() => {
-    window.scrollTo(0, 0);
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
+    forceTop();
   }, [currentPath]);
 
   const cleanPath =
@@ -126,7 +129,9 @@ function App() {
   return (
     <>
       <Navbar navigate={navigate} currentPage={cleanPath} />
+
       {page}
+
       <MajorsFooter />
     </>
   );

@@ -1791,3 +1791,77 @@
       1.9;
   }
 }
+
+/* =========================================================
+   MOBILE PERFORMANCE ONLY
+   Keeps original spacing, sizing and layout unchanged
+========================================================= */
+
+@media (max-width: 760px) {
+  .course-details-glow,
+  .course-no-resources::before {
+    filter: none !important;
+  }
+
+  .course-details-glow {
+    opacity: 0.08 !important;
+  }
+
+  .course-resource-card {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+  }
+
+  .course-no-resources {
+    box-shadow: none !important;
+  }
+
+  .course-resource-card:hover,
+  .course-resource-link:hover,
+  .course-back-button:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  .course-resource-card,
+  .course-no-resources,
+  .course-exam-group {
+    content-visibility: auto;
+  }
+
+  .course-resource-card {
+    contain-intrinsic-size: 250px;
+  }
+
+  .course-no-resources {
+    contain-intrinsic-size: 320px;
+  }
+
+  .course-exam-group {
+    contain-intrinsic-size: 120px;
+  }
+
+  .course-status-dot {
+    animation: none !important;
+  }
+
+  .course-details-page button,
+  .course-details-page a {
+    touch-action: manipulation;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .course-details-page *,
+  .course-details-page *::before,
+  .course-details-page *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+}

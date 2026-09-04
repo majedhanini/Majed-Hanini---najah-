@@ -990,3 +990,62 @@
       0 12px 32px rgba(58, 70, 108, 0.06);
   }
 }
+/* =========================================================
+   MOBILE PERFORMANCE ONLY
+   Keeps original spacing, sizing and layout unchanged
+========================================================= */
+
+@media (max-width: 760px) {
+  .majors-glow,
+  .major-card-glow {
+    filter: none !important;
+  }
+
+  .majors-glow {
+    opacity: 0.08 !important;
+  }
+
+  .major-card {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+  }
+
+  .major-card:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  .major-card:hover .major-card-glow {
+    transform: none !important;
+  }
+
+  .major-card,
+  .major-card-content,
+  .major-tags {
+    content-visibility: auto;
+  }
+
+  .major-card {
+    contain-intrinsic-size: 300px;
+  }
+
+  .majors-page button,
+  .majors-page a {
+    touch-action: manipulation;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .majors-page *,
+  .majors-page *::before,
+  .majors-page *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+}
