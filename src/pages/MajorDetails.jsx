@@ -1,3 +1,4 @@
+import StudyPlanSection from "../components/StudyPlanSection";
 import "../styles/major-details.css";
 
 const majorsData = {
@@ -106,17 +107,13 @@ function MajorDetails({ navigate, majorId }) {
 
   return (
     <main className="major-details-page">
-      {/* BACKGROUND */}
       <div className="major-details-background" aria-hidden="true">
         <div className="major-details-grid"></div>
-
         <div className="major-details-glow major-details-glow-one"></div>
         <div className="major-details-glow major-details-glow-two"></div>
-
         <span className="major-details-code code-cs">&lt;/&gt;</span>
       </div>
 
-      {/* HERO */}
       <section className="major-details-hero">
         <div className="major-details-container">
           <button
@@ -130,31 +127,24 @@ function MajorDetails({ navigate, majorId }) {
 
           <div className="major-details-heading">
             <div className="major-details-icon">{major.icon}</div>
-
             <span className="major-details-english">{major.english}</span>
-
             <h1>{major.title}</h1>
-
             <p>{major.description}</p>
           </div>
         </div>
       </section>
 
-      {/* ABOUT */}
       <section className="major-about-section">
         <div className="major-details-container">
           <div className="major-section-heading">
             <span>ABOUT THE MAJOR</span>
-
             <h2>نبذة عن التخصص</h2>
           </div>
 
           <div className="major-about-grid">
             <article className="major-about-main-card">
               <span className="major-card-label">ما هو التخصص؟</span>
-
               <h3>تعرف على تخصصك</h3>
-
               <p>{major.about}</p>
             </article>
 
@@ -165,7 +155,6 @@ function MajorDetails({ navigate, majorId }) {
 
                   <div>
                     <h3>{point[1]}</h3>
-
                     <p>{point[2]}</p>
                   </div>
                 </article>
@@ -175,24 +164,25 @@ function MajorDetails({ navigate, majorId }) {
         </div>
       </section>
 
-      {/* COURSES */}
+      <section className="major-study-plan-wrapper">
+        <div className="major-details-container">
+          <StudyPlanSection majorId={majorId} />
+        </div>
+      </section>
+
       <section className="major-courses-section">
         <div className="major-details-container">
           <div className="major-section-heading">
             <span>FIRST YEAR</span>
-
             <h2>مساقات السنة الأولى</h2>
-
             <p>اختر الفصل للوصول إلى المساقات والمصادر الدراسية الخاصة به.</p>
           </div>
 
           <div className="semester-grid">
-            {/* FIRST SEMESTER */}
             <article className="semester-card semester-card-active">
               <div className="semester-card-top">
                 <div>
                   <span className="semester-number">01</span>
-
                   <span className="semester-label">FIRST SEMESTER</span>
                 </div>
 
@@ -200,7 +190,6 @@ function MajorDetails({ navigate, majorId }) {
               </div>
 
               <h3>الفصل الدراسي الأول</h3>
-
               <p>مساقات الفصل الأول ومصادرها الدراسية متوفرة للطلاب.</p>
 
               <button
@@ -209,17 +198,14 @@ function MajorDetails({ navigate, majorId }) {
                 onClick={() => navigate(`/majors/${majorId}/semester-1`)}
               >
                 <span>استعرض المساقات</span>
-
                 <span>←</span>
               </button>
             </article>
 
-            {/* SECOND SEMESTER */}
             <article className="semester-card semester-card-coming">
               <div className="semester-card-top">
                 <div>
                   <span className="semester-number">02</span>
-
                   <span className="semester-label">SECOND SEMESTER</span>
                 </div>
 
@@ -227,7 +213,6 @@ function MajorDetails({ navigate, majorId }) {
               </div>
 
               <h3>الفصل الدراسي الثاني</h3>
-
               <p>سيتم إضافة مساقات الفصل الثاني والمصادر الدراسية لاحقًا.</p>
 
               <div className="semester-coming-text">سيتوفر قريبًا</div>

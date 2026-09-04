@@ -8,6 +8,9 @@ import SemesterOne from "./pages/SemesterOne";
 import CourseDetails from "./pages/CourseDetails";
 import FacultyDirectory from "./pages/FacultyDirectory";
 import GpaCalculator from "./pages/GpaCalculator";
+import RequiredCourses from "./pages/RequiredCourses";
+import RoomsGuide from "./pages/RoomsGuide";
+import StudentGuide from "./pages/StudentGuide";
 
 function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
@@ -51,6 +54,12 @@ function App() {
     page = <FacultyDirectory navigate={navigate} />;
   } else if (cleanPath === "/gpa-calculator") {
     page = <GpaCalculator navigate={navigate} />;
+  } else if (cleanPath === "/required-courses") {
+    page = <RequiredCourses navigate={navigate} />;
+  } else if (cleanPath === "/rooms-guide") {
+    page = <RoomsGuide navigate={navigate} />;
+  } else if (cleanPath === "/student-guide") {
+    page = <StudentGuide navigate={navigate} />;
   } else if (cleanPath === "/majors") {
     page = <Majors navigate={navigate} />;
   } else if (

@@ -254,16 +254,15 @@ function Home({ navigate }) {
                 <span>نماذج امتحانات</span>
               </div>
 
-              <a
-                href="https://shabiba.neocities.org/"
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                type="button"
                 className="required-courses-button"
+                onClick={() => navigate("/required-courses")}
               >
                 <span>دخول إلى دليل المساقات</span>
 
                 <span>←</span>
-              </a>
+              </button>
             </div>
 
             {/* SHABIBA VISUAL */}

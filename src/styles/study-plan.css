@@ -1,0 +1,217 @@
+.simple-plan-section {
+  margin-top: 32px;
+  padding: 28px;
+  border: 1px solid rgba(212, 175, 55, 0.16);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 90% 0%, rgba(212, 175, 55, 0.08), transparent 30%),
+    var(--card-bg);
+  color: var(--text-main);
+  direction: rtl;
+}
+
+.simple-plan-heading > span,
+.simple-plan-tracks-title > span,
+.simple-plan-stat-label {
+  color: var(--primary);
+  font-family: "Inter", sans-serif;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+}
+
+.simple-plan-heading h2 {
+  margin: 6px 0 6px;
+  font-size: 28px;
+}
+
+.simple-plan-heading p {
+  margin: 0;
+  color: var(--muted-text);
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+.simple-plan-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.simple-plan-stat {
+  min-height: 130px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 17px;
+  background: var(--glass);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.simple-plan-stat-main {
+  border-color: rgba(212, 175, 55, 0.28);
+  background:
+    linear-gradient(145deg, rgba(212, 175, 55, 0.09), transparent 65%),
+    var(--glass);
+}
+
+.simple-plan-stat strong {
+  display: block;
+  margin-top: 11px;
+  color: var(--primary);
+  font-family: "Inter", sans-serif;
+  font-size: 34px;
+  line-height: 1;
+}
+
+.simple-plan-stat p {
+  margin: 7px 0 0;
+  color: var(--text-secondary);
+  font-size: 10px;
+}
+
+.simple-plan-tracks {
+  margin-top: 20px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 17px;
+  background: var(--glass);
+}
+
+.simple-plan-tracks-title h3 {
+  margin: 5px 0 0;
+  font-size: 17px;
+}
+
+.simple-plan-track-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 9px;
+  margin-top: 13px;
+}
+
+.simple-plan-track-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid rgba(212, 175, 55, 0.14);
+  border-radius: 13px;
+  background: var(--card-bg);
+}
+
+.simple-plan-track-dot {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 14px rgba(212, 175, 55, 0.35);
+}
+
+.simple-plan-track-card strong {
+  font-size: 11px;
+}
+
+.simple-plan-note {
+  display: flex;
+  gap: 11px;
+  align-items: flex-start;
+  margin-top: 14px;
+  padding: 13px 15px;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: rgba(212, 175, 55, 0.025);
+}
+
+.simple-plan-note > span {
+  display: grid;
+  place-items: center;
+  width: 25px;
+  height: 25px;
+  flex: 0 0 auto;
+  border: 1px solid rgba(212, 175, 55, 0.22);
+  border-radius: 8px;
+  color: var(--primary);
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.simple-plan-note p {
+  margin: 1px 0 0;
+  color: var(--muted-text);
+  font-size: 9.5px;
+  line-height: 1.75;
+}
+
+.simple-plan-pending {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 14px;
+  align-items: flex-start;
+  margin-top: 18px;
+  padding: 20px;
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  border-radius: 17px;
+  background:
+    linear-gradient(135deg, rgba(212, 175, 55, 0.05), transparent 65%),
+    var(--glass);
+}
+
+.simple-plan-pending-icon {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(212, 175, 55, 0.24);
+  border-radius: 11px;
+  color: var(--primary);
+}
+
+.simple-plan-pending h3 {
+  margin: 0 0 5px;
+  font-size: 14px;
+}
+
+.simple-plan-pending p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 10.5px;
+  line-height: 1.8;
+}
+
+@media (max-width: 760px) {
+  .simple-plan-section {
+    padding: 18px;
+    border-radius: 19px;
+  }
+
+  .simple-plan-heading h2 {
+    font-size: 23px;
+  }
+
+  .simple-plan-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .simple-plan-track-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .simple-plan-stat {
+    min-height: 112px;
+  }
+
+  .simple-plan-stat strong {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 430px) {
+  .simple-plan-stats {
+    grid-template-columns: 1fr;
+  }
+}

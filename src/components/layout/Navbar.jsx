@@ -85,20 +85,20 @@ function Navbar({ navigate, currentPage }) {
 
           <button
             type="button"
+            className="navbar-link"
+            onClick={() => scrollToHomeSection("required-courses")}
+          >
+            مساقات اجباري الجامعة
+          </button>
+
+          <button
+            type="button"
             className={`navbar-link ${
               currentPage === "/faculty" ? "active" : ""
             }`}
             onClick={() => handleNavigate("/faculty")}
           >
             دليل الكلية
-          </button>
-
-          <button
-            type="button"
-            className="navbar-link"
-            onClick={() => scrollToHomeSection("required-courses")}
-          >
-            مساقات اجباري الجامعة
           </button>
 
           <button
@@ -113,10 +113,22 @@ function Navbar({ navigate, currentPage }) {
 
           <button
             type="button"
-            className="navbar-link"
-            onClick={() => scrollToHomeSection("about-college")}
+            className={`navbar-link ${
+              currentPage === "/rooms-guide" ? "active" : ""
+            }`}
+            onClick={() => handleNavigate("/rooms-guide")}
           >
-            عن الكلية
+            دليل القاعات
+          </button>
+
+          <button
+            type="button"
+            className={`navbar-link ${
+              currentPage === "/student-guide" ? "active" : ""
+            }`}
+            onClick={() => handleNavigate("/student-guide")}
+          >
+            دليل الطالب
           </button>
         </nav>
 
