@@ -129,10 +129,10 @@ const majorsCourses = {
         available: true,
       },
       {
-        id: "course-4",
-        name: "Course 4",
-        englishName: "COURSE 04",
-        available: false,
+        id: "business-mathematics",
+        name: "رياضيات في الأعمال التجارية",
+        englishName: "Business Mathematics",
+        available: true,
       },
       {
         id: "course-5",

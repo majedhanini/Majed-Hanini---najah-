@@ -827,6 +827,17 @@ const introductionToIT = {
 };
 
 /* =========================================================
+   MIS - BUSINESS MATHEMATICS
+========================================================= */
+
+const businessMathematics = {
+  name: "رياضيات في الأعمال التجارية",
+  englishName: "Business Mathematics",
+
+  resources: [],
+};
+
+/* =========================================================
    COURSES DATA
 ========================================================= */
 
@@ -870,6 +881,7 @@ const coursesData = {
     "management-principles-1": managementPrinciples1,
     "business-programming-1": businessProgramming1,
     "introduction-to-it": introductionToIT,
+    "business-mathematics": businessMathematics,
   },
 
   /* =====================================================

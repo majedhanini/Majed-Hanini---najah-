@@ -23,6 +23,9 @@ function CourseDetails({ navigate, majorId, courseId }) {
 
   const [openResourceId, setOpenResourceId] = useState(null);
 
+  const isBusinessMathematics =
+    majorId === "mis" && courseId === "business-mathematics";
+
   /* =========================================================
      COURSE NOT FOUND
   ========================================================= */
@@ -236,7 +239,26 @@ function CourseDetails({ navigate, majorId, courseId }) {
 
           {resources.length === 0 && (
             <div className="course-no-resources">
-              {courseNotice ? (
+              {isBusinessMathematics ? (
+                <>
+                  <div className="course-no-resources-icon">⏳</div>
+
+                  <span className="course-no-resources-label">COMING SOON</span>
+
+                  <h2>سيتم تزويدكم بكل ما يخص المساق قريبًا.</h2>
+
+                  <p>
+                    نعمل حاليًا على تجهيز مواد ومصادر مساق رياضيات في الأعمال
+                    التجارية، وسيتم إضافتها فور توفرها.
+                  </p>
+
+                  <div className="course-no-resources-status">
+                    <span className="course-status-dot"></span>
+
+                    <span>جاري تجهيز المحتوى</span>
+                  </div>
+                </>
+              ) : courseNotice ? (
                 <>
                   <div className="course-no-resources-icon">⏳</div>
 
