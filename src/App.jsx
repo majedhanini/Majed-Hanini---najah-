@@ -1,4 +1,6 @@
 import { useEffect, useLayoutEffect, useState } from "react";
+import { Analytics } from "@vercel/analytics/react";
+
 import Navbar from "./components/layout/Navbar";
 import MajorsFooter from "./components/layout/MajorsFooter";
 import Home from "./pages/Home";
@@ -133,6 +135,8 @@ function App() {
       {page}
 
       <MajorsFooter />
+
+      <Analytics />
     </>
   );
 }
